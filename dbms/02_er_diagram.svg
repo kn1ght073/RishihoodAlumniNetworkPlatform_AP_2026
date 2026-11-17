@@ -1,0 +1,167 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="3300" height="2140" viewBox="0 0 3300 2140" role="img" aria-labelledby="svg-title svg-desc">
+<title id="svg-title">Rishihood Alumni Network entity relationship diagram</title>
+<desc id="svg-desc">A clean four-section map of the 23 tables and foreign-key relationships documented in dbms/02_er_diagram.md.</desc>
+<defs>
+ <filter id="card-shadow" x="-10%" y="-15%" width="120%" height="140%"><feDropShadow dx="0" dy="5" stdDeviation="8" flood-color="#1d3540" flood-opacity=".08"/></filter>
+</defs>
+<rect width="100%" height="100%" fill="#f4f7f6"/>
+<text x="80" y="78" font-family="Inter,Arial,sans-serif" font-size="43" font-weight="750" letter-spacing="-.6" fill="#17363e">RISHIHOOD ALUMNI NETWORK</text>
+<text x="80" y="125" font-family="Inter,Arial,sans-serif" font-size="23" fill="#627b80">ENTITY RELATIONSHIP MAP <tspan fill="#b5c1c1">/</tspan> PostgreSQL MVP <tspan fill="#b5c1c1">/</tspan> 23 tables</text>
+<line x1="80" y1="154" x2="3220" y2="154" stroke="#d8e2e1" stroke-width="2"/>
+
+<g><rect x="80" y="190" width="1530" height="880" rx="20" fill="#ffffff" stroke="#dce6e4" stroke-width="2"/>
+<rect x="80" y="190" width="1530" height="76" rx="20" fill="#23766f"/>
+<path d="M80 238h1530v28H80z" fill="#23766f"/>
+<text x="108" y="239" font-family="Inter,Arial,sans-serif" font-size="22" font-weight="700" letter-spacing="1.05" fill="#ffffff">ACCOUNTS AND MEMBERSHIP</text>
+<g filter="url(#card-shadow)"><rect x="104" y="298" width="730" height="174" rx="13" fill="#ffffff" stroke="#e0e8e7" stroke-width="1.5"/></g>
+<rect x="104" y="298" width="7" height="174" rx="3.5" fill="#23766f"/>
+<text x="127" y="336" font-family="SFMono-Regular,Menlo,Consolas,monospace" font-size="22" font-weight="700" fill="#193b43">users</text>
+<line x1="126" y1="350" x2="815" y2="350" stroke="#edf2f1" stroke-width="1.5"/>
+<text x="127" y="386" font-family="Inter,Arial,sans-serif" font-size="18" fill="#516e74">Account entity referenced by the relationships shown here.</text>
+<g filter="url(#card-shadow)"><rect x="856" y="298" width="730" height="174" rx="13" fill="#ffffff" stroke="#e0e8e7" stroke-width="1.5"/></g>
+<rect x="856" y="298" width="7" height="174" rx="3.5" fill="#23766f"/>
+<text x="879" y="336" font-family="SFMono-Regular,Menlo,Consolas,monospace" font-size="22" font-weight="700" fill="#193b43">roles</text>
+<line x1="878" y1="350" x2="1567" y2="350" stroke="#edf2f1" stroke-width="1.5"/>
+<text x="879" y="386" font-family="Inter,Arial,sans-serif" font-size="18" fill="#516e74">One role can be assigned to many users</text>
+<text x="879" y="415" font-family="Inter,Arial,sans-serif" font-size="18" fill="#516e74">through user_roles.</text>
+<g filter="url(#card-shadow)"><rect x="104" y="488" width="730" height="174" rx="13" fill="#ffffff" stroke="#e0e8e7" stroke-width="1.5"/></g>
+<rect x="104" y="488" width="7" height="174" rx="3.5" fill="#23766f"/>
+<text x="127" y="526" font-family="SFMono-Regular,Menlo,Consolas,monospace" font-size="22" font-weight="700" fill="#193b43">user_roles</text>
+<line x1="126" y1="540" x2="815" y2="540" stroke="#edf2f1" stroke-width="1.5"/>
+<text x="127" y="576" font-family="Inter,Arial,sans-serif" font-size="18" fill="#516e74">Many-to-many join between users and roles.</text>
+<text x="127" y="605" font-family="Inter,Arial,sans-serif" font-size="18" fill="#516e74">Composite key: (user_id, role_id).</text>
+<g filter="url(#card-shadow)"><rect x="856" y="488" width="730" height="174" rx="13" fill="#ffffff" stroke="#e0e8e7" stroke-width="1.5"/></g>
+<rect x="856" y="488" width="7" height="174" rx="3.5" fill="#23766f"/>
+<text x="879" y="526" font-family="SFMono-Regular,Menlo,Consolas,monospace" font-size="22" font-weight="700" fill="#193b43">university_memberships</text>
+<line x1="878" y1="540" x2="1567" y2="540" stroke="#edf2f1" stroke-width="1.5"/>
+<text x="879" y="576" font-family="Inter,Arial,sans-serif" font-size="18" fill="#516e74">Users: zero or one membership per user.</text>
+<text x="879" y="605" font-family="Inter,Arial,sans-serif" font-size="18" fill="#516e74">Optional reviewer; one reviewer may verify many.</text>
+<g filter="url(#card-shadow)"><rect x="104" y="678" width="730" height="174" rx="13" fill="#ffffff" stroke="#e0e8e7" stroke-width="1.5"/></g>
+<rect x="104" y="678" width="7" height="174" rx="3.5" fill="#23766f"/>
+<text x="127" y="716" font-family="SFMono-Regular,Menlo,Consolas,monospace" font-size="22" font-weight="700" fill="#193b43">profiles</text>
+<line x1="126" y1="730" x2="815" y2="730" stroke="#edf2f1" stroke-width="1.5"/>
+<text x="127" y="766" font-family="Inter,Arial,sans-serif" font-size="18" fill="#516e74">Users: zero or one profile per user.</text>
+<g filter="url(#card-shadow)"><rect x="856" y="678" width="730" height="174" rx="13" fill="#ffffff" stroke="#e0e8e7" stroke-width="1.5"/></g>
+<rect x="856" y="678" width="7" height="174" rx="3.5" fill="#23766f"/>
+<text x="879" y="716" font-family="SFMono-Regular,Menlo,Consolas,monospace" font-size="22" font-weight="700" fill="#193b43">career_preferences</text>
+<line x1="878" y1="730" x2="1567" y2="730" stroke="#edf2f1" stroke-width="1.5"/>
+<text x="879" y="766" font-family="Inter,Arial,sans-serif" font-size="18" fill="#516e74">Users: zero or one preference row per user.</text>
+<g filter="url(#card-shadow)"><rect x="104" y="868" width="730" height="174" rx="13" fill="#ffffff" stroke="#e0e8e7" stroke-width="1.5"/></g>
+<rect x="104" y="868" width="7" height="174" rx="3.5" fill="#23766f"/>
+<text x="127" y="906" font-family="SFMono-Regular,Menlo,Consolas,monospace" font-size="22" font-weight="700" fill="#193b43">email_verification_tokens</text>
+<line x1="126" y1="920" x2="815" y2="920" stroke="#edf2f1" stroke-width="1.5"/>
+<text x="127" y="956" font-family="Inter,Arial,sans-serif" font-size="18" fill="#516e74">One user can have many verification tokens.</text>
+<g filter="url(#card-shadow)"><rect x="856" y="868" width="730" height="174" rx="13" fill="#ffffff" stroke="#e0e8e7" stroke-width="1.5"/></g>
+<rect x="856" y="868" width="7" height="174" rx="3.5" fill="#23766f"/>
+<text x="879" y="906" font-family="SFMono-Regular,Menlo,Consolas,monospace" font-size="22" font-weight="700" fill="#193b43">user_sessions</text>
+<line x1="878" y1="920" x2="1567" y2="920" stroke="#edf2f1" stroke-width="1.5"/>
+<text x="879" y="956" font-family="Inter,Arial,sans-serif" font-size="18" fill="#516e74">No user_id or declared user relationship.</text>
+</g>
+<g><rect x="1690" y="190" width="1530" height="880" rx="20" fill="#ffffff" stroke="#dce6e4" stroke-width="2"/>
+<rect x="1690" y="190" width="1530" height="76" rx="20" fill="#9a6a32"/>
+<path d="M1690 238h1530v28H1690z" fill="#9a6a32"/>
+<text x="1718" y="239" font-family="Inter,Arial,sans-serif" font-size="22" font-weight="700" letter-spacing="1.05" fill="#ffffff">SKILLS, COMPANIES, AND WORK HISTORY</text>
+<g filter="url(#card-shadow)"><rect x="1714" y="298" width="730" height="174" rx="13" fill="#ffffff" stroke="#e0e8e7" stroke-width="1.5"/></g>
+<rect x="1714" y="298" width="7" height="174" rx="3.5" fill="#9a6a32"/>
+<text x="1737" y="336" font-family="SFMono-Regular,Menlo,Consolas,monospace" font-size="22" font-weight="700" fill="#193b43">companies</text>
+<line x1="1736" y1="350" x2="2425" y2="350" stroke="#edf2f1" stroke-width="1.5"/>
+<text x="1737" y="386" font-family="Inter,Arial,sans-serif" font-size="18" fill="#516e74">One company can appear in many</text>
+<text x="1737" y="415" font-family="Inter,Arial,sans-serif" font-size="18" fill="#516e74">employment_history records.</text>
+<g filter="url(#card-shadow)"><rect x="2466" y="298" width="730" height="174" rx="13" fill="#ffffff" stroke="#e0e8e7" stroke-width="1.5"/></g>
+<rect x="2466" y="298" width="7" height="174" rx="3.5" fill="#9a6a32"/>
+<text x="2489" y="336" font-family="SFMono-Regular,Menlo,Consolas,monospace" font-size="22" font-weight="700" fill="#193b43">skills</text>
+<line x1="2488" y1="350" x2="3177" y2="350" stroke="#edf2f1" stroke-width="1.5"/>
+<text x="2489" y="386" font-family="Inter,Arial,sans-serif" font-size="18" fill="#516e74">One skill can belong to many users</text>
+<text x="2489" y="415" font-family="Inter,Arial,sans-serif" font-size="18" fill="#516e74">through user_skills.</text>
+<g filter="url(#card-shadow)"><rect x="1714" y="488" width="730" height="174" rx="13" fill="#ffffff" stroke="#e0e8e7" stroke-width="1.5"/></g>
+<rect x="1714" y="488" width="7" height="174" rx="3.5" fill="#9a6a32"/>
+<text x="1737" y="526" font-family="SFMono-Regular,Menlo,Consolas,monospace" font-size="22" font-weight="700" fill="#193b43">employment_history</text>
+<line x1="1736" y1="540" x2="2425" y2="540" stroke="#edf2f1" stroke-width="1.5"/>
+<text x="1737" y="576" font-family="Inter,Arial,sans-serif" font-size="18" fill="#516e74">One user can have many records;</text>
+<text x="1737" y="605" font-family="Inter,Arial,sans-serif" font-size="18" fill="#516e74">one company can appear in many records.</text>
+<g filter="url(#card-shadow)"><rect x="2466" y="488" width="730" height="174" rx="13" fill="#ffffff" stroke="#e0e8e7" stroke-width="1.5"/></g>
+<rect x="2466" y="488" width="7" height="174" rx="3.5" fill="#9a6a32"/>
+<text x="2489" y="526" font-family="SFMono-Regular,Menlo,Consolas,monospace" font-size="22" font-weight="700" fill="#193b43">user_skills</text>
+<line x1="2488" y1="540" x2="3177" y2="540" stroke="#edf2f1" stroke-width="1.5"/>
+<text x="2489" y="576" font-family="Inter,Arial,sans-serif" font-size="18" fill="#516e74">Many-to-many join between users and skills.</text>
+<text x="2489" y="605" font-family="Inter,Arial,sans-serif" font-size="18" fill="#516e74">Composite key: (user_id, skill_id).</text>
+<g filter="url(#card-shadow)"><rect x="1714" y="678" width="730" height="174" rx="13" fill="#ffffff" stroke="#e0e8e7" stroke-width="1.5"/></g>
+<rect x="1714" y="678" width="7" height="174" rx="3.5" fill="#9a6a32"/>
+<text x="1737" y="716" font-family="SFMono-Regular,Menlo,Consolas,monospace" font-size="22" font-weight="700" fill="#193b43">company_suggestions</text>
+<line x1="1736" y1="730" x2="2425" y2="730" stroke="#edf2f1" stroke-width="1.5"/>
+<text x="1737" y="766" font-family="Inter,Arial,sans-serif" font-size="18" fill="#516e74">One user can submit many suggestions.</text>
+<text x="1737" y="795" font-family="Inter,Arial,sans-serif" font-size="18" fill="#516e74">Optional reviewer may review many.</text>
+</g>
+<g><rect x="80" y="1090" width="1530" height="880" rx="20" fill="#ffffff" stroke="#dce6e4" stroke-width="2"/>
+<rect x="80" y="1090" width="1530" height="76" rx="20" fill="#70569a"/>
+<path d="M80 1138h1530v28H80z" fill="#70569a"/>
+<text x="108" y="1139" font-family="Inter,Arial,sans-serif" font-size="22" font-weight="700" letter-spacing="1.05" fill="#ffffff">CONNECTIONS, GUIDANCE, AND MENTORSHIP</text>
+<g filter="url(#card-shadow)"><rect x="104" y="1198" width="730" height="174" rx="13" fill="#ffffff" stroke="#e0e8e7" stroke-width="1.5"/></g>
+<rect x="104" y="1198" width="7" height="174" rx="3.5" fill="#70569a"/>
+<text x="127" y="1236" font-family="SFMono-Regular,Menlo,Consolas,monospace" font-size="22" font-weight="700" fill="#193b43">connection_requests</text>
+<line x1="126" y1="1250" x2="815" y2="1250" stroke="#edf2f1" stroke-width="1.5"/>
+<text x="127" y="1286" font-family="Inter,Arial,sans-serif" font-size="18" fill="#516e74">Users can send and receive many requests</text>
+<text x="127" y="1315" font-family="Inter,Arial,sans-serif" font-size="18" fill="#516e74">(sender_id and recipient_id).</text>
+<g filter="url(#card-shadow)"><rect x="856" y="1198" width="730" height="174" rx="13" fill="#ffffff" stroke="#e0e8e7" stroke-width="1.5"/></g>
+<rect x="856" y="1198" width="7" height="174" rx="3.5" fill="#70569a"/>
+<text x="879" y="1236" font-family="SFMono-Regular,Menlo,Consolas,monospace" font-size="22" font-weight="700" fill="#193b43">connections</text>
+<line x1="878" y1="1250" x2="1567" y2="1250" stroke="#edf2f1" stroke-width="1.5"/>
+<text x="879" y="1286" font-family="Inter,Arial,sans-serif" font-size="18" fill="#516e74">Each connection joins two users.</text>
+<text x="879" y="1315" font-family="Inter,Arial,sans-serif" font-size="18" fill="#516e74">Composite ordered pair; member_low_id &lt; member_high_id.</text>
+<g filter="url(#card-shadow)"><rect x="104" y="1388" width="730" height="174" rx="13" fill="#ffffff" stroke="#e0e8e7" stroke-width="1.5"/></g>
+<rect x="104" y="1388" width="7" height="174" rx="3.5" fill="#70569a"/>
+<text x="127" y="1426" font-family="SFMono-Regular,Menlo,Consolas,monospace" font-size="22" font-weight="700" fill="#193b43">career_requests</text>
+<line x1="126" y1="1440" x2="815" y2="1440" stroke="#edf2f1" stroke-width="1.5"/>
+<text x="127" y="1476" font-family="Inter,Arial,sans-serif" font-size="18" fill="#516e74">Users can make and receive requests.</text>
+<text x="127" y="1505" font-family="Inter,Arial,sans-serif" font-size="18" fill="#516e74">Company reference is optional.</text>
+<g filter="url(#card-shadow)"><rect x="856" y="1388" width="730" height="174" rx="13" fill="#ffffff" stroke="#e0e8e7" stroke-width="1.5"/></g>
+<rect x="856" y="1388" width="7" height="174" rx="3.5" fill="#70569a"/>
+<text x="879" y="1426" font-family="SFMono-Regular,Menlo,Consolas,monospace" font-size="22" font-weight="700" fill="#193b43">career_request_messages</text>
+<line x1="878" y1="1440" x2="1567" y2="1440" stroke="#edf2f1" stroke-width="1.5"/>
+<text x="879" y="1476" font-family="Inter,Arial,sans-serif" font-size="18" fill="#516e74">One request can contain many messages.</text>
+<text x="879" y="1505" font-family="Inter,Arial,sans-serif" font-size="18" fill="#516e74">Users can send many messages.</text>
+<g filter="url(#card-shadow)"><rect x="104" y="1578" width="730" height="174" rx="13" fill="#ffffff" stroke="#e0e8e7" stroke-width="1.5"/></g>
+<rect x="104" y="1578" width="7" height="174" rx="3.5" fill="#70569a"/>
+<text x="127" y="1616" font-family="SFMono-Regular,Menlo,Consolas,monospace" font-size="22" font-weight="700" fill="#193b43">mentorship_requests</text>
+<line x1="126" y1="1630" x2="815" y2="1630" stroke="#edf2f1" stroke-width="1.5"/>
+<text x="127" y="1666" font-family="Inter,Arial,sans-serif" font-size="18" fill="#516e74">Users can appear in many requests as</text>
+<text x="127" y="1695" font-family="Inter,Arial,sans-serif" font-size="18" fill="#516e74">student or alumnus.</text>
+</g>
+<g><rect x="1690" y="1090" width="1530" height="880" rx="20" fill="#ffffff" stroke="#dce6e4" stroke-width="2"/>
+<rect x="1690" y="1090" width="1530" height="76" rx="20" fill="#3c7198"/>
+<path d="M1690 1138h1530v28H1690z" fill="#3c7198"/>
+<text x="1718" y="1139" font-family="Inter,Arial,sans-serif" font-size="22" font-weight="700" letter-spacing="1.05" fill="#ffffff">OPPORTUNITIES, NOTIFICATIONS, AND ADMIN</text>
+<g filter="url(#card-shadow)"><rect x="1714" y="1198" width="730" height="174" rx="13" fill="#ffffff" stroke="#e0e8e7" stroke-width="1.5"/></g>
+<rect x="1714" y="1198" width="7" height="174" rx="3.5" fill="#3c7198"/>
+<text x="1737" y="1236" font-family="SFMono-Regular,Menlo,Consolas,monospace" font-size="22" font-weight="700" fill="#193b43">opportunities</text>
+<line x1="1736" y1="1250" x2="2425" y2="1250" stroke="#edf2f1" stroke-width="1.5"/>
+<text x="1737" y="1286" font-family="Inter,Arial,sans-serif" font-size="18" fill="#516e74">One user can publish many opportunities.</text>
+<text x="1737" y="1315" font-family="Inter,Arial,sans-serif" font-size="18" fill="#516e74">Company reference is optional.</text>
+<g filter="url(#card-shadow)"><rect x="2466" y="1198" width="730" height="174" rx="13" fill="#ffffff" stroke="#e0e8e7" stroke-width="1.5"/></g>
+<rect x="2466" y="1198" width="7" height="174" rx="3.5" fill="#3c7198"/>
+<text x="2489" y="1236" font-family="SFMono-Regular,Menlo,Consolas,monospace" font-size="22" font-weight="700" fill="#193b43">saved_opportunities</text>
+<line x1="2488" y1="1250" x2="3177" y2="1250" stroke="#edf2f1" stroke-width="1.5"/>
+<text x="2489" y="1286" font-family="Inter,Arial,sans-serif" font-size="18" fill="#516e74">Many-to-many join of users and opportunities.</text>
+<text x="2489" y="1315" font-family="Inter,Arial,sans-serif" font-size="18" fill="#516e74">Composite key: (user_id, opportunity_id).</text>
+<g filter="url(#card-shadow)"><rect x="1714" y="1388" width="730" height="174" rx="13" fill="#ffffff" stroke="#e0e8e7" stroke-width="1.5"/></g>
+<rect x="1714" y="1388" width="7" height="174" rx="3.5" fill="#3c7198"/>
+<text x="1737" y="1426" font-family="SFMono-Regular,Menlo,Consolas,monospace" font-size="22" font-weight="700" fill="#193b43">notifications</text>
+<line x1="1736" y1="1440" x2="2425" y2="1440" stroke="#edf2f1" stroke-width="1.5"/>
+<text x="1737" y="1476" font-family="Inter,Arial,sans-serif" font-size="18" fill="#516e74">One user can receive many notifications.</text>
+<text x="1737" y="1505" font-family="Inter,Arial,sans-serif" font-size="18" fill="#516e74">reference_id is a UUID without a foreign key.</text>
+<g filter="url(#card-shadow)"><rect x="2466" y="1388" width="730" height="174" rx="13" fill="#ffffff" stroke="#e0e8e7" stroke-width="1.5"/></g>
+<rect x="2466" y="1388" width="7" height="174" rx="3.5" fill="#3c7198"/>
+<text x="2489" y="1426" font-family="SFMono-Regular,Menlo,Consolas,monospace" font-size="22" font-weight="700" fill="#193b43">verification_requests</text>
+<line x1="2488" y1="1440" x2="3177" y2="1440" stroke="#edf2f1" stroke-width="1.5"/>
+<text x="2489" y="1476" font-family="Inter,Arial,sans-serif" font-size="18" fill="#516e74">One user can submit many requests.</text>
+<text x="2489" y="1505" font-family="Inter,Arial,sans-serif" font-size="18" fill="#516e74">Optional reviewer may review many.</text>
+<g filter="url(#card-shadow)"><rect x="1714" y="1578" width="730" height="174" rx="13" fill="#ffffff" stroke="#e0e8e7" stroke-width="1.5"/></g>
+<rect x="1714" y="1578" width="7" height="174" rx="3.5" fill="#3c7198"/>
+<text x="1737" y="1616" font-family="SFMono-Regular,Menlo,Consolas,monospace" font-size="22" font-weight="700" fill="#193b43">audit_logs</text>
+<line x1="1736" y1="1630" x2="2425" y2="1630" stroke="#edf2f1" stroke-width="1.5"/>
+<text x="1737" y="1666" font-family="Inter,Arial,sans-serif" font-size="18" fill="#516e74">One user may be actor in many rows; optional.</text>
+<text x="1737" y="1695" font-family="Inter,Arial,sans-serif" font-size="18" fill="#516e74">target_id is a UUID without a foreign key.</text>
+</g>
+<text x="80" y="2040" font-family="Inter,Arial,sans-serif" font-size="17" fill="#506b70">UUID references without declared foreign keys: notifications.reference_id and audit_logs.target_id. user_sessions has no user relationship.</text>
+<text x="80" y="2078" font-family="Inter,Arial,sans-serif" font-size="15" fill="#829497">Aligned to dbms/02_er_diagram.md · Relationship labels preserve the documented optionality, role-bearing references, and many-to-many joins.</text>
+</svg>
