@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Join · Rishihood Alumni Network</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/auth.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+</head>
+
+<body data-page="register">
+  <main class="auth-layout">
+    <aside class="auth-aside">
+      <a class="brand brand-light" href="/"><span class="brand-mark">R</span><span>Rishihood<span
+            class="brand-sub">ALUMNI NETWORK</span></span></a>
+      <p class="eyebrow">A PLACE TO COME BACK TO</p>
+      <h1>One campus.<br><em>Many paths.</em></h1>
+      <p>Meet the people taking those paths, and bring what you’ve learned back to the community.</p>
+      <div class="auth-aside-foot">STUDENTS · ALUMNI <span>ONE PERMANENT ACCOUNT</span></div>
+    </aside>
+    <section class="auth-panel auth-panel-scroll">
+      <div class="auth-form-wrap">
+        <p class="eyebrow">JOIN THE COMMUNITY</p>
+        <h2>Create your account</h2>
+        <p class="muted">Your account stays with you as your university chapter changes.</p>
+        <form id="register-form" class="form-stack">
+          <label>Full name<input name="fullName" required minlength="2" maxlength="100" autocomplete="name"></label>
+          <label>Email address<input name="email" type="email" required autocomplete="email" pattern="[^@]+@([A-Za-z0-9-]+\.)*rishihood\.edu\.in" title="Use your Rishihood email address ending in rishihood.edu.in"><small>Use your Rishihood email address, for example name@nst.rishihood.edu.in.</small></label>
+          <label>Password<input name="password" type="password" required minlength="10" maxlength="128"
+              autocomplete="new-password"><small>At least 10 characters.</small></label>
+          <label>I am a<select name="userType" id="user-type">
+              <option value="STUDENT">Current student</option>
+              <option value="ALUMNI">Alumnus / alumna</option>
+            </select></label>
+          <label>University affiliation<input name="university" value="Rishihood University" readonly></label>
+          <label>Course or degree<input name="course" required maxlength="120" placeholder="e.g. Design, B.Des"></label>
+          <label id="year-label">Expected graduation year<input name="graduationYear" type="number" min="2026"
+              max="2200" required></label>
+          <button class="button button-dark button-full">Create account <span>→</span></button>
+          <p id="auth-message" class="form-message" aria-live="polite"></p>
+        </form>
+        <form id="verify-form" class="form-stack hidden">
+          <div class="success-panel">Your account is ready. Enter the verification code sent to your email. In
+            development, check the server terminal if email is not configured.</div>
+          <label>Verification code<input name="token" required autocomplete="one-time-code"></label>
+          <button class="button button-dark button-full">Verify email</button>
+          <p id="verify-message" class="form-message" aria-live="polite"></p>
+        </form>
+        <p class="auth-switch">Already a member? <a href="/login.html">Sign in</a></p>
+      </div>
+    </section>
+  </main>
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+</body>
+
+</html>

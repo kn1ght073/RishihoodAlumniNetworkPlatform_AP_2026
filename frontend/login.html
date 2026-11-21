@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Sign in · Rishihood Alumni Network</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/auth.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+</head>
+
+<body data-page="login">
+    <main class="auth-layout">
+        <aside class="auth-aside"><a class="brand brand-light" href="/"><span
+                    class="brand-mark">R</span><span>Rishihood<span class="brand-sub">ALUMNI NETWORK</span></span></a>
+            <p class="eyebrow">WELCOME BACK</p>
+            <h1>Good things<br>grow <em>together.</em></h1>
+            <p>Your next conversation, opportunity, or mentor may be one connection away.</p>
+            <div class="auth-aside-foot">SONIPAT · INDIA <span>RISHIHOOD UNIVERSITY</span></div>
+        </aside>
+        <section class="auth-panel">
+            <div class="auth-form-wrap">
+                <p class="eyebrow">MEMBER ACCESS</p>
+                <h2>Sign in</h2>
+                <p class="muted">Pick up where your Rishihood story left off.</p>
+                <form id="login-form" class="form-stack"><label>Email address<input name="email" type="email"
+                            autocomplete="email" required pattern="[^@]+@([A-Za-z0-9-]+\.)*rishihood\.edu\.in" title="Use your Rishihood email address ending in rishihood.edu.in"></label><label>Password<input name="password" type="password"
+                            autocomplete="current-password" required minlength="10"></label><button
+                        class="button button-dark button-full">Sign in <span>→</span></button>
+                    <p id="auth-message" class="form-message" aria-live="polite"></p>
+                </form>
+                <p class="auth-switch"><a id="show-verification-recovery" href="#resend-verification-form">Forgot password?</a></p>
+                <form id="resend-verification-form" class="form-stack auth-recovery hidden">
+                    <p class="muted">Haven’t received your verification email?</p>
+                    <label>Email address<input name="email" type="email" autocomplete="email" required pattern="[^@]+@([A-Za-z0-9-]+\.)*rishihood\.edu\.in" title="Use your Rishihood email address ending in rishihood.edu.in"></label>
+                    <button class="button button-outline button-full">Resend verification code</button>
+                    <label>Verification code<input name="token" autocomplete="one-time-code" minlength="20"></label>
+                    <button class="button button-dark button-full" type="button" id="verify-resend-code">Verify email</button>
+                    <p id="resend-message" class="form-message" aria-live="polite"></p>
+                </form>
+                <p class="auth-switch">New to the network? <a href="/register.html">Create an account</a></p>
+            </div>
+        </section>
+    </main>
+    <script src="/js/api.js"></script>
+    <script src="/js/auth.js"></script>
+</body>
+
+</html>
