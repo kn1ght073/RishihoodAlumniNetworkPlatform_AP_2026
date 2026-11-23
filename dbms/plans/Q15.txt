@@ -1,0 +1,48 @@
+=== Q15 run 1 ===
+QUERY PLAN                                                                                  
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Delete on email_verification_tokens  (cost=0.15..8.17 rows=1 width=6) (actual time=0.017..0.018 rows=1.00 loops=1)
+   Buffers: shared hit=4
+   ->  Index Scan using email_verification_tokens_token_hash_key on email_verification_tokens  (cost=0.15..8.17 rows=1 width=6) (actual time=0.006..0.006 rows=1.00 loops=1)
+         Index Cond: (token_hash = 'testtokenhash1234567890abcdef'::text)
+         Filter: (expires_at > now())
+         Index Searches: 1
+         Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=93
+ Planning Time: 0.166 ms
+ Execution Time: 0.057 ms
+(11 rows)
+
+=== Q15 run 2 ===
+QUERY PLAN                                                                                  
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Delete on email_verification_tokens  (cost=0.15..8.17 rows=1 width=6) (actual time=0.016..0.016 rows=1.00 loops=1)
+   Buffers: shared hit=4
+   ->  Index Scan using email_verification_tokens_token_hash_key on email_verification_tokens  (cost=0.15..8.17 rows=1 width=6) (actual time=0.007..0.007 rows=1.00 loops=1)
+         Index Cond: (token_hash = 'testtokenhash1234567890abcdef'::text)
+         Filter: (expires_at > now())
+         Index Searches: 1
+         Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=93
+ Planning Time: 0.166 ms
+ Execution Time: 0.054 ms
+(11 rows)
+
+=== Q15 run 3 ===
+QUERY PLAN                                                                                  
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Delete on email_verification_tokens  (cost=0.15..8.17 rows=1 width=6) (actual time=0.016..0.016 rows=1.00 loops=1)
+   Buffers: shared hit=4
+   ->  Index Scan using email_verification_tokens_token_hash_key on email_verification_tokens  (cost=0.15..8.17 rows=1 width=6) (actual time=0.007..0.008 rows=1.00 loops=1)
+         Index Cond: (token_hash = 'testtokenhash1234567890abcdef'::text)
+         Filter: (expires_at > now())
+         Index Searches: 1
+         Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=93
+ Planning Time: 0.172 ms
+ Execution Time: 0.056 ms
+(11 rows)
+

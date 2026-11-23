@@ -1,0 +1,45 @@
+=== Q110 run 1 ===
+QUERY PLAN                                                                 
+--------------------------------------------------------------------------------------------------------------------------------------------
+ Update on opportunities  (cost=0.14..8.16 rows=1 width=46) (actual time=0.065..0.068 rows=1.00 loops=1)
+   Buffers: shared hit=16
+   ->  Index Scan using opportunities_pkey on opportunities  (cost=0.14..8.16 rows=1 width=46) (actual time=0.005..0.008 rows=1.00 loops=1)
+         Index Cond: (id = '60000000-0000-0000-0000-000000000001'::uuid)
+         Index Searches: 1
+         Buffers: shared hit=3
+ Planning:
+   Buffers: shared hit=116
+ Planning Time: 0.201 ms
+ Execution Time: 0.122 ms
+(10 rows)
+
+=== Q110 run 2 ===
+QUERY PLAN                                                                 
+--------------------------------------------------------------------------------------------------------------------------------------------
+ Update on opportunities  (cost=0.14..8.16 rows=1 width=46) (actual time=0.072..0.072 rows=1.00 loops=1)
+   Buffers: shared hit=15
+   ->  Index Scan using opportunities_pkey on opportunities  (cost=0.14..8.16 rows=1 width=46) (actual time=0.008..0.008 rows=1.00 loops=1)
+         Index Cond: (id = '60000000-0000-0000-0000-000000000001'::uuid)
+         Index Searches: 1
+         Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=116
+ Planning Time: 0.217 ms
+ Execution Time: 0.129 ms
+(10 rows)
+
+=== Q110 run 3 ===
+QUERY PLAN                                                                 
+--------------------------------------------------------------------------------------------------------------------------------------------
+ Update on opportunities  (cost=0.14..8.16 rows=1 width=46) (actual time=0.083..0.083 rows=1.00 loops=1)
+   Buffers: shared hit=15
+   ->  Index Scan using opportunities_pkey on opportunities  (cost=0.14..8.16 rows=1 width=46) (actual time=0.008..0.008 rows=1.00 loops=1)
+         Index Cond: (id = '60000000-0000-0000-0000-000000000001'::uuid)
+         Index Searches: 1
+         Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=116
+ Planning Time: 0.217 ms
+ Execution Time: 0.149 ms
+(10 rows)
+

@@ -1,0 +1,48 @@
+=== Q97 run 1 ===
+QUERY PLAN                                                                          
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+ LockRows  (cost=0.15..8.18 rows=1 width=198) (actual time=0.010..0.015 rows=1.00 loops=1)
+   Buffers: shared hit=4
+   ->  Index Scan using verification_requests_pkey on verification_requests  (cost=0.15..8.17 rows=1 width=198) (actual time=0.003..0.008 rows=1.00 loops=1)
+         Index Cond: (id = '80000000-0000-0000-0000-000000000001'::uuid)
+         Filter: (status = 'PENDING'::text)
+         Index Searches: 1
+         Buffers: shared hit=3
+ Planning:
+   Buffers: shared hit=125
+ Planning Time: 0.230 ms
+ Execution Time: 0.033 ms
+(11 rows)
+
+=== Q97 run 2 ===
+QUERY PLAN                                                                          
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+ LockRows  (cost=0.15..8.18 rows=1 width=198) (actual time=0.012..0.012 rows=1.00 loops=1)
+   Buffers: shared hit=3
+   ->  Index Scan using verification_requests_pkey on verification_requests  (cost=0.15..8.17 rows=1 width=198) (actual time=0.003..0.003 rows=1.00 loops=1)
+         Index Cond: (id = '80000000-0000-0000-0000-000000000001'::uuid)
+         Filter: (status = 'PENDING'::text)
+         Index Searches: 1
+         Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=125
+ Planning Time: 0.205 ms
+ Execution Time: 0.028 ms
+(11 rows)
+
+=== Q97 run 3 ===
+QUERY PLAN                                                                          
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+ LockRows  (cost=0.15..8.18 rows=1 width=198) (actual time=0.011..0.011 rows=1.00 loops=1)
+   Buffers: shared hit=3
+   ->  Index Scan using verification_requests_pkey on verification_requests  (cost=0.15..8.17 rows=1 width=198) (actual time=0.002..0.003 rows=1.00 loops=1)
+         Index Cond: (id = '80000000-0000-0000-0000-000000000001'::uuid)
+         Filter: (status = 'PENDING'::text)
+         Index Searches: 1
+         Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=125
+ Planning Time: 0.226 ms
+ Execution Time: 0.030 ms
+(11 rows)
+

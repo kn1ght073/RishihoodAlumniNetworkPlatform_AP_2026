@@ -1,0 +1,120 @@
+=== Q74 run 1 ===
+QUERY PLAN                                                                                  
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Limit  (cost=24.61..32.80 rows=1 width=381) (actual time=0.033..0.034 rows=2.00 loops=1)
+   Buffers: shared hit=16
+   ->  Result  (cost=24.61..32.80 rows=1 width=381) (actual time=0.032..0.034 rows=2.00 loops=1)
+         Buffers: shared hit=16
+         ->  Sort  (cost=24.61..24.61 rows=1 width=380) (actual time=0.022..0.023 rows=2.00 loops=1)
+               Sort Key: o.created_at DESC
+               Sort Method: quicksort  Memory: 26kB
+               Buffers: shared hit=13
+               ->  Nested Loop Left Join  (cost=0.44..24.60 rows=1 width=380) (actual time=0.013..0.015 rows=2.00 loops=1)
+                     Buffers: shared hit=10
+                     ->  Nested Loop  (cost=0.29..16.37 rows=1 width=348) (actual time=0.009..0.011 rows=2.00 loops=1)
+                           Buffers: shared hit=6
+                           ->  Index Scan using opportunities_search_idx on opportunities o  (cost=0.14..8.17 rows=1 width=316) (actual time=0.005..0.005 rows=2.00 loops=1)
+                                 Index Cond: (status = 'PUBLISHED'::text)
+                                 Filter: ((deadline IS NULL) OR (deadline >= CURRENT_DATE))
+                                 Index Searches: 1
+                                 Buffers: shared hit=2
+                           ->  Index Scan using users_pkey on users u  (cost=0.15..8.17 rows=1 width=48) (actual time=0.002..0.002 rows=1.00 loops=2)
+                                 Index Cond: (id = o.publisher_id)
+                                 Index Searches: 2
+                                 Buffers: shared hit=4
+                     ->  Index Scan using companies_pkey on companies c  (cost=0.15..8.17 rows=1 width=48) (actual time=0.002..0.002 rows=1.00 loops=2)
+                           Index Cond: (id = o.company_id)
+                           Index Searches: 2
+                           Buffers: shared hit=4
+         SubPlan 1
+           ->  Index Only Scan using saved_opportunities_pkey on saved_opportunities so  (cost=0.15..8.17 rows=1 width=0) (actual time=0.004..0.004 rows=0.50 loops=2)
+                 Index Cond: ((user_id = '00000000-0000-0000-0000-000000000011'::uuid) AND (opportunity_id = o.id))
+                 Heap Fetches: 1
+                 Index Searches: 2
+                 Buffers: shared hit=3
+ Planning:
+   Buffers: shared hit=364
+ Planning Time: 0.694 ms
+ Execution Time: 0.064 ms
+(35 rows)
+
+=== Q74 run 2 ===
+QUERY PLAN                                                                                  
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Limit  (cost=24.61..32.80 rows=1 width=381) (actual time=0.026..0.027 rows=2.00 loops=1)
+   Buffers: shared hit=16
+   ->  Result  (cost=24.61..32.80 rows=1 width=381) (actual time=0.026..0.027 rows=2.00 loops=1)
+         Buffers: shared hit=16
+         ->  Sort  (cost=24.61..24.61 rows=1 width=380) (actual time=0.018..0.018 rows=2.00 loops=1)
+               Sort Key: o.created_at DESC
+               Sort Method: quicksort  Memory: 26kB
+               Buffers: shared hit=13
+               ->  Nested Loop Left Join  (cost=0.44..24.60 rows=1 width=380) (actual time=0.010..0.012 rows=2.00 loops=1)
+                     Buffers: shared hit=10
+                     ->  Nested Loop  (cost=0.29..16.37 rows=1 width=348) (actual time=0.007..0.008 rows=2.00 loops=1)
+                           Buffers: shared hit=6
+                           ->  Index Scan using opportunities_search_idx on opportunities o  (cost=0.14..8.17 rows=1 width=316) (actual time=0.003..0.004 rows=2.00 loops=1)
+                                 Index Cond: (status = 'PUBLISHED'::text)
+                                 Filter: ((deadline IS NULL) OR (deadline >= CURRENT_DATE))
+                                 Index Searches: 1
+                                 Buffers: shared hit=2
+                           ->  Index Scan using users_pkey on users u  (cost=0.15..8.17 rows=1 width=48) (actual time=0.002..0.002 rows=1.00 loops=2)
+                                 Index Cond: (id = o.publisher_id)
+                                 Index Searches: 2
+                                 Buffers: shared hit=4
+                     ->  Index Scan using companies_pkey on companies c  (cost=0.15..8.17 rows=1 width=48) (actual time=0.002..0.002 rows=1.00 loops=2)
+                           Index Cond: (id = o.company_id)
+                           Index Searches: 2
+                           Buffers: shared hit=4
+         SubPlan 1
+           ->  Index Only Scan using saved_opportunities_pkey on saved_opportunities so  (cost=0.15..8.17 rows=1 width=0) (actual time=0.003..0.003 rows=0.50 loops=2)
+                 Index Cond: ((user_id = '00000000-0000-0000-0000-000000000011'::uuid) AND (opportunity_id = o.id))
+                 Heap Fetches: 1
+                 Index Searches: 2
+                 Buffers: shared hit=3
+ Planning:
+   Buffers: shared hit=364
+ Planning Time: 0.493 ms
+ Execution Time: 0.052 ms
+(35 rows)
+
+=== Q74 run 3 ===
+QUERY PLAN                                                                                  
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Limit  (cost=24.61..32.80 rows=1 width=381) (actual time=0.036..0.038 rows=2.00 loops=1)
+   Buffers: shared hit=16
+   ->  Result  (cost=24.61..32.80 rows=1 width=381) (actual time=0.036..0.037 rows=2.00 loops=1)
+         Buffers: shared hit=16
+         ->  Sort  (cost=24.61..24.61 rows=1 width=380) (actual time=0.026..0.027 rows=2.00 loops=1)
+               Sort Key: o.created_at DESC
+               Sort Method: quicksort  Memory: 26kB
+               Buffers: shared hit=13
+               ->  Nested Loop Left Join  (cost=0.44..24.60 rows=1 width=380) (actual time=0.015..0.018 rows=2.00 loops=1)
+                     Buffers: shared hit=10
+                     ->  Nested Loop  (cost=0.29..16.37 rows=1 width=348) (actual time=0.010..0.012 rows=2.00 loops=1)
+                           Buffers: shared hit=6
+                           ->  Index Scan using opportunities_search_idx on opportunities o  (cost=0.14..8.17 rows=1 width=316) (actual time=0.005..0.006 rows=2.00 loops=1)
+                                 Index Cond: (status = 'PUBLISHED'::text)
+                                 Filter: ((deadline IS NULL) OR (deadline >= CURRENT_DATE))
+                                 Index Searches: 1
+                                 Buffers: shared hit=2
+                           ->  Index Scan using users_pkey on users u  (cost=0.15..8.17 rows=1 width=48) (actual time=0.002..0.002 rows=1.00 loops=2)
+                                 Index Cond: (id = o.publisher_id)
+                                 Index Searches: 2
+                                 Buffers: shared hit=4
+                     ->  Index Scan using companies_pkey on companies c  (cost=0.15..8.17 rows=1 width=48) (actual time=0.002..0.002 rows=1.00 loops=2)
+                           Index Cond: (id = o.company_id)
+                           Index Searches: 2
+                           Buffers: shared hit=4
+         SubPlan 1
+           ->  Index Only Scan using saved_opportunities_pkey on saved_opportunities so  (cost=0.15..8.17 rows=1 width=0) (actual time=0.004..0.004 rows=0.50 loops=2)
+                 Index Cond: ((user_id = '00000000-0000-0000-0000-000000000011'::uuid) AND (opportunity_id = o.id))
+                 Heap Fetches: 1
+                 Index Searches: 2
+                 Buffers: shared hit=3
+ Planning:
+   Buffers: shared hit=364
+ Planning Time: 0.578 ms
+ Execution Time: 0.073 ms
+(35 rows)
+

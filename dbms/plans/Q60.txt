@@ -1,0 +1,75 @@
+=== Q60 run 1 ===
+QUERY PLAN                                                                      
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+ Index Scan using career_requests_pkey on career_requests cr  (cost=18.27..26.29 rows=1 width=33) (actual time=0.015..0.016 rows=1.00 loops=1)
+   Index Cond: (id = '40000000-0000-0000-0000-000000000001'::uuid)
+   Index Searches: 1
+   Buffers: shared hit=5
+   InitPlan 1
+     ->  Nested Loop  (cost=0.30..18.12 rows=1 width=0) (actual time=0.011..0.011 rows=0.00 loops=1)
+           Buffers: shared hit=3
+           ->  Index Scan using roles_name_key on roles r  (cost=0.15..8.17 rows=1 width=2) (actual time=0.005..0.005 rows=1.00 loops=1)
+                 Index Cond: (name = 'ADMIN'::text)
+                 Index Searches: 1
+                 Buffers: shared hit=2
+           ->  Index Only Scan using user_roles_pkey on user_roles ur  (cost=0.15..8.17 rows=1 width=2) (actual time=0.005..0.005 rows=0.00 loops=1)
+                 Index Cond: ((user_id = '00000000-0000-0000-0000-000000000011'::uuid) AND (role_id = r.id))
+                 Heap Fetches: 0
+                 Index Searches: 1
+                 Buffers: shared hit=1
+ Planning:
+   Buffers: shared hit=312
+ Planning Time: 0.553 ms
+ Execution Time: 0.041 ms
+(20 rows)
+
+=== Q60 run 2 ===
+QUERY PLAN                                                                      
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+ Index Scan using career_requests_pkey on career_requests cr  (cost=18.27..26.29 rows=1 width=33) (actual time=0.014..0.015 rows=1.00 loops=1)
+   Index Cond: (id = '40000000-0000-0000-0000-000000000001'::uuid)
+   Index Searches: 1
+   Buffers: shared hit=5
+   InitPlan 1
+     ->  Nested Loop  (cost=0.30..18.12 rows=1 width=0) (actual time=0.011..0.011 rows=0.00 loops=1)
+           Buffers: shared hit=3
+           ->  Index Scan using roles_name_key on roles r  (cost=0.15..8.17 rows=1 width=2) (actual time=0.005..0.005 rows=1.00 loops=1)
+                 Index Cond: (name = 'ADMIN'::text)
+                 Index Searches: 1
+                 Buffers: shared hit=2
+           ->  Index Only Scan using user_roles_pkey on user_roles ur  (cost=0.15..8.17 rows=1 width=2) (actual time=0.005..0.005 rows=0.00 loops=1)
+                 Index Cond: ((user_id = '00000000-0000-0000-0000-000000000011'::uuid) AND (role_id = r.id))
+                 Heap Fetches: 0
+                 Index Searches: 1
+                 Buffers: shared hit=1
+ Planning:
+   Buffers: shared hit=312
+ Planning Time: 0.618 ms
+ Execution Time: 0.038 ms
+(20 rows)
+
+=== Q60 run 3 ===
+QUERY PLAN                                                                      
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+ Index Scan using career_requests_pkey on career_requests cr  (cost=18.27..26.29 rows=1 width=33) (actual time=0.012..0.012 rows=1.00 loops=1)
+   Index Cond: (id = '40000000-0000-0000-0000-000000000001'::uuid)
+   Index Searches: 1
+   Buffers: shared hit=5
+   InitPlan 1
+     ->  Nested Loop  (cost=0.30..18.12 rows=1 width=0) (actual time=0.009..0.009 rows=0.00 loops=1)
+           Buffers: shared hit=3
+           ->  Index Scan using roles_name_key on roles r  (cost=0.15..8.17 rows=1 width=2) (actual time=0.004..0.004 rows=1.00 loops=1)
+                 Index Cond: (name = 'ADMIN'::text)
+                 Index Searches: 1
+                 Buffers: shared hit=2
+           ->  Index Only Scan using user_roles_pkey on user_roles ur  (cost=0.15..8.17 rows=1 width=2) (actual time=0.004..0.004 rows=0.00 loops=1)
+                 Index Cond: ((user_id = '00000000-0000-0000-0000-000000000011'::uuid) AND (role_id = r.id))
+                 Heap Fetches: 0
+                 Index Searches: 1
+                 Buffers: shared hit=1
+ Planning:
+   Buffers: shared hit=312
+ Planning Time: 0.445 ms
+ Execution Time: 0.035 ms
+(20 rows)
+

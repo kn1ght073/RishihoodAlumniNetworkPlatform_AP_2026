@@ -1,0 +1,45 @@
+=== Q73 run 1 ===
+QUERY PLAN                                                                   
+------------------------------------------------------------------------------------------------------------------------------------------------
+ Update on career_requests  (cost=0.15..8.17 rows=0 width=0) (actual time=0.090..0.091 rows=0.00 loops=1)
+   Buffers: shared hit=32
+   ->  Index Scan using career_requests_pkey on career_requests  (cost=0.15..8.17 rows=1 width=14) (actual time=0.004..0.004 rows=1.00 loops=1)
+         Index Cond: (id = '40000000-0000-0000-0000-000000000001'::uuid)
+         Index Searches: 1
+         Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=150
+ Planning Time: 0.249 ms
+ Execution Time: 0.143 ms
+(10 rows)
+
+=== Q73 run 2 ===
+QUERY PLAN                                                                   
+------------------------------------------------------------------------------------------------------------------------------------------------
+ Update on career_requests  (cost=0.15..8.17 rows=0 width=0) (actual time=0.089..0.090 rows=0.00 loops=1)
+   Buffers: shared hit=32
+   ->  Index Scan using career_requests_pkey on career_requests  (cost=0.15..8.17 rows=1 width=14) (actual time=0.006..0.007 rows=1.00 loops=1)
+         Index Cond: (id = '40000000-0000-0000-0000-000000000001'::uuid)
+         Index Searches: 1
+         Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=150
+ Planning Time: 0.228 ms
+ Execution Time: 0.139 ms
+(10 rows)
+
+=== Q73 run 3 ===
+QUERY PLAN                                                                   
+------------------------------------------------------------------------------------------------------------------------------------------------
+ Update on career_requests  (cost=0.15..8.17 rows=0 width=0) (actual time=0.079..0.079 rows=0.00 loops=1)
+   Buffers: shared hit=32
+   ->  Index Scan using career_requests_pkey on career_requests  (cost=0.15..8.17 rows=1 width=14) (actual time=0.006..0.006 rows=1.00 loops=1)
+         Index Cond: (id = '40000000-0000-0000-0000-000000000001'::uuid)
+         Index Searches: 1
+         Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=150
+ Planning Time: 0.234 ms
+ Execution Time: 0.128 ms
+(10 rows)
+

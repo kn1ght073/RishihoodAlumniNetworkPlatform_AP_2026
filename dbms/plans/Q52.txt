@@ -1,0 +1,54 @@
+=== Q52 run 1 ===
+QUERY PLAN                                                                       
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+ Insert on connections  (cost=0.15..8.18 rows=0 width=0) (actual time=0.034..0.034 rows=0.00 loops=1)
+   Conflict Resolution: NOTHING
+   Tuples Inserted: 0
+   Conflicting Tuples: 1
+   Buffers: shared hit=29
+   ->  Index Scan using connection_requests_pkey on connection_requests  (cost=0.15..8.18 rows=1 width=40) (actual time=0.005..0.007 rows=1.00 loops=1)
+         Index Cond: (id = '30000000-0000-0000-0000-000000000001'::uuid)
+         Index Searches: 1
+         Buffers: shared hit=3
+ Planning:
+   Buffers: shared hit=97
+ Planning Time: 0.215 ms
+ Execution Time: 0.094 ms
+(13 rows)
+
+=== Q52 run 2 ===
+QUERY PLAN                                                                       
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+ Insert on connections  (cost=0.15..8.18 rows=0 width=0) (actual time=0.024..0.025 rows=0.00 loops=1)
+   Conflict Resolution: NOTHING
+   Tuples Inserted: 0
+   Conflicting Tuples: 1
+   Buffers: shared hit=28
+   ->  Index Scan using connection_requests_pkey on connection_requests  (cost=0.15..8.18 rows=1 width=40) (actual time=0.003..0.003 rows=1.00 loops=1)
+         Index Cond: (id = '30000000-0000-0000-0000-000000000001'::uuid)
+         Index Searches: 1
+         Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=97
+ Planning Time: 0.175 ms
+ Execution Time: 0.076 ms
+(13 rows)
+
+=== Q52 run 3 ===
+QUERY PLAN                                                                       
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+ Insert on connections  (cost=0.15..8.18 rows=0 width=0) (actual time=0.026..0.026 rows=0.00 loops=1)
+   Conflict Resolution: NOTHING
+   Tuples Inserted: 0
+   Conflicting Tuples: 1
+   Buffers: shared hit=28
+   ->  Index Scan using connection_requests_pkey on connection_requests  (cost=0.15..8.18 rows=1 width=40) (actual time=0.003..0.003 rows=1.00 loops=1)
+         Index Cond: (id = '30000000-0000-0000-0000-000000000001'::uuid)
+         Index Searches: 1
+         Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=97
+ Planning Time: 0.175 ms
+ Execution Time: 0.076 ms
+(13 rows)
+

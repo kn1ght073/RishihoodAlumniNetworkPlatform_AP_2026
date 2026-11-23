@@ -1,0 +1,42 @@
+=== Q45 run 1 ===
+QUERY PLAN                                                   
+----------------------------------------------------------------------------------------------------------------
+ Insert on company_suggestions  (cost=0.00..0.01 rows=1 width=256) (actual time=0.143..0.144 rows=1.00 loops=1)
+   Buffers: shared hit=84
+   ->  Result  (cost=0.00..0.01 rows=1 width=256) (actual time=0.011..0.011 rows=1.00 loops=1)
+ Planning:
+   Buffers: shared hit=7
+ Planning Time: 0.040 ms
+ Trigger for constraint company_suggestions_submitted_by_fkey: time=0.253 calls=1
+ Trigger for constraint company_suggestions_reviewed_by_fkey: time=0.002 calls=1
+ Execution Time: 0.421 ms
+(9 rows)
+
+=== Q45 run 2 ===
+QUERY PLAN                                                   
+----------------------------------------------------------------------------------------------------------------
+ Insert on company_suggestions  (cost=0.00..0.01 rows=1 width=256) (actual time=0.193..0.193 rows=1.00 loops=1)
+   Buffers: shared hit=85
+   ->  Result  (cost=0.00..0.01 rows=1 width=256) (actual time=0.025..0.025 rows=1.00 loops=1)
+ Planning:
+   Buffers: shared hit=7
+ Planning Time: 0.085 ms
+ Trigger for constraint company_suggestions_submitted_by_fkey: time=0.254 calls=1
+ Trigger for constraint company_suggestions_reviewed_by_fkey: time=0.002 calls=1
+ Execution Time: 0.486 ms
+(9 rows)
+
+=== Q45 run 3 ===
+QUERY PLAN                                                   
+----------------------------------------------------------------------------------------------------------------
+ Insert on company_suggestions  (cost=0.00..0.01 rows=1 width=256) (actual time=0.119..0.119 rows=1.00 loops=1)
+   Buffers: shared hit=85
+   ->  Result  (cost=0.00..0.01 rows=1 width=256) (actual time=0.009..0.009 rows=1.00 loops=1)
+ Planning:
+   Buffers: shared hit=7
+ Planning Time: 0.035 ms
+ Trigger for constraint company_suggestions_submitted_by_fkey: time=0.259 calls=1
+ Trigger for constraint company_suggestions_reviewed_by_fkey: time=0.002 calls=1
+ Execution Time: 0.401 ms
+(9 rows)
+

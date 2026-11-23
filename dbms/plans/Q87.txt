@@ -1,0 +1,48 @@
+=== Q87 run 1 ===
+QUERY PLAN                                                                 
+--------------------------------------------------------------------------------------------------------------------------------------------
+ Update on notifications  (cost=0.15..8.17 rows=1 width=14) (actual time=0.042..0.042 rows=1.00 loops=1)
+   Buffers: shared hit=8
+   ->  Index Scan using notifications_pkey on notifications  (cost=0.15..8.17 rows=1 width=14) (actual time=0.006..0.006 rows=1.00 loops=1)
+         Index Cond: (id = '70000000-0000-0000-0000-000000000001'::uuid)
+         Filter: (user_id = '00000000-0000-0000-0000-000000000002'::uuid)
+         Index Searches: 1
+         Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=93
+ Planning Time: 0.180 ms
+ Execution Time: 0.092 ms
+(11 rows)
+
+=== Q87 run 2 ===
+QUERY PLAN                                                                 
+--------------------------------------------------------------------------------------------------------------------------------------------
+ Update on notifications  (cost=0.15..8.17 rows=1 width=14) (actual time=0.040..0.040 rows=1.00 loops=1)
+   Buffers: shared hit=8
+   ->  Index Scan using notifications_pkey on notifications  (cost=0.15..8.17 rows=1 width=14) (actual time=0.006..0.006 rows=1.00 loops=1)
+         Index Cond: (id = '70000000-0000-0000-0000-000000000001'::uuid)
+         Filter: (user_id = '00000000-0000-0000-0000-000000000002'::uuid)
+         Index Searches: 1
+         Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=93
+ Planning Time: 0.172 ms
+ Execution Time: 0.087 ms
+(11 rows)
+
+=== Q87 run 3 ===
+QUERY PLAN                                                                 
+--------------------------------------------------------------------------------------------------------------------------------------------
+ Update on notifications  (cost=0.15..8.17 rows=1 width=14) (actual time=0.036..0.037 rows=1.00 loops=1)
+   Buffers: shared hit=8
+   ->  Index Scan using notifications_pkey on notifications  (cost=0.15..8.17 rows=1 width=14) (actual time=0.005..0.005 rows=1.00 loops=1)
+         Index Cond: (id = '70000000-0000-0000-0000-000000000001'::uuid)
+         Filter: (user_id = '00000000-0000-0000-0000-000000000002'::uuid)
+         Index Searches: 1
+         Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=93
+ Planning Time: 0.160 ms
+ Execution Time: 0.083 ms
+(11 rows)
+

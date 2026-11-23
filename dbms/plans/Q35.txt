@@ -1,0 +1,78 @@
+=== Q35 run 1 ===
+QUERY PLAN                                                                                        
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Nested Loop  (cost=0.29..24.52 rows=1 width=65) (actual time=0.016..0.017 rows=1.00 loops=1)
+   Buffers: shared hit=6
+   ->  Index Scan using users_pkey on users u  (cost=0.15..8.17 rows=1 width=16) (actual time=0.004..0.004 rows=1.00 loops=1)
+         Index Cond: (id = '00000000-0000-0000-0000-000000000002'::uuid)
+         Filter: (account_status = 'ACTIVE'::text)
+         Index Searches: 1
+         Buffers: shared hit=2
+   ->  Index Scan using profiles_pkey on profiles p  (cost=0.14..8.16 rows=1 width=80) (actual time=0.004..0.004 rows=1.00 loops=1)
+         Index Cond: (user_id = '00000000-0000-0000-0000-000000000002'::uuid)
+         Index Searches: 1
+         Buffers: shared hit=2
+   SubPlan 1
+     ->  Index Only Scan using connections_pkey on connections c  (cost=0.16..8.18 rows=1 width=0) (actual time=0.006..0.006 rows=1.00 loops=1)
+           Index Cond: ((member_low_id = LEAST('00000000-0000-0000-0000-000000000011'::uuid, u.id)) AND (member_high_id = GREATEST('00000000-0000-0000-0000-000000000011'::uuid, u.id)))
+           Heap Fetches: 1
+           Index Searches: 1
+           Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=194
+ Planning Time: 0.338 ms
+ Execution Time: 0.075 ms
+(21 rows)
+
+=== Q35 run 2 ===
+QUERY PLAN                                                                                        
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Nested Loop  (cost=0.29..24.52 rows=1 width=65) (actual time=0.013..0.013 rows=1.00 loops=1)
+   Buffers: shared hit=6
+   ->  Index Scan using users_pkey on users u  (cost=0.15..8.17 rows=1 width=16) (actual time=0.004..0.004 rows=1.00 loops=1)
+         Index Cond: (id = '00000000-0000-0000-0000-000000000002'::uuid)
+         Filter: (account_status = 'ACTIVE'::text)
+         Index Searches: 1
+         Buffers: shared hit=2
+   ->  Index Scan using profiles_pkey on profiles p  (cost=0.14..8.16 rows=1 width=80) (actual time=0.002..0.002 rows=1.00 loops=1)
+         Index Cond: (user_id = '00000000-0000-0000-0000-000000000002'::uuid)
+         Index Searches: 1
+         Buffers: shared hit=2
+   SubPlan 1
+     ->  Index Only Scan using connections_pkey on connections c  (cost=0.16..8.18 rows=1 width=0) (actual time=0.006..0.006 rows=1.00 loops=1)
+           Index Cond: ((member_low_id = LEAST('00000000-0000-0000-0000-000000000011'::uuid, u.id)) AND (member_high_id = GREATEST('00000000-0000-0000-0000-000000000011'::uuid, u.id)))
+           Heap Fetches: 1
+           Index Searches: 1
+           Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=194
+ Planning Time: 0.317 ms
+ Execution Time: 0.069 ms
+(21 rows)
+
+=== Q35 run 3 ===
+QUERY PLAN                                                                                        
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Nested Loop  (cost=0.29..24.52 rows=1 width=65) (actual time=0.013..0.013 rows=1.00 loops=1)
+   Buffers: shared hit=6
+   ->  Index Scan using users_pkey on users u  (cost=0.15..8.17 rows=1 width=16) (actual time=0.003..0.004 rows=1.00 loops=1)
+         Index Cond: (id = '00000000-0000-0000-0000-000000000002'::uuid)
+         Filter: (account_status = 'ACTIVE'::text)
+         Index Searches: 1
+         Buffers: shared hit=2
+   ->  Index Scan using profiles_pkey on profiles p  (cost=0.14..8.16 rows=1 width=80) (actual time=0.002..0.002 rows=1.00 loops=1)
+         Index Cond: (user_id = '00000000-0000-0000-0000-000000000002'::uuid)
+         Index Searches: 1
+         Buffers: shared hit=2
+   SubPlan 1
+     ->  Index Only Scan using connections_pkey on connections c  (cost=0.16..8.18 rows=1 width=0) (actual time=0.006..0.006 rows=1.00 loops=1)
+           Index Cond: ((member_low_id = LEAST('00000000-0000-0000-0000-000000000011'::uuid, u.id)) AND (member_high_id = GREATEST('00000000-0000-0000-0000-000000000011'::uuid, u.id)))
+           Heap Fetches: 1
+           Index Searches: 1
+           Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=194
+ Planning Time: 0.308 ms
+ Execution Time: 0.074 ms
+(21 rows)
+

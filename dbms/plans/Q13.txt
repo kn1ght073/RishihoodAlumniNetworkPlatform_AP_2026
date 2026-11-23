@@ -1,0 +1,45 @@
+=== Q13 run 1 ===
+QUERY PLAN                                                          
+-----------------------------------------------------------------------------------------------------------------------------
+ Delete on email_verification_tokens  (cost=0.00..20.12 rows=0 width=0) (actual time=0.005..0.005 rows=0.00 loops=1)
+   Buffers: shared hit=1
+   ->  Seq Scan on email_verification_tokens  (cost=0.00..20.12 rows=4 width=6) (actual time=0.004..0.004 rows=0.00 loops=1)
+         Filter: (user_id = '00000000-0000-0000-0000-000000000011'::uuid)
+         Rows Removed by Filter: 1
+         Buffers: shared hit=1
+ Planning:
+   Buffers: shared hit=90
+ Planning Time: 0.166 ms
+ Execution Time: 0.058 ms
+(10 rows)
+
+=== Q13 run 2 ===
+QUERY PLAN                                                          
+-----------------------------------------------------------------------------------------------------------------------------
+ Delete on email_verification_tokens  (cost=0.00..20.12 rows=0 width=0) (actual time=0.003..0.003 rows=0.00 loops=1)
+   Buffers: shared hit=1
+   ->  Seq Scan on email_verification_tokens  (cost=0.00..20.12 rows=4 width=6) (actual time=0.003..0.003 rows=0.00 loops=1)
+         Filter: (user_id = '00000000-0000-0000-0000-000000000011'::uuid)
+         Rows Removed by Filter: 1
+         Buffers: shared hit=1
+ Planning:
+   Buffers: shared hit=90
+ Planning Time: 0.205 ms
+ Execution Time: 0.060 ms
+(10 rows)
+
+=== Q13 run 3 ===
+QUERY PLAN                                                          
+-----------------------------------------------------------------------------------------------------------------------------
+ Delete on email_verification_tokens  (cost=0.00..20.12 rows=0 width=0) (actual time=0.002..0.002 rows=0.00 loops=1)
+   Buffers: shared hit=1
+   ->  Seq Scan on email_verification_tokens  (cost=0.00..20.12 rows=4 width=6) (actual time=0.002..0.002 rows=0.00 loops=1)
+         Filter: (user_id = '00000000-0000-0000-0000-000000000011'::uuid)
+         Rows Removed by Filter: 1
+         Buffers: shared hit=1
+ Planning:
+   Buffers: shared hit=90
+ Planning Time: 0.152 ms
+ Execution Time: 0.044 ms
+(10 rows)
+

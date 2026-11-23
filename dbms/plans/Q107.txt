@@ -1,0 +1,45 @@
+=== Q107 run 1 ===
+QUERY PLAN                                                              
+-------------------------------------------------------------------------------------------------------------------------------------
+ Update on companies  (cost=0.15..8.17 rows=1 width=198) (actual time=0.090..0.091 rows=1.00 loops=1)
+   Buffers: shared hit=31
+   ->  Index Scan using companies_pkey on companies  (cost=0.15..8.17 rows=1 width=198) (actual time=0.005..0.005 rows=1.00 loops=1)
+         Index Cond: (id = '10000000-0000-0000-0000-000000000001'::uuid)
+         Index Searches: 1
+         Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=99
+ Planning Time: 0.173 ms
+ Execution Time: 0.139 ms
+(10 rows)
+
+=== Q107 run 2 ===
+QUERY PLAN                                                              
+-------------------------------------------------------------------------------------------------------------------------------------
+ Update on companies  (cost=0.15..8.17 rows=1 width=198) (actual time=0.079..0.080 rows=1.00 loops=1)
+   Buffers: shared hit=33
+   ->  Index Scan using companies_pkey on companies  (cost=0.15..8.17 rows=1 width=198) (actual time=0.006..0.007 rows=1.00 loops=1)
+         Index Cond: (id = '10000000-0000-0000-0000-000000000001'::uuid)
+         Index Searches: 1
+         Buffers: shared hit=3
+ Planning:
+   Buffers: shared hit=99
+ Planning Time: 0.167 ms
+ Execution Time: 0.127 ms
+(10 rows)
+
+=== Q107 run 3 ===
+QUERY PLAN                                                              
+-------------------------------------------------------------------------------------------------------------------------------------
+ Update on companies  (cost=0.15..8.17 rows=1 width=198) (actual time=0.079..0.080 rows=1.00 loops=1)
+   Buffers: shared hit=33
+   ->  Index Scan using companies_pkey on companies  (cost=0.15..8.17 rows=1 width=198) (actual time=0.005..0.007 rows=1.00 loops=1)
+         Index Cond: (id = '10000000-0000-0000-0000-000000000001'::uuid)
+         Index Searches: 1
+         Buffers: shared hit=3
+ Planning:
+   Buffers: shared hit=99
+ Planning Time: 0.162 ms
+ Execution Time: 0.124 ms
+(10 rows)
+

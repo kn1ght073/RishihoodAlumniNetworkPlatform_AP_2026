@@ -1,0 +1,45 @@
+=== Q102 run 1 ===
+QUERY PLAN                                                                             
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ LockRows  (cost=0.14..8.17 rows=1 width=262) (actual time=0.018..0.020 rows=1.00 loops=1)
+   Buffers: shared hit=4
+   ->  Index Scan using company_suggestion_pending_name_uq on company_suggestions  (cost=0.14..8.16 rows=1 width=262) (actual time=0.006..0.008 rows=1.00 loops=1)
+         Filter: ((id = '20000000-0000-0000-0000-000000000001'::uuid) AND (status = 'PENDING'::text))
+         Index Searches: 1
+         Buffers: shared hit=3
+ Planning:
+   Buffers: shared hit=129
+ Planning Time: 0.257 ms
+ Execution Time: 0.042 ms
+(10 rows)
+
+=== Q102 run 2 ===
+QUERY PLAN                                                                             
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ LockRows  (cost=0.14..8.17 rows=1 width=262) (actual time=0.011..0.012 rows=1.00 loops=1)
+   Buffers: shared hit=3
+   ->  Index Scan using company_suggestion_pending_name_uq on company_suggestions  (cost=0.14..8.16 rows=1 width=262) (actual time=0.004..0.004 rows=1.00 loops=1)
+         Filter: ((id = '20000000-0000-0000-0000-000000000001'::uuid) AND (status = 'PENDING'::text))
+         Index Searches: 1
+         Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=129
+ Planning Time: 0.226 ms
+ Execution Time: 0.029 ms
+(10 rows)
+
+=== Q102 run 3 ===
+QUERY PLAN                                                                             
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ LockRows  (cost=0.14..8.17 rows=1 width=262) (actual time=0.012..0.013 rows=1.00 loops=1)
+   Buffers: shared hit=3
+   ->  Index Scan using company_suggestion_pending_name_uq on company_suggestions  (cost=0.14..8.16 rows=1 width=262) (actual time=0.003..0.003 rows=1.00 loops=1)
+         Filter: ((id = '20000000-0000-0000-0000-000000000001'::uuid) AND (status = 'PENDING'::text))
+         Index Searches: 1
+         Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=129
+ Planning Time: 0.222 ms
+ Execution Time: 0.030 ms
+(10 rows)
+

@@ -1,0 +1,45 @@
+=== Q24 run 1 ===
+QUERY PLAN                                                                      
+------------------------------------------------------------------------------------------------------------------------------------------------------
+ Update on career_preferences  (cost=0.15..8.17 rows=0 width=0) (actual time=0.037..0.038 rows=0.00 loops=1)
+   Buffers: shared hit=8
+   ->  Index Scan using career_preferences_pkey on career_preferences  (cost=0.15..8.17 rows=1 width=49) (actual time=0.006..0.006 rows=1.00 loops=1)
+         Index Cond: (user_id = '00000000-0000-0000-0000-000000000011'::uuid)
+         Index Searches: 1
+         Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=69
+ Planning Time: 0.141 ms
+ Execution Time: 0.085 ms
+(10 rows)
+
+=== Q24 run 2 ===
+QUERY PLAN                                                                      
+------------------------------------------------------------------------------------------------------------------------------------------------------
+ Update on career_preferences  (cost=0.15..8.17 rows=0 width=0) (actual time=0.043..0.043 rows=0.00 loops=1)
+   Buffers: shared hit=8
+   ->  Index Scan using career_preferences_pkey on career_preferences  (cost=0.15..8.17 rows=1 width=49) (actual time=0.008..0.008 rows=1.00 loops=1)
+         Index Cond: (user_id = '00000000-0000-0000-0000-000000000011'::uuid)
+         Index Searches: 1
+         Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=69
+ Planning Time: 0.160 ms
+ Execution Time: 0.100 ms
+(10 rows)
+
+=== Q24 run 3 ===
+QUERY PLAN                                                                      
+------------------------------------------------------------------------------------------------------------------------------------------------------
+ Update on career_preferences  (cost=0.15..8.17 rows=0 width=0) (actual time=0.036..0.036 rows=0.00 loops=1)
+   Buffers: shared hit=8
+   ->  Index Scan using career_preferences_pkey on career_preferences  (cost=0.15..8.17 rows=1 width=49) (actual time=0.006..0.006 rows=1.00 loops=1)
+         Index Cond: (user_id = '00000000-0000-0000-0000-000000000011'::uuid)
+         Index Searches: 1
+         Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=69
+ Planning Time: 0.127 ms
+ Execution Time: 0.079 ms
+(10 rows)
+

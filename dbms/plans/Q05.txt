@@ -1,0 +1,42 @@
+=== Q05 run 1 ===
+QUERY PLAN                                                          
+------------------------------------------------------------------------------------------------------------------------------
+ Index Only Scan using roles_name_key on roles  (cost=0.15..8.17 rows=1 width=4) (actual time=0.008..0.008 rows=1.00 loops=1)
+   Index Cond: (name = 'MEMBER'::text)
+   Heap Fetches: 1
+   Index Searches: 1
+   Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=85
+ Planning Time: 0.157 ms
+ Execution Time: 0.022 ms
+(9 rows)
+
+=== Q05 run 2 ===
+QUERY PLAN                                                          
+------------------------------------------------------------------------------------------------------------------------------
+ Index Only Scan using roles_name_key on roles  (cost=0.15..8.17 rows=1 width=4) (actual time=0.008..0.008 rows=1.00 loops=1)
+   Index Cond: (name = 'MEMBER'::text)
+   Heap Fetches: 1
+   Index Searches: 1
+   Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=85
+ Planning Time: 0.161 ms
+ Execution Time: 0.022 ms
+(9 rows)
+
+=== Q05 run 3 ===
+QUERY PLAN                                                          
+------------------------------------------------------------------------------------------------------------------------------
+ Index Only Scan using roles_name_key on roles  (cost=0.15..8.17 rows=1 width=4) (actual time=0.008..0.008 rows=1.00 loops=1)
+   Index Cond: (name = 'MEMBER'::text)
+   Heap Fetches: 1
+   Index Searches: 1
+   Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=85
+ Planning Time: 0.157 ms
+ Execution Time: 0.021 ms
+(9 rows)
+

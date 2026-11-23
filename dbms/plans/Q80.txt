@@ -1,0 +1,75 @@
+=== Q80 run 1 ===
+QUERY PLAN                                                                 
+--------------------------------------------------------------------------------------------------------------------------------------------
+ Update on opportunities  (cost=18.27..26.29 rows=1 width=46) (actual time=0.061..0.063 rows=1.00 loops=1)
+   Buffers: shared hit=20
+   InitPlan 1
+     ->  Nested Loop  (cost=0.30..18.12 rows=1 width=0) (never executed)
+           ->  Index Scan using roles_name_key on roles r  (cost=0.15..8.17 rows=1 width=2) (never executed)
+                 Index Cond: (name = 'ADMIN'::text)
+                 Index Searches: 0
+           ->  Index Only Scan using user_roles_pkey on user_roles ur  (cost=0.15..8.17 rows=1 width=2) (never executed)
+                 Index Cond: ((user_id = '00000000-0000-0000-0000-000000000002'::uuid) AND (role_id = r.id))
+                 Heap Fetches: 0
+                 Index Searches: 0
+   ->  Index Scan using opportunities_pkey on opportunities  (cost=0.14..8.17 rows=1 width=46) (actual time=0.005..0.006 rows=1.00 loops=1)
+         Index Cond: (id = '60000000-0000-0000-0000-000000000001'::uuid)
+         Filter: ((publisher_id = '00000000-0000-0000-0000-000000000002'::uuid) OR (InitPlan 1).col1)
+         Index Searches: 1
+         Buffers: shared hit=3
+ Planning:
+   Buffers: shared hit=281
+ Planning Time: 0.438 ms
+ Execution Time: 0.123 ms
+(20 rows)
+
+=== Q80 run 2 ===
+QUERY PLAN                                                                 
+--------------------------------------------------------------------------------------------------------------------------------------------
+ Update on opportunities  (cost=18.27..26.29 rows=1 width=46) (actual time=0.092..0.094 rows=1.00 loops=1)
+   Buffers: shared hit=20
+   InitPlan 1
+     ->  Nested Loop  (cost=0.30..18.12 rows=1 width=0) (never executed)
+           ->  Index Scan using roles_name_key on roles r  (cost=0.15..8.17 rows=1 width=2) (never executed)
+                 Index Cond: (name = 'ADMIN'::text)
+                 Index Searches: 0
+           ->  Index Only Scan using user_roles_pkey on user_roles ur  (cost=0.15..8.17 rows=1 width=2) (never executed)
+                 Index Cond: ((user_id = '00000000-0000-0000-0000-000000000002'::uuid) AND (role_id = r.id))
+                 Heap Fetches: 0
+                 Index Searches: 0
+   ->  Index Scan using opportunities_pkey on opportunities  (cost=0.14..8.17 rows=1 width=46) (actual time=0.008..0.010 rows=1.00 loops=1)
+         Index Cond: (id = '60000000-0000-0000-0000-000000000001'::uuid)
+         Filter: ((publisher_id = '00000000-0000-0000-0000-000000000002'::uuid) OR (InitPlan 1).col1)
+         Index Searches: 1
+         Buffers: shared hit=3
+ Planning:
+   Buffers: shared hit=281
+ Planning Time: 0.526 ms
+ Execution Time: 0.175 ms
+(20 rows)
+
+=== Q80 run 3 ===
+QUERY PLAN                                                                 
+--------------------------------------------------------------------------------------------------------------------------------------------
+ Update on opportunities  (cost=18.27..26.29 rows=1 width=46) (actual time=0.058..0.059 rows=1.00 loops=1)
+   Buffers: shared hit=20
+   InitPlan 1
+     ->  Nested Loop  (cost=0.30..18.12 rows=1 width=0) (never executed)
+           ->  Index Scan using roles_name_key on roles r  (cost=0.15..8.17 rows=1 width=2) (never executed)
+                 Index Cond: (name = 'ADMIN'::text)
+                 Index Searches: 0
+           ->  Index Only Scan using user_roles_pkey on user_roles ur  (cost=0.15..8.17 rows=1 width=2) (never executed)
+                 Index Cond: ((user_id = '00000000-0000-0000-0000-000000000002'::uuid) AND (role_id = r.id))
+                 Heap Fetches: 0
+                 Index Searches: 0
+   ->  Index Scan using opportunities_pkey on opportunities  (cost=0.14..8.17 rows=1 width=46) (actual time=0.005..0.006 rows=1.00 loops=1)
+         Index Cond: (id = '60000000-0000-0000-0000-000000000001'::uuid)
+         Filter: ((publisher_id = '00000000-0000-0000-0000-000000000002'::uuid) OR (InitPlan 1).col1)
+         Index Searches: 1
+         Buffers: shared hit=3
+ Planning:
+   Buffers: shared hit=281
+ Planning Time: 0.380 ms
+ Execution Time: 0.112 ms
+(20 rows)
+

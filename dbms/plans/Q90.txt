@@ -1,0 +1,75 @@
+=== Q90 run 1 ===
+QUERY PLAN                                                                     
+---------------------------------------------------------------------------------------------------------------------------------------------------
+ Limit  (cost=51.68..52.18 rows=200 width=228) (actual time=0.028..0.030 rows=21.00 loops=1)
+   Buffers: shared hit=5
+   ->  Sort  (cost=51.68..52.71 rows=410 width=228) (actual time=0.027..0.028 rows=21.00 loops=1)
+         Sort Key: u.created_at DESC
+         Sort Method: quicksort  Memory: 30kB
+         Buffers: shared hit=5
+         ->  Hash Left Join  (cost=18.78..33.96 rows=410 width=228) (actual time=0.015..0.018 rows=21.00 loops=1)
+               Hash Cond: (u.id = m.user_id)
+               Buffers: shared hit=2
+               ->  Seq Scan on users u  (cost=0.00..14.10 rows=410 width=128) (actual time=0.003..0.003 rows=21.00 loops=1)
+                     Buffers: shared hit=1
+               ->  Hash  (cost=13.90..13.90 rows=390 width=116) (actual time=0.008..0.008 rows=21.00 loops=1)
+                     Buckets: 1024  Batches: 1  Memory Usage: 10kB
+                     Buffers: shared hit=1
+                     ->  Seq Scan on university_memberships m  (cost=0.00..13.90 rows=390 width=116) (actual time=0.002..0.003 rows=21.00 loops=1)
+                           Buffers: shared hit=1
+ Planning:
+   Buffers: shared hit=260
+ Planning Time: 0.306 ms
+ Execution Time: 0.047 ms
+(20 rows)
+
+=== Q90 run 2 ===
+QUERY PLAN                                                                     
+---------------------------------------------------------------------------------------------------------------------------------------------------
+ Limit  (cost=51.68..52.18 rows=200 width=228) (actual time=0.034..0.036 rows=21.00 loops=1)
+   Buffers: shared hit=5
+   ->  Sort  (cost=51.68..52.71 rows=410 width=228) (actual time=0.033..0.034 rows=21.00 loops=1)
+         Sort Key: u.created_at DESC
+         Sort Method: quicksort  Memory: 30kB
+         Buffers: shared hit=5
+         ->  Hash Left Join  (cost=18.78..33.96 rows=410 width=228) (actual time=0.020..0.022 rows=21.00 loops=1)
+               Hash Cond: (u.id = m.user_id)
+               Buffers: shared hit=2
+               ->  Seq Scan on users u  (cost=0.00..14.10 rows=410 width=128) (actual time=0.004..0.004 rows=21.00 loops=1)
+                     Buffers: shared hit=1
+               ->  Hash  (cost=13.90..13.90 rows=390 width=116) (actual time=0.010..0.010 rows=21.00 loops=1)
+                     Buckets: 1024  Batches: 1  Memory Usage: 10kB
+                     Buffers: shared hit=1
+                     ->  Seq Scan on university_memberships m  (cost=0.00..13.90 rows=390 width=116) (actual time=0.003..0.004 rows=21.00 loops=1)
+                           Buffers: shared hit=1
+ Planning:
+   Buffers: shared hit=260
+ Planning Time: 0.337 ms
+ Execution Time: 0.056 ms
+(20 rows)
+
+=== Q90 run 3 ===
+QUERY PLAN                                                                     
+---------------------------------------------------------------------------------------------------------------------------------------------------
+ Limit  (cost=51.68..52.18 rows=200 width=228) (actual time=0.026..0.028 rows=21.00 loops=1)
+   Buffers: shared hit=5
+   ->  Sort  (cost=51.68..52.71 rows=410 width=228) (actual time=0.026..0.027 rows=21.00 loops=1)
+         Sort Key: u.created_at DESC
+         Sort Method: quicksort  Memory: 30kB
+         Buffers: shared hit=5
+         ->  Hash Left Join  (cost=18.78..33.96 rows=410 width=228) (actual time=0.015..0.017 rows=21.00 loops=1)
+               Hash Cond: (u.id = m.user_id)
+               Buffers: shared hit=2
+               ->  Seq Scan on users u  (cost=0.00..14.10 rows=410 width=128) (actual time=0.003..0.003 rows=21.00 loops=1)
+                     Buffers: shared hit=1
+               ->  Hash  (cost=13.90..13.90 rows=390 width=116) (actual time=0.008..0.008 rows=21.00 loops=1)
+                     Buckets: 1024  Batches: 1  Memory Usage: 10kB
+                     Buffers: shared hit=1
+                     ->  Seq Scan on university_memberships m  (cost=0.00..13.90 rows=390 width=116) (actual time=0.002..0.003 rows=21.00 loops=1)
+                           Buffers: shared hit=1
+ Planning:
+   Buffers: shared hit=260
+ Planning Time: 0.292 ms
+ Execution Time: 0.044 ms
+(20 rows)
+

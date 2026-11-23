@@ -1,0 +1,36 @@
+=== Q113 run 1 ===
+QUERY PLAN                                            
+--------------------------------------------------------------------------------------------------
+ Insert on users  (cost=0.00..0.02 rows=1 width=168) (actual time=0.138..0.139 rows=1.00 loops=1)
+   Buffers: shared hit=70
+   ->  Result  (cost=0.00..0.02 rows=1 width=168) (actual time=0.010..0.010 rows=1.00 loops=1)
+ Planning:
+   Buffers: shared hit=6
+ Planning Time: 0.038 ms
+ Execution Time: 0.163 ms
+(7 rows)
+
+=== Q113 run 2 ===
+QUERY PLAN                                            
+--------------------------------------------------------------------------------------------------
+ Insert on users  (cost=0.00..0.02 rows=1 width=168) (actual time=0.126..0.126 rows=1.00 loops=1)
+   Buffers: shared hit=70
+   ->  Result  (cost=0.00..0.02 rows=1 width=168) (actual time=0.009..0.009 rows=1.00 loops=1)
+ Planning:
+   Buffers: shared hit=6
+ Planning Time: 0.033 ms
+ Execution Time: 0.150 ms
+(7 rows)
+
+=== Q113 run 3 ===
+QUERY PLAN                                            
+--------------------------------------------------------------------------------------------------
+ Insert on users  (cost=0.00..0.02 rows=1 width=168) (actual time=0.113..0.113 rows=1.00 loops=1)
+   Buffers: shared hit=70
+   ->  Result  (cost=0.00..0.02 rows=1 width=168) (actual time=0.008..0.008 rows=1.00 loops=1)
+ Planning:
+   Buffers: shared hit=6
+ Planning Time: 0.032 ms
+ Execution Time: 0.135 ms
+(7 rows)
+

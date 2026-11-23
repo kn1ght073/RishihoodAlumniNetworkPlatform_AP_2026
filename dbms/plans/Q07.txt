@@ -1,0 +1,36 @@
+=== Q07 run 1 ===
+QUERY PLAN                                                    
+-----------------------------------------------------------------------------------------------------------------
+ Insert on university_memberships  (cost=0.00..0.01 rows=0 width=0) (actual time=0.063..0.063 rows=0.00 loops=1)
+   Buffers: shared hit=26
+   ->  Result  (cost=0.00..0.01 rows=1 width=180) (actual time=0.001..0.001 rows=1.00 loops=1)
+ Planning Time: 0.007 ms
+ Trigger for constraint university_memberships_user_id_fkey: time=0.189 calls=1
+ Trigger for constraint university_memberships_verified_by_fkey: time=0.002 calls=1
+ Execution Time: 0.260 ms
+(7 rows)
+
+=== Q07 run 2 ===
+QUERY PLAN                                                    
+-----------------------------------------------------------------------------------------------------------------
+ Insert on university_memberships  (cost=0.00..0.01 rows=0 width=0) (actual time=0.054..0.054 rows=0.00 loops=1)
+   Buffers: shared hit=26
+   ->  Result  (cost=0.00..0.01 rows=1 width=180) (actual time=0.001..0.001 rows=1.00 loops=1)
+ Planning Time: 0.004 ms
+ Trigger for constraint university_memberships_user_id_fkey: time=0.177 calls=1
+ Trigger for constraint university_memberships_verified_by_fkey: time=0.002 calls=1
+ Execution Time: 0.238 ms
+(7 rows)
+
+=== Q07 run 3 ===
+QUERY PLAN                                                    
+-----------------------------------------------------------------------------------------------------------------
+ Insert on university_memberships  (cost=0.00..0.01 rows=0 width=0) (actual time=0.056..0.056 rows=0.00 loops=1)
+   Buffers: shared hit=26
+   ->  Result  (cost=0.00..0.01 rows=1 width=180) (actual time=0.000..0.000 rows=1.00 loops=1)
+ Planning Time: 0.004 ms
+ Trigger for constraint university_memberships_user_id_fkey: time=0.178 calls=1
+ Trigger for constraint university_memberships_verified_by_fkey: time=0.002 calls=1
+ Execution Time: 0.241 ms
+(7 rows)
+

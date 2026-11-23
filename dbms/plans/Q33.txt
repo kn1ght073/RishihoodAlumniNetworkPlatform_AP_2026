@@ -1,0 +1,48 @@
+=== Q33 run 1 ===
+QUERY PLAN                                                                      
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+ Delete on employment_history  (cost=0.15..8.17 rows=0 width=0) (actual time=0.014..0.015 rows=0.00 loops=1)
+   Buffers: shared hit=3
+   ->  Index Scan using employment_history_pkey on employment_history  (cost=0.15..8.17 rows=1 width=6) (actual time=0.004..0.005 rows=1.00 loops=1)
+         Index Cond: (id = '90000000-0000-0000-0000-000000000001'::uuid)
+         Filter: (user_id = '00000000-0000-0000-0000-000000000002'::uuid)
+         Index Searches: 1
+         Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=119
+ Planning Time: 0.211 ms
+ Execution Time: 0.056 ms
+(11 rows)
+
+=== Q33 run 2 ===
+QUERY PLAN                                                                      
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+ Delete on employment_history  (cost=0.15..8.17 rows=0 width=0) (actual time=0.015..0.015 rows=0.00 loops=1)
+   Buffers: shared hit=3
+   ->  Index Scan using employment_history_pkey on employment_history  (cost=0.15..8.17 rows=1 width=6) (actual time=0.006..0.006 rows=1.00 loops=1)
+         Index Cond: (id = '90000000-0000-0000-0000-000000000001'::uuid)
+         Filter: (user_id = '00000000-0000-0000-0000-000000000002'::uuid)
+         Index Searches: 1
+         Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=119
+ Planning Time: 0.200 ms
+ Execution Time: 0.055 ms
+(11 rows)
+
+=== Q33 run 3 ===
+QUERY PLAN                                                                      
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+ Delete on employment_history  (cost=0.15..8.17 rows=0 width=0) (actual time=0.016..0.016 rows=0.00 loops=1)
+   Buffers: shared hit=3
+   ->  Index Scan using employment_history_pkey on employment_history  (cost=0.15..8.17 rows=1 width=6) (actual time=0.006..0.006 rows=1.00 loops=1)
+         Index Cond: (id = '90000000-0000-0000-0000-000000000001'::uuid)
+         Filter: (user_id = '00000000-0000-0000-0000-000000000002'::uuid)
+         Index Searches: 1
+         Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=119
+ Planning Time: 0.187 ms
+ Execution Time: 0.056 ms
+(11 rows)
+

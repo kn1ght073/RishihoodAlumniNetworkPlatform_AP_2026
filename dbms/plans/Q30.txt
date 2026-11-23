@@ -1,0 +1,39 @@
+=== Q30 run 1 ===
+QUERY PLAN                                                                       
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+ Index Scan using university_memberships_pkey on university_memberships  (cost=0.15..8.17 rows=1 width=32) (actual time=0.004..0.004 rows=1.00 loops=1)
+   Index Cond: (user_id = '00000000-0000-0000-0000-000000000002'::uuid)
+   Index Searches: 1
+   Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=80
+ Planning Time: 0.154 ms
+ Execution Time: 0.022 ms
+(8 rows)
+
+=== Q30 run 2 ===
+QUERY PLAN                                                                       
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+ Index Scan using university_memberships_pkey on university_memberships  (cost=0.15..8.17 rows=1 width=32) (actual time=0.005..0.006 rows=1.00 loops=1)
+   Index Cond: (user_id = '00000000-0000-0000-0000-000000000002'::uuid)
+   Index Searches: 1
+   Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=80
+ Planning Time: 0.182 ms
+ Execution Time: 0.026 ms
+(8 rows)
+
+=== Q30 run 3 ===
+QUERY PLAN                                                                       
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+ Index Scan using university_memberships_pkey on university_memberships  (cost=0.15..8.17 rows=1 width=32) (actual time=0.004..0.004 rows=1.00 loops=1)
+   Index Cond: (user_id = '00000000-0000-0000-0000-000000000002'::uuid)
+   Index Searches: 1
+   Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=80
+ Planning Time: 0.133 ms
+ Execution Time: 0.017 ms
+(8 rows)
+

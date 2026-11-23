@@ -1,0 +1,45 @@
+=== Q83 run 1 ===
+QUERY PLAN                                                                       
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+ Delete on saved_opportunities  (cost=0.15..8.17 rows=0 width=0) (actual time=0.014..0.015 rows=0.00 loops=1)
+   Buffers: shared hit=3
+   ->  Index Scan using saved_opportunities_pkey on saved_opportunities  (cost=0.15..8.17 rows=1 width=6) (actual time=0.004..0.004 rows=1.00 loops=1)
+         Index Cond: ((user_id = '00000000-0000-0000-0000-000000000011'::uuid) AND (opportunity_id = '60000000-0000-0000-0000-000000000001'::uuid))
+         Index Searches: 1
+         Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=69
+ Planning Time: 0.147 ms
+ Execution Time: 0.062 ms
+(10 rows)
+
+=== Q83 run 2 ===
+QUERY PLAN                                                                       
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+ Delete on saved_opportunities  (cost=0.15..8.17 rows=0 width=0) (actual time=0.024..0.025 rows=0.00 loops=1)
+   Buffers: shared hit=3
+   ->  Index Scan using saved_opportunities_pkey on saved_opportunities  (cost=0.15..8.17 rows=1 width=6) (actual time=0.008..0.008 rows=1.00 loops=1)
+         Index Cond: ((user_id = '00000000-0000-0000-0000-000000000011'::uuid) AND (opportunity_id = '60000000-0000-0000-0000-000000000001'::uuid))
+         Index Searches: 1
+         Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=69
+ Planning Time: 0.168 ms
+ Execution Time: 0.081 ms
+(10 rows)
+
+=== Q83 run 3 ===
+QUERY PLAN                                                                       
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+ Delete on saved_opportunities  (cost=0.15..8.17 rows=0 width=0) (actual time=0.015..0.015 rows=0.00 loops=1)
+   Buffers: shared hit=3
+   ->  Index Scan using saved_opportunities_pkey on saved_opportunities  (cost=0.15..8.17 rows=1 width=6) (actual time=0.005..0.005 rows=1.00 loops=1)
+         Index Cond: ((user_id = '00000000-0000-0000-0000-000000000011'::uuid) AND (opportunity_id = '60000000-0000-0000-0000-000000000001'::uuid))
+         Index Searches: 1
+         Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=69
+ Planning Time: 0.138 ms
+ Execution Time: 0.058 ms
+(10 rows)
+

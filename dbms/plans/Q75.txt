@@ -1,0 +1,96 @@
+=== Q75 run 1 ===
+QUERY PLAN                                                                            
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Nested Loop Left Join  (cost=0.44..32.77 rows=1 width=389) (actual time=0.017..0.018 rows=1.00 loops=1)
+   Buffers: shared hit=8
+   ->  Nested Loop  (cost=0.29..16.37 rows=1 width=356) (actual time=0.007..0.007 rows=1.00 loops=1)
+         Buffers: shared hit=4
+         ->  Index Scan using opportunities_pkey on opportunities o  (cost=0.14..8.17 rows=1 width=324) (actual time=0.004..0.004 rows=1.00 loops=1)
+               Index Cond: (id = '60000000-0000-0000-0000-000000000001'::uuid)
+               Filter: ((status = 'PUBLISHED'::text) OR (publisher_id = '00000000-0000-0000-0000-000000000011'::uuid))
+               Index Searches: 1
+               Buffers: shared hit=2
+         ->  Index Scan using users_pkey on users u  (cost=0.15..8.17 rows=1 width=48) (actual time=0.002..0.002 rows=1.00 loops=1)
+               Index Cond: (id = o.publisher_id)
+               Index Searches: 1
+               Buffers: shared hit=2
+   ->  Index Scan using companies_pkey on companies c  (cost=0.15..8.17 rows=1 width=48) (actual time=0.004..0.004 rows=1.00 loops=1)
+         Index Cond: (id = o.company_id)
+         Index Searches: 1
+         Buffers: shared hit=2
+   SubPlan 1
+     ->  Index Only Scan using saved_opportunities_pkey on saved_opportunities so  (cost=0.15..8.17 rows=1 width=0) (actual time=0.006..0.006 rows=1.00 loops=1)
+           Index Cond: ((user_id = '00000000-0000-0000-0000-000000000011'::uuid) AND (opportunity_id = o.id))
+           Heap Fetches: 1
+           Index Searches: 1
+           Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=363
+ Planning Time: 0.502 ms
+ Execution Time: 0.047 ms
+(27 rows)
+
+=== Q75 run 2 ===
+QUERY PLAN                                                                            
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Nested Loop Left Join  (cost=0.44..32.77 rows=1 width=389) (actual time=0.016..0.017 rows=1.00 loops=1)
+   Buffers: shared hit=8
+   ->  Nested Loop  (cost=0.29..16.37 rows=1 width=356) (actual time=0.006..0.006 rows=1.00 loops=1)
+         Buffers: shared hit=4
+         ->  Index Scan using opportunities_pkey on opportunities o  (cost=0.14..8.17 rows=1 width=324) (actual time=0.004..0.004 rows=1.00 loops=1)
+               Index Cond: (id = '60000000-0000-0000-0000-000000000001'::uuid)
+               Filter: ((status = 'PUBLISHED'::text) OR (publisher_id = '00000000-0000-0000-0000-000000000011'::uuid))
+               Index Searches: 1
+               Buffers: shared hit=2
+         ->  Index Scan using users_pkey on users u  (cost=0.15..8.17 rows=1 width=48) (actual time=0.002..0.002 rows=1.00 loops=1)
+               Index Cond: (id = o.publisher_id)
+               Index Searches: 1
+               Buffers: shared hit=2
+   ->  Index Scan using companies_pkey on companies c  (cost=0.15..8.17 rows=1 width=48) (actual time=0.003..0.003 rows=1.00 loops=1)
+         Index Cond: (id = o.company_id)
+         Index Searches: 1
+         Buffers: shared hit=2
+   SubPlan 1
+     ->  Index Only Scan using saved_opportunities_pkey on saved_opportunities so  (cost=0.15..8.17 rows=1 width=0) (actual time=0.006..0.006 rows=1.00 loops=1)
+           Index Cond: ((user_id = '00000000-0000-0000-0000-000000000011'::uuid) AND (opportunity_id = o.id))
+           Heap Fetches: 1
+           Index Searches: 1
+           Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=363
+ Planning Time: 0.515 ms
+ Execution Time: 0.044 ms
+(27 rows)
+
+=== Q75 run 3 ===
+QUERY PLAN                                                                            
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Nested Loop Left Join  (cost=0.44..32.77 rows=1 width=389) (actual time=0.019..0.020 rows=1.00 loops=1)
+   Buffers: shared hit=8
+   ->  Nested Loop  (cost=0.29..16.37 rows=1 width=356) (actual time=0.007..0.008 rows=1.00 loops=1)
+         Buffers: shared hit=4
+         ->  Index Scan using opportunities_pkey on opportunities o  (cost=0.14..8.17 rows=1 width=324) (actual time=0.004..0.005 rows=1.00 loops=1)
+               Index Cond: (id = '60000000-0000-0000-0000-000000000001'::uuid)
+               Filter: ((status = 'PUBLISHED'::text) OR (publisher_id = '00000000-0000-0000-0000-000000000011'::uuid))
+               Index Searches: 1
+               Buffers: shared hit=2
+         ->  Index Scan using users_pkey on users u  (cost=0.15..8.17 rows=1 width=48) (actual time=0.002..0.002 rows=1.00 loops=1)
+               Index Cond: (id = o.publisher_id)
+               Index Searches: 1
+               Buffers: shared hit=2
+   ->  Index Scan using companies_pkey on companies c  (cost=0.15..8.17 rows=1 width=48) (actual time=0.004..0.004 rows=1.00 loops=1)
+         Index Cond: (id = o.company_id)
+         Index Searches: 1
+         Buffers: shared hit=2
+   SubPlan 1
+     ->  Index Only Scan using saved_opportunities_pkey on saved_opportunities so  (cost=0.15..8.17 rows=1 width=0) (actual time=0.007..0.007 rows=1.00 loops=1)
+           Index Cond: ((user_id = '00000000-0000-0000-0000-000000000011'::uuid) AND (opportunity_id = o.id))
+           Heap Fetches: 1
+           Index Searches: 1
+           Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=363
+ Planning Time: 0.597 ms
+ Execution Time: 0.058 ms
+(27 rows)
+

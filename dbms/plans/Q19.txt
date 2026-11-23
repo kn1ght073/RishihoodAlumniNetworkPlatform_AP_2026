@@ -1,0 +1,162 @@
+=== Q19 run 1 ===
+QUERY PLAN                                                                                           
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ GroupAggregate  (cost=50.55..50.58 rows=1 width=631) (actual time=0.042..0.042 rows=1.00 loops=1)
+   Buffers: shared hit=18
+   ->  Sort  (cost=50.55..50.56 rows=3 width=631) (actual time=0.037..0.037 rows=3.00 loops=1)
+         Sort Key: s.name
+         Sort Method: quicksort  Memory: 26kB
+         Buffers: shared hit=18
+         ->  Nested Loop Left Join  (cost=0.75..50.53 rows=3 width=631) (actual time=0.020..0.024 rows=3.00 loops=1)
+               Buffers: shared hit=15
+               ->  Nested Loop Left Join  (cost=0.59..34.51 rows=3 width=607) (actual time=0.015..0.017 rows=3.00 loops=1)
+                     Buffers: shared hit=9
+                     ->  Nested Loop  (cost=0.59..32.69 rows=1 width=599) (actual time=0.012..0.013 rows=1.00 loops=1)
+                           Buffers: shared hit=8
+                           ->  Nested Loop  (cost=0.44..24.51 rows=1 width=548) (actual time=0.009..0.010 rows=1.00 loops=1)
+                                 Buffers: shared hit=6
+                                 ->  Nested Loop  (cost=0.29..16.34 rows=1 width=400) (actual time=0.006..0.007 rows=1.00 loops=1)
+                                       Buffers: shared hit=4
+                                       ->  Index Scan using users_pkey on users u  (cost=0.15..8.17 rows=1 width=80) (actual time=0.002..0.002 rows=1.00 loops=1)
+                                             Index Cond: (id = '00000000-0000-0000-0000-000000000002'::uuid)
+                                             Index Searches: 1
+                                             Buffers: shared hit=2
+                                       ->  Index Scan using profiles_pkey on profiles p  (cost=0.14..8.16 rows=1 width=320) (actual time=0.003..0.003 rows=1.00 loops=1)
+                                             Index Cond: (user_id = '00000000-0000-0000-0000-000000000002'::uuid)
+                                             Index Searches: 1
+                                             Buffers: shared hit=2
+                                 ->  Index Scan using university_memberships_pkey on university_memberships m  (cost=0.15..8.17 rows=1 width=148) (actual time=0.002..0.002 rows=1.00 loops=1)
+                                       Index Cond: (user_id = '00000000-0000-0000-0000-000000000002'::uuid)
+                                       Index Searches: 1
+                                       Buffers: shared hit=2
+                           ->  Index Scan using career_preferences_pkey on career_preferences cp  (cost=0.15..8.17 rows=1 width=51) (actual time=0.003..0.003 rows=1.00 loops=1)
+                                 Index Cond: (user_id = '00000000-0000-0000-0000-000000000002'::uuid)
+                                 Index Searches: 1
+                                 Buffers: shared hit=2
+                     ->  Seq Scan on user_skills us  (cost=0.00..1.79 rows=3 width=24) (actual time=0.003..0.004 rows=3.00 loops=1)
+                           Filter: (user_id = '00000000-0000-0000-0000-000000000002'::uuid)
+                           Rows Removed by Filter: 60
+                           Buffers: shared hit=1
+               ->  Memoize  (cost=0.16..6.85 rows=1 width=40) (actual time=0.002..0.002 rows=1.00 loops=3)
+                     Cache Key: us.skill_id
+                     Cache Mode: logical
+                     Hits: 0  Misses: 3  Evictions: 0  Overflows: 0  Memory Usage: 1kB
+                     Buffers: shared hit=6
+                     ->  Index Scan using skills_pkey on skills s  (cost=0.15..6.84 rows=1 width=40) (actual time=0.001..0.001 rows=1.00 loops=3)
+                           Index Cond: (id = us.skill_id)
+                           Index Searches: 3
+                           Buffers: shared hit=6
+ Planning:
+   Buffers: shared hit=413
+ Planning Time: 0.628 ms
+ Execution Time: 0.113 ms
+(49 rows)
+
+=== Q19 run 2 ===
+QUERY PLAN                                                                                           
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ GroupAggregate  (cost=50.55..50.58 rows=1 width=631) (actual time=0.059..0.059 rows=1.00 loops=1)
+   Buffers: shared hit=18
+   ->  Sort  (cost=50.55..50.56 rows=3 width=631) (actual time=0.052..0.053 rows=3.00 loops=1)
+         Sort Key: s.name
+         Sort Method: quicksort  Memory: 26kB
+         Buffers: shared hit=18
+         ->  Nested Loop Left Join  (cost=0.75..50.53 rows=3 width=631) (actual time=0.030..0.034 rows=3.00 loops=1)
+               Buffers: shared hit=15
+               ->  Nested Loop Left Join  (cost=0.59..34.51 rows=3 width=607) (actual time=0.024..0.026 rows=3.00 loops=1)
+                     Buffers: shared hit=9
+                     ->  Nested Loop  (cost=0.59..32.69 rows=1 width=599) (actual time=0.019..0.020 rows=1.00 loops=1)
+                           Buffers: shared hit=8
+                           ->  Nested Loop  (cost=0.44..24.51 rows=1 width=548) (actual time=0.014..0.014 rows=1.00 loops=1)
+                                 Buffers: shared hit=6
+                                 ->  Nested Loop  (cost=0.29..16.34 rows=1 width=400) (actual time=0.010..0.010 rows=1.00 loops=1)
+                                       Buffers: shared hit=4
+                                       ->  Index Scan using users_pkey on users u  (cost=0.15..8.17 rows=1 width=80) (actual time=0.004..0.004 rows=1.00 loops=1)
+                                             Index Cond: (id = '00000000-0000-0000-0000-000000000002'::uuid)
+                                             Index Searches: 1
+                                             Buffers: shared hit=2
+                                       ->  Index Scan using profiles_pkey on profiles p  (cost=0.14..8.16 rows=1 width=320) (actual time=0.005..0.005 rows=1.00 loops=1)
+                                             Index Cond: (user_id = '00000000-0000-0000-0000-000000000002'::uuid)
+                                             Index Searches: 1
+                                             Buffers: shared hit=2
+                                 ->  Index Scan using university_memberships_pkey on university_memberships m  (cost=0.15..8.17 rows=1 width=148) (actual time=0.003..0.003 rows=1.00 loops=1)
+                                       Index Cond: (user_id = '00000000-0000-0000-0000-000000000002'::uuid)
+                                       Index Searches: 1
+                                       Buffers: shared hit=2
+                           ->  Index Scan using career_preferences_pkey on career_preferences cp  (cost=0.15..8.17 rows=1 width=51) (actual time=0.004..0.005 rows=1.00 loops=1)
+                                 Index Cond: (user_id = '00000000-0000-0000-0000-000000000002'::uuid)
+                                 Index Searches: 1
+                                 Buffers: shared hit=2
+                     ->  Seq Scan on user_skills us  (cost=0.00..1.79 rows=3 width=24) (actual time=0.004..0.005 rows=3.00 loops=1)
+                           Filter: (user_id = '00000000-0000-0000-0000-000000000002'::uuid)
+                           Rows Removed by Filter: 60
+                           Buffers: shared hit=1
+               ->  Memoize  (cost=0.16..6.85 rows=1 width=40) (actual time=0.002..0.002 rows=1.00 loops=3)
+                     Cache Key: us.skill_id
+                     Cache Mode: logical
+                     Hits: 0  Misses: 3  Evictions: 0  Overflows: 0  Memory Usage: 1kB
+                     Buffers: shared hit=6
+                     ->  Index Scan using skills_pkey on skills s  (cost=0.15..6.84 rows=1 width=40) (actual time=0.001..0.001 rows=1.00 loops=3)
+                           Index Cond: (id = us.skill_id)
+                           Index Searches: 3
+                           Buffers: shared hit=6
+ Planning:
+   Buffers: shared hit=413
+ Planning Time: 0.559 ms
+ Execution Time: 0.123 ms
+(49 rows)
+
+=== Q19 run 3 ===
+QUERY PLAN                                                                                           
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ GroupAggregate  (cost=50.55..50.58 rows=1 width=631) (actual time=0.044..0.044 rows=1.00 loops=1)
+   Buffers: shared hit=18
+   ->  Sort  (cost=50.55..50.56 rows=3 width=631) (actual time=0.038..0.039 rows=3.00 loops=1)
+         Sort Key: s.name
+         Sort Method: quicksort  Memory: 26kB
+         Buffers: shared hit=18
+         ->  Nested Loop Left Join  (cost=0.75..50.53 rows=3 width=631) (actual time=0.021..0.025 rows=3.00 loops=1)
+               Buffers: shared hit=15
+               ->  Nested Loop Left Join  (cost=0.59..34.51 rows=3 width=607) (actual time=0.016..0.018 rows=3.00 loops=1)
+                     Buffers: shared hit=9
+                     ->  Nested Loop  (cost=0.59..32.69 rows=1 width=599) (actual time=0.013..0.014 rows=1.00 loops=1)
+                           Buffers: shared hit=8
+                           ->  Nested Loop  (cost=0.44..24.51 rows=1 width=548) (actual time=0.009..0.010 rows=1.00 loops=1)
+                                 Buffers: shared hit=6
+                                 ->  Nested Loop  (cost=0.29..16.34 rows=1 width=400) (actual time=0.006..0.007 rows=1.00 loops=1)
+                                       Buffers: shared hit=4
+                                       ->  Index Scan using users_pkey on users u  (cost=0.15..8.17 rows=1 width=80) (actual time=0.002..0.002 rows=1.00 loops=1)
+                                             Index Cond: (id = '00000000-0000-0000-0000-000000000002'::uuid)
+                                             Index Searches: 1
+                                             Buffers: shared hit=2
+                                       ->  Index Scan using profiles_pkey on profiles p  (cost=0.14..8.16 rows=1 width=320) (actual time=0.003..0.003 rows=1.00 loops=1)
+                                             Index Cond: (user_id = '00000000-0000-0000-0000-000000000002'::uuid)
+                                             Index Searches: 1
+                                             Buffers: shared hit=2
+                                 ->  Index Scan using university_memberships_pkey on university_memberships m  (cost=0.15..8.17 rows=1 width=148) (actual time=0.003..0.003 rows=1.00 loops=1)
+                                       Index Cond: (user_id = '00000000-0000-0000-0000-000000000002'::uuid)
+                                       Index Searches: 1
+                                       Buffers: shared hit=2
+                           ->  Index Scan using career_preferences_pkey on career_preferences cp  (cost=0.15..8.17 rows=1 width=51) (actual time=0.003..0.003 rows=1.00 loops=1)
+                                 Index Cond: (user_id = '00000000-0000-0000-0000-000000000002'::uuid)
+                                 Index Searches: 1
+                                 Buffers: shared hit=2
+                     ->  Seq Scan on user_skills us  (cost=0.00..1.79 rows=3 width=24) (actual time=0.003..0.004 rows=3.00 loops=1)
+                           Filter: (user_id = '00000000-0000-0000-0000-000000000002'::uuid)
+                           Rows Removed by Filter: 60
+                           Buffers: shared hit=1
+               ->  Memoize  (cost=0.16..6.85 rows=1 width=40) (actual time=0.002..0.002 rows=1.00 loops=3)
+                     Cache Key: us.skill_id
+                     Cache Mode: logical
+                     Hits: 0  Misses: 3  Evictions: 0  Overflows: 0  Memory Usage: 1kB
+                     Buffers: shared hit=6
+                     ->  Index Scan using skills_pkey on skills s  (cost=0.15..6.84 rows=1 width=40) (actual time=0.001..0.001 rows=1.00 loops=3)
+                           Index Cond: (id = us.skill_id)
+                           Index Searches: 3
+                           Buffers: shared hit=6
+ Planning:
+   Buffers: shared hit=413
+ Planning Time: 0.567 ms
+ Execution Time: 0.090 ms
+(49 rows)
+

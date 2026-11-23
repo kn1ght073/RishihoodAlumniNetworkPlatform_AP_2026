@@ -1,0 +1,39 @@
+=== Q43 run 1 ===
+QUERY PLAN                                                                  
+---------------------------------------------------------------------------------------------------------------------------------------------
+ Index Scan using companies_normalized_name_key on companies  (cost=0.15..8.17 rows=1 width=16) (actual time=0.007..0.008 rows=1.00 loops=1)
+   Index Cond: (normalized_name = 'google india'::text)
+   Index Searches: 1
+   Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=102
+ Planning Time: 0.221 ms
+ Execution Time: 0.016 ms
+(8 rows)
+
+=== Q43 run 2 ===
+QUERY PLAN                                                                  
+---------------------------------------------------------------------------------------------------------------------------------------------
+ Index Scan using companies_normalized_name_key on companies  (cost=0.15..8.17 rows=1 width=16) (actual time=0.005..0.006 rows=1.00 loops=1)
+   Index Cond: (normalized_name = 'google india'::text)
+   Index Searches: 1
+   Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=102
+ Planning Time: 0.178 ms
+ Execution Time: 0.013 ms
+(8 rows)
+
+=== Q43 run 3 ===
+QUERY PLAN                                                                  
+---------------------------------------------------------------------------------------------------------------------------------------------
+ Index Scan using companies_normalized_name_key on companies  (cost=0.15..8.17 rows=1 width=16) (actual time=0.006..0.006 rows=1.00 loops=1)
+   Index Cond: (normalized_name = 'google india'::text)
+   Index Searches: 1
+   Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=102
+ Planning Time: 0.191 ms
+ Execution Time: 0.013 ms
+(8 rows)
+

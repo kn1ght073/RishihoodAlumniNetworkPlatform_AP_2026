@@ -1,0 +1,39 @@
+=== Q28 run 1 ===
+QUERY PLAN                                                         
+----------------------------------------------------------------------------------------------------------------------------
+ Index Scan using profiles_pkey on profiles  (cost=0.14..8.16 rows=1 width=32) (actual time=0.014..0.015 rows=1.00 loops=1)
+   Index Cond: (user_id = '00000000-0000-0000-0000-000000000002'::uuid)
+   Index Searches: 1
+   Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=81
+ Planning Time: 0.187 ms
+ Execution Time: 0.033 ms
+(8 rows)
+
+=== Q28 run 2 ===
+QUERY PLAN                                                         
+----------------------------------------------------------------------------------------------------------------------------
+ Index Scan using profiles_pkey on profiles  (cost=0.14..8.16 rows=1 width=32) (actual time=0.003..0.003 rows=1.00 loops=1)
+   Index Cond: (user_id = '00000000-0000-0000-0000-000000000002'::uuid)
+   Index Searches: 1
+   Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=81
+ Planning Time: 0.134 ms
+ Execution Time: 0.016 ms
+(8 rows)
+
+=== Q28 run 3 ===
+QUERY PLAN                                                         
+----------------------------------------------------------------------------------------------------------------------------
+ Index Scan using profiles_pkey on profiles  (cost=0.14..8.16 rows=1 width=32) (actual time=0.003..0.003 rows=1.00 loops=1)
+   Index Cond: (user_id = '00000000-0000-0000-0000-000000000002'::uuid)
+   Index Searches: 1
+   Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=81
+ Planning Time: 0.140 ms
+ Execution Time: 0.017 ms
+(8 rows)
+

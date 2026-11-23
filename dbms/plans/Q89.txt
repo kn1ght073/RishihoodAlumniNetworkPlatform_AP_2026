@@ -1,0 +1,99 @@
+=== Q89 run 1 ===
+QUERY PLAN                                                                   
+-----------------------------------------------------------------------------------------------------------------------------------------------
+ Limit  (cost=64.51..64.76 rows=100 width=192) (actual time=0.030..0.031 rows=1.00 loops=1)
+   Buffers: shared hit=6
+   ->  Sort  (cost=64.51..65.26 rows=300 width=192) (actual time=0.030..0.030 rows=1.00 loops=1)
+         Sort Key: cr.updated_at DESC
+         Sort Method: quicksort  Memory: 25kB
+         Buffers: shared hit=6
+         ->  Hash Join  (cost=38.45..53.05 rows=300 width=192) (actual time=0.024..0.025 rows=1.00 loops=1)
+               Hash Cond: (cr.recipient_id = recipient.id)
+               Buffers: shared hit=3
+               ->  Hash Join  (cost=19.23..33.02 rows=300 width=176) (actual time=0.011..0.011 rows=1.00 loops=1)
+                     Hash Cond: (cr.requester_id = requester.id)
+                     Buffers: shared hit=2
+                     ->  Seq Scan on career_requests cr  (cost=0.00..13.00 rows=300 width=160) (actual time=0.002..0.002 rows=1.00 loops=1)
+                           Buffers: shared hit=1
+                     ->  Hash  (cost=14.10..14.10 rows=410 width=48) (actual time=0.005..0.005 rows=21.00 loops=1)
+                           Buckets: 1024  Batches: 1  Memory Usage: 10kB
+                           Buffers: shared hit=1
+                           ->  Seq Scan on users requester  (cost=0.00..14.10 rows=410 width=48) (actual time=0.002..0.003 rows=21.00 loops=1)
+                                 Buffers: shared hit=1
+               ->  Hash  (cost=14.10..14.10 rows=410 width=48) (actual time=0.009..0.010 rows=21.00 loops=1)
+                     Buckets: 1024  Batches: 1  Memory Usage: 10kB
+                     Buffers: shared hit=1
+                     ->  Seq Scan on users recipient  (cost=0.00..14.10 rows=410 width=48) (actual time=0.003..0.004 rows=21.00 loops=1)
+                           Buffers: shared hit=1
+ Planning:
+   Buffers: shared hit=335
+ Planning Time: 0.423 ms
+ Execution Time: 0.054 ms
+(28 rows)
+
+=== Q89 run 2 ===
+QUERY PLAN                                                                   
+-----------------------------------------------------------------------------------------------------------------------------------------------
+ Limit  (cost=64.51..64.76 rows=100 width=192) (actual time=0.028..0.029 rows=1.00 loops=1)
+   Buffers: shared hit=6
+   ->  Sort  (cost=64.51..65.26 rows=300 width=192) (actual time=0.027..0.028 rows=1.00 loops=1)
+         Sort Key: cr.updated_at DESC
+         Sort Method: quicksort  Memory: 25kB
+         Buffers: shared hit=6
+         ->  Hash Join  (cost=38.45..53.05 rows=300 width=192) (actual time=0.022..0.022 rows=1.00 loops=1)
+               Hash Cond: (cr.recipient_id = recipient.id)
+               Buffers: shared hit=3
+               ->  Hash Join  (cost=19.23..33.02 rows=300 width=176) (actual time=0.009..0.009 rows=1.00 loops=1)
+                     Hash Cond: (cr.requester_id = requester.id)
+                     Buffers: shared hit=2
+                     ->  Seq Scan on career_requests cr  (cost=0.00..13.00 rows=300 width=160) (actual time=0.002..0.002 rows=1.00 loops=1)
+                           Buffers: shared hit=1
+                     ->  Hash  (cost=14.10..14.10 rows=410 width=48) (actual time=0.004..0.005 rows=21.00 loops=1)
+                           Buckets: 1024  Batches: 1  Memory Usage: 10kB
+                           Buffers: shared hit=1
+                           ->  Seq Scan on users requester  (cost=0.00..14.10 rows=410 width=48) (actual time=0.002..0.002 rows=21.00 loops=1)
+                                 Buffers: shared hit=1
+               ->  Hash  (cost=14.10..14.10 rows=410 width=48) (actual time=0.009..0.009 rows=21.00 loops=1)
+                     Buckets: 1024  Batches: 1  Memory Usage: 10kB
+                     Buffers: shared hit=1
+                     ->  Seq Scan on users recipient  (cost=0.00..14.10 rows=410 width=48) (actual time=0.003..0.004 rows=21.00 loops=1)
+                           Buffers: shared hit=1
+ Planning:
+   Buffers: shared hit=335
+ Planning Time: 0.418 ms
+ Execution Time: 0.049 ms
+(28 rows)
+
+=== Q89 run 3 ===
+QUERY PLAN                                                                   
+-----------------------------------------------------------------------------------------------------------------------------------------------
+ Limit  (cost=64.51..64.76 rows=100 width=192) (actual time=0.030..0.031 rows=1.00 loops=1)
+   Buffers: shared hit=6
+   ->  Sort  (cost=64.51..65.26 rows=300 width=192) (actual time=0.029..0.030 rows=1.00 loops=1)
+         Sort Key: cr.updated_at DESC
+         Sort Method: quicksort  Memory: 25kB
+         Buffers: shared hit=6
+         ->  Hash Join  (cost=38.45..53.05 rows=300 width=192) (actual time=0.024..0.025 rows=1.00 loops=1)
+               Hash Cond: (cr.recipient_id = recipient.id)
+               Buffers: shared hit=3
+               ->  Hash Join  (cost=19.23..33.02 rows=300 width=176) (actual time=0.010..0.011 rows=1.00 loops=1)
+                     Hash Cond: (cr.requester_id = requester.id)
+                     Buffers: shared hit=2
+                     ->  Seq Scan on career_requests cr  (cost=0.00..13.00 rows=300 width=160) (actual time=0.003..0.003 rows=1.00 loops=1)
+                           Buffers: shared hit=1
+                     ->  Hash  (cost=14.10..14.10 rows=410 width=48) (actual time=0.005..0.005 rows=21.00 loops=1)
+                           Buckets: 1024  Batches: 1  Memory Usage: 10kB
+                           Buffers: shared hit=1
+                           ->  Seq Scan on users requester  (cost=0.00..14.10 rows=410 width=48) (actual time=0.002..0.002 rows=21.00 loops=1)
+                                 Buffers: shared hit=1
+               ->  Hash  (cost=14.10..14.10 rows=410 width=48) (actual time=0.010..0.011 rows=21.00 loops=1)
+                     Buckets: 1024  Batches: 1  Memory Usage: 10kB
+                     Buffers: shared hit=1
+                     ->  Seq Scan on users recipient  (cost=0.00..14.10 rows=410 width=48) (actual time=0.004..0.005 rows=21.00 loops=1)
+                           Buffers: shared hit=1
+ Planning:
+   Buffers: shared hit=335
+ Planning Time: 0.406 ms
+ Execution Time: 0.050 ms
+(28 rows)
+

@@ -1,0 +1,42 @@
+=== Q100 run 1 ===
+QUERY PLAN                                              
+-----------------------------------------------------------------------------------------------------
+ Insert on audit_logs  (cost=0.00..0.01 rows=0 width=0) (actual time=0.077..0.077 rows=0.00 loops=1)
+   Buffers: shared hit=45
+   ->  Result  (cost=0.00..0.01 rows=1 width=144) (actual time=0.016..0.016 rows=1.00 loops=1)
+         Buffers: shared hit=12
+ Planning:
+   Buffers: shared hit=10
+ Planning Time: 0.041 ms
+ Trigger for constraint audit_logs_actor_id_fkey: time=0.265 calls=1
+ Execution Time: 0.360 ms
+(9 rows)
+
+=== Q100 run 2 ===
+QUERY PLAN                                              
+-----------------------------------------------------------------------------------------------------
+ Insert on audit_logs  (cost=0.00..0.01 rows=0 width=0) (actual time=0.088..0.089 rows=0.00 loops=1)
+   Buffers: shared hit=45
+   ->  Result  (cost=0.00..0.01 rows=1 width=144) (actual time=0.015..0.015 rows=1.00 loops=1)
+         Buffers: shared hit=12
+ Planning:
+   Buffers: shared hit=10
+ Planning Time: 0.035 ms
+ Trigger for constraint audit_logs_actor_id_fkey: time=0.271 calls=1
+ Execution Time: 0.376 ms
+(9 rows)
+
+=== Q100 run 3 ===
+QUERY PLAN                                              
+-----------------------------------------------------------------------------------------------------
+ Insert on audit_logs  (cost=0.00..0.01 rows=0 width=0) (actual time=0.071..0.071 rows=0.00 loops=1)
+   Buffers: shared hit=45
+   ->  Result  (cost=0.00..0.01 rows=1 width=144) (actual time=0.014..0.014 rows=1.00 loops=1)
+         Buffers: shared hit=12
+ Planning:
+   Buffers: shared hit=10
+ Planning Time: 0.036 ms
+ Trigger for constraint audit_logs_actor_id_fkey: time=0.243 calls=1
+ Execution Time: 0.329 ms
+(9 rows)
+

@@ -1,0 +1,96 @@
+=== Q04 run 1 ===
+QUERY PLAN                                                                           
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Nested Loop Left Join  (cost=18.42..34.46 rows=1 width=33) (actual time=0.018..0.019 rows=1.00 loops=1)
+   Buffers: shared hit=7
+   InitPlan 1
+     ->  Nested Loop  (cost=0.30..18.12 rows=1 width=0) (actual time=0.010..0.011 rows=0.00 loops=1)
+           Buffers: shared hit=3
+           ->  Index Scan using roles_name_key on roles r  (cost=0.15..8.17 rows=1 width=2) (actual time=0.006..0.006 rows=1.00 loops=1)
+                 Index Cond: (name = 'ADMIN'::text)
+                 Index Searches: 1
+                 Buffers: shared hit=2
+           ->  Index Only Scan using user_roles_pkey on user_roles ur  (cost=0.15..8.17 rows=1 width=2) (actual time=0.004..0.004 rows=0.00 loops=1)
+                 Index Cond: ((user_id = '00000000-0000-0000-0000-000000000002'::uuid) AND (role_id = r.id))
+                 Heap Fetches: 0
+                 Index Searches: 1
+                 Buffers: shared hit=1
+   ->  Index Only Scan using users_pkey on users u  (cost=0.15..8.17 rows=1 width=16) (actual time=0.005..0.005 rows=1.00 loops=1)
+         Index Cond: (id = '00000000-0000-0000-0000-000000000002'::uuid)
+         Heap Fetches: 1
+         Index Searches: 1
+         Buffers: shared hit=2
+   ->  Index Scan using university_memberships_pkey on university_memberships m  (cost=0.15..8.17 rows=1 width=48) (actual time=0.002..0.002 rows=1.00 loops=1)
+         Index Cond: (user_id = '00000000-0000-0000-0000-000000000002'::uuid)
+         Index Searches: 1
+         Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=390
+ Planning Time: 0.499 ms
+ Execution Time: 0.043 ms
+(27 rows)
+
+=== Q04 run 2 ===
+QUERY PLAN                                                                           
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Nested Loop Left Join  (cost=18.42..34.46 rows=1 width=33) (actual time=0.019..0.020 rows=1.00 loops=1)
+   Buffers: shared hit=7
+   InitPlan 1
+     ->  Nested Loop  (cost=0.30..18.12 rows=1 width=0) (actual time=0.011..0.011 rows=0.00 loops=1)
+           Buffers: shared hit=3
+           ->  Index Scan using roles_name_key on roles r  (cost=0.15..8.17 rows=1 width=2) (actual time=0.006..0.006 rows=1.00 loops=1)
+                 Index Cond: (name = 'ADMIN'::text)
+                 Index Searches: 1
+                 Buffers: shared hit=2
+           ->  Index Only Scan using user_roles_pkey on user_roles ur  (cost=0.15..8.17 rows=1 width=2) (actual time=0.004..0.004 rows=0.00 loops=1)
+                 Index Cond: ((user_id = '00000000-0000-0000-0000-000000000002'::uuid) AND (role_id = r.id))
+                 Heap Fetches: 0
+                 Index Searches: 1
+                 Buffers: shared hit=1
+   ->  Index Only Scan using users_pkey on users u  (cost=0.15..8.17 rows=1 width=16) (actual time=0.006..0.006 rows=1.00 loops=1)
+         Index Cond: (id = '00000000-0000-0000-0000-000000000002'::uuid)
+         Heap Fetches: 1
+         Index Searches: 1
+         Buffers: shared hit=2
+   ->  Index Scan using university_memberships_pkey on university_memberships m  (cost=0.15..8.17 rows=1 width=48) (actual time=0.002..0.002 rows=1.00 loops=1)
+         Index Cond: (user_id = '00000000-0000-0000-0000-000000000002'::uuid)
+         Index Searches: 1
+         Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=390
+ Planning Time: 0.474 ms
+ Execution Time: 0.044 ms
+(27 rows)
+
+=== Q04 run 3 ===
+QUERY PLAN                                                                           
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Nested Loop Left Join  (cost=18.42..34.46 rows=1 width=33) (actual time=0.019..0.019 rows=1.00 loops=1)
+   Buffers: shared hit=7
+   InitPlan 1
+     ->  Nested Loop  (cost=0.30..18.12 rows=1 width=0) (actual time=0.011..0.011 rows=0.00 loops=1)
+           Buffers: shared hit=3
+           ->  Index Scan using roles_name_key on roles r  (cost=0.15..8.17 rows=1 width=2) (actual time=0.006..0.006 rows=1.00 loops=1)
+                 Index Cond: (name = 'ADMIN'::text)
+                 Index Searches: 1
+                 Buffers: shared hit=2
+           ->  Index Only Scan using user_roles_pkey on user_roles ur  (cost=0.15..8.17 rows=1 width=2) (actual time=0.005..0.005 rows=0.00 loops=1)
+                 Index Cond: ((user_id = '00000000-0000-0000-0000-000000000002'::uuid) AND (role_id = r.id))
+                 Heap Fetches: 0
+                 Index Searches: 1
+                 Buffers: shared hit=1
+   ->  Index Only Scan using users_pkey on users u  (cost=0.15..8.17 rows=1 width=16) (actual time=0.005..0.005 rows=1.00 loops=1)
+         Index Cond: (id = '00000000-0000-0000-0000-000000000002'::uuid)
+         Heap Fetches: 1
+         Index Searches: 1
+         Buffers: shared hit=2
+   ->  Index Scan using university_memberships_pkey on university_memberships m  (cost=0.15..8.17 rows=1 width=48) (actual time=0.002..0.002 rows=1.00 loops=1)
+         Index Cond: (user_id = '00000000-0000-0000-0000-000000000002'::uuid)
+         Index Searches: 1
+         Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=390
+ Planning Time: 0.472 ms
+ Execution Time: 0.043 ms
+(27 rows)
+

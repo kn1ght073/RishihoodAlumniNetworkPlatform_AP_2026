@@ -1,0 +1,96 @@
+=== Q57 run 1 ===
+QUERY PLAN                                                                              
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Sort  (cost=47.94..47.95 rows=4 width=224) (actual time=0.027..0.028 rows=1.00 loops=1)
+   Sort Key: mr.updated_at DESC
+   Sort Method: quicksort  Memory: 25kB
+   Buffers: shared hit=6
+   ->  Hash Join  (cost=32.23..47.90 rows=4 width=224) (actual time=0.020..0.021 rows=1.00 loops=1)
+         Hash Cond: (alumnus.id = mr.alumnus_id)
+         Buffers: shared hit=3
+         ->  Seq Scan on users alumnus  (cost=0.00..14.10 rows=410 width=48) (actual time=0.003..0.003 rows=21.00 loops=1)
+               Buffers: shared hit=1
+         ->  Hash  (cost=32.18..32.18 rows=4 width=192) (actual time=0.013..0.014 rows=1.00 loops=1)
+               Buckets: 1024  Batches: 1  Memory Usage: 9kB
+               Buffers: shared hit=2
+               ->  Hash Join  (cost=16.50..32.18 rows=4 width=192) (actual time=0.011..0.012 rows=1.00 loops=1)
+                     Hash Cond: (student.id = mr.student_id)
+                     Buffers: shared hit=2
+                     ->  Seq Scan on users student  (cost=0.00..14.10 rows=410 width=48) (actual time=0.001..0.001 rows=21.00 loops=1)
+                           Buffers: shared hit=1
+                     ->  Hash  (cost=16.45..16.45 rows=4 width=160) (actual time=0.007..0.007 rows=1.00 loops=1)
+                           Buckets: 1024  Batches: 1  Memory Usage: 9kB
+                           Buffers: shared hit=1
+                           ->  Seq Scan on mentorship_requests mr  (cost=0.00..16.45 rows=4 width=160) (actual time=0.004..0.004 rows=1.00 loops=1)
+                                 Filter: ((student_id = '00000000-0000-0000-0000-000000000011'::uuid) OR (alumnus_id = '00000000-0000-0000-0000-000000000011'::uuid))
+                                 Buffers: shared hit=1
+ Planning:
+   Buffers: shared hit=299
+ Planning Time: 0.448 ms
+ Execution Time: 0.056 ms
+(27 rows)
+
+=== Q57 run 2 ===
+QUERY PLAN                                                                              
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Sort  (cost=47.94..47.95 rows=4 width=224) (actual time=0.023..0.024 rows=1.00 loops=1)
+   Sort Key: mr.updated_at DESC
+   Sort Method: quicksort  Memory: 25kB
+   Buffers: shared hit=6
+   ->  Hash Join  (cost=32.23..47.90 rows=4 width=224) (actual time=0.017..0.018 rows=1.00 loops=1)
+         Hash Cond: (alumnus.id = mr.alumnus_id)
+         Buffers: shared hit=3
+         ->  Seq Scan on users alumnus  (cost=0.00..14.10 rows=410 width=48) (actual time=0.003..0.004 rows=21.00 loops=1)
+               Buffers: shared hit=1
+         ->  Hash  (cost=32.18..32.18 rows=4 width=192) (actual time=0.011..0.011 rows=1.00 loops=1)
+               Buckets: 1024  Batches: 1  Memory Usage: 9kB
+               Buffers: shared hit=2
+               ->  Hash Join  (cost=16.50..32.18 rows=4 width=192) (actual time=0.009..0.009 rows=1.00 loops=1)
+                     Hash Cond: (student.id = mr.student_id)
+                     Buffers: shared hit=2
+                     ->  Seq Scan on users student  (cost=0.00..14.10 rows=410 width=48) (actual time=0.001..0.001 rows=21.00 loops=1)
+                           Buffers: shared hit=1
+                     ->  Hash  (cost=16.45..16.45 rows=4 width=160) (actual time=0.005..0.005 rows=1.00 loops=1)
+                           Buckets: 1024  Batches: 1  Memory Usage: 9kB
+                           Buffers: shared hit=1
+                           ->  Seq Scan on mentorship_requests mr  (cost=0.00..16.45 rows=4 width=160) (actual time=0.002..0.002 rows=1.00 loops=1)
+                                 Filter: ((student_id = '00000000-0000-0000-0000-000000000011'::uuid) OR (alumnus_id = '00000000-0000-0000-0000-000000000011'::uuid))
+                                 Buffers: shared hit=1
+ Planning:
+   Buffers: shared hit=299
+ Planning Time: 0.364 ms
+ Execution Time: 0.047 ms
+(27 rows)
+
+=== Q57 run 3 ===
+QUERY PLAN                                                                              
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Sort  (cost=47.94..47.95 rows=4 width=224) (actual time=0.038..0.039 rows=1.00 loops=1)
+   Sort Key: mr.updated_at DESC
+   Sort Method: quicksort  Memory: 25kB
+   Buffers: shared hit=6
+   ->  Hash Join  (cost=32.23..47.90 rows=4 width=224) (actual time=0.029..0.031 rows=1.00 loops=1)
+         Hash Cond: (alumnus.id = mr.alumnus_id)
+         Buffers: shared hit=3
+         ->  Seq Scan on users alumnus  (cost=0.00..14.10 rows=410 width=48) (actual time=0.005..0.006 rows=21.00 loops=1)
+               Buffers: shared hit=1
+         ->  Hash  (cost=32.18..32.18 rows=4 width=192) (actual time=0.019..0.019 rows=1.00 loops=1)
+               Buckets: 1024  Batches: 1  Memory Usage: 9kB
+               Buffers: shared hit=2
+               ->  Hash Join  (cost=16.50..32.18 rows=4 width=192) (actual time=0.016..0.017 rows=1.00 loops=1)
+                     Hash Cond: (student.id = mr.student_id)
+                     Buffers: shared hit=2
+                     ->  Seq Scan on users student  (cost=0.00..14.10 rows=410 width=48) (actual time=0.001..0.002 rows=21.00 loops=1)
+                           Buffers: shared hit=1
+                     ->  Hash  (cost=16.45..16.45 rows=4 width=160) (actual time=0.009..0.009 rows=1.00 loops=1)
+                           Buckets: 1024  Batches: 1  Memory Usage: 9kB
+                           Buffers: shared hit=1
+                           ->  Seq Scan on mentorship_requests mr  (cost=0.00..16.45 rows=4 width=160) (actual time=0.005..0.005 rows=1.00 loops=1)
+                                 Filter: ((student_id = '00000000-0000-0000-0000-000000000011'::uuid) OR (alumnus_id = '00000000-0000-0000-0000-000000000011'::uuid))
+                                 Buffers: shared hit=1
+ Planning:
+   Buffers: shared hit=299
+ Planning Time: 0.502 ms
+ Execution Time: 0.076 ms
+(27 rows)
+

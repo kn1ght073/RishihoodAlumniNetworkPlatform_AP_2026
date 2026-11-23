@@ -1,0 +1,60 @@
+=== Q86 run 1 ===
+QUERY PLAN                                                                
+-----------------------------------------------------------------------------------------------------------------------------------------
+ Update on notifications  (cost=4.16..9.51 rows=0 width=0) (actual time=0.005..0.005 rows=0.00 loops=1)
+   Buffers: shared hit=2
+   ->  Bitmap Heap Scan on notifications  (cost=4.16..9.51 rows=1 width=14) (actual time=0.005..0.005 rows=0.00 loops=1)
+         Recheck Cond: (user_id = '00000000-0000-0000-0000-000000000011'::uuid)
+         Filter: (read_at IS NULL)
+         Heap Blocks: exact=1
+         Buffers: shared hit=2
+         ->  Bitmap Index Scan on notifications_inbox_idx  (cost=0.00..4.16 rows=2 width=0) (actual time=0.001..0.001 rows=5.00 loops=1)
+               Index Cond: (user_id = '00000000-0000-0000-0000-000000000011'::uuid)
+               Index Searches: 1
+               Buffers: shared hit=1
+ Planning:
+   Buffers: shared hit=93
+ Planning Time: 0.178 ms
+ Execution Time: 0.054 ms
+(15 rows)
+
+=== Q86 run 2 ===
+QUERY PLAN                                                                
+-----------------------------------------------------------------------------------------------------------------------------------------
+ Update on notifications  (cost=4.16..9.51 rows=0 width=0) (actual time=0.006..0.006 rows=0.00 loops=1)
+   Buffers: shared hit=2
+   ->  Bitmap Heap Scan on notifications  (cost=4.16..9.51 rows=1 width=14) (actual time=0.005..0.006 rows=0.00 loops=1)
+         Recheck Cond: (user_id = '00000000-0000-0000-0000-000000000011'::uuid)
+         Filter: (read_at IS NULL)
+         Heap Blocks: exact=1
+         Buffers: shared hit=2
+         ->  Bitmap Index Scan on notifications_inbox_idx  (cost=0.00..4.16 rows=2 width=0) (actual time=0.001..0.002 rows=5.00 loops=1)
+               Index Cond: (user_id = '00000000-0000-0000-0000-000000000011'::uuid)
+               Index Searches: 1
+               Buffers: shared hit=1
+ Planning:
+   Buffers: shared hit=93
+ Planning Time: 0.255 ms
+ Execution Time: 0.065 ms
+(15 rows)
+
+=== Q86 run 3 ===
+QUERY PLAN                                                                
+-----------------------------------------------------------------------------------------------------------------------------------------
+ Update on notifications  (cost=4.16..9.51 rows=0 width=0) (actual time=0.006..0.006 rows=0.00 loops=1)
+   Buffers: shared hit=2
+   ->  Bitmap Heap Scan on notifications  (cost=4.16..9.51 rows=1 width=14) (actual time=0.005..0.006 rows=0.00 loops=1)
+         Recheck Cond: (user_id = '00000000-0000-0000-0000-000000000011'::uuid)
+         Filter: (read_at IS NULL)
+         Heap Blocks: exact=1
+         Buffers: shared hit=2
+         ->  Bitmap Index Scan on notifications_inbox_idx  (cost=0.00..4.16 rows=2 width=0) (actual time=0.002..0.002 rows=5.00 loops=1)
+               Index Cond: (user_id = '00000000-0000-0000-0000-000000000011'::uuid)
+               Index Searches: 1
+               Buffers: shared hit=1
+ Planning:
+   Buffers: shared hit=93
+ Planning Time: 0.200 ms
+ Execution Time: 0.063 ms
+(15 rows)
+

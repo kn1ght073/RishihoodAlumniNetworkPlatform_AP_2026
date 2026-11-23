@@ -1,0 +1,42 @@
+=== Q56 run 1 ===
+QUERY PLAN                                                   
+----------------------------------------------------------------------------------------------------------------
+ Insert on mentorship_requests  (cost=0.00..0.02 rows=1 width=160) (actual time=0.130..0.130 rows=1.00 loops=1)
+   Buffers: shared hit=100
+   ->  Result  (cost=0.00..0.02 rows=1 width=160) (actual time=0.009..0.009 rows=1.00 loops=1)
+ Planning:
+   Buffers: shared hit=10
+ Planning Time: 0.038 ms
+ Trigger for constraint mentorship_requests_student_id_fkey: time=0.242 calls=1
+ Trigger for constraint mentorship_requests_alumnus_id_fkey: time=0.020 calls=1
+ Execution Time: 0.413 ms
+(9 rows)
+
+=== Q56 run 2 ===
+QUERY PLAN                                                   
+----------------------------------------------------------------------------------------------------------------
+ Insert on mentorship_requests  (cost=0.00..0.02 rows=1 width=160) (actual time=0.120..0.120 rows=1.00 loops=1)
+   Buffers: shared hit=100
+   ->  Result  (cost=0.00..0.02 rows=1 width=160) (actual time=0.008..0.008 rows=1.00 loops=1)
+ Planning:
+   Buffers: shared hit=10
+ Planning Time: 0.036 ms
+ Trigger for constraint mentorship_requests_student_id_fkey: time=0.245 calls=1
+ Trigger for constraint mentorship_requests_alumnus_id_fkey: time=0.019 calls=1
+ Execution Time: 0.404 ms
+(9 rows)
+
+=== Q56 run 3 ===
+QUERY PLAN                                                   
+----------------------------------------------------------------------------------------------------------------
+ Insert on mentorship_requests  (cost=0.00..0.02 rows=1 width=160) (actual time=0.312..0.313 rows=1.00 loops=1)
+   Buffers: shared hit=100
+   ->  Result  (cost=0.00..0.02 rows=1 width=160) (actual time=0.011..0.011 rows=1.00 loops=1)
+ Planning:
+   Buffers: shared hit=10
+ Planning Time: 0.060 ms
+ Trigger for constraint mentorship_requests_student_id_fkey: time=0.456 calls=1
+ Trigger for constraint mentorship_requests_alumnus_id_fkey: time=0.040 calls=1
+ Execution Time: 0.834 ms
+(9 rows)
+

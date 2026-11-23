@@ -1,0 +1,42 @@
+=== Q48 run 1 ===
+QUERY PLAN                                                   
+---------------------------------------------------------------------------------------------------------------
+ Insert on connection_requests  (cost=0.00..0.02 rows=1 width=96) (actual time=0.142..0.142 rows=1.00 loops=1)
+   Buffers: shared hit=114
+   ->  Result  (cost=0.00..0.02 rows=1 width=96) (actual time=0.010..0.010 rows=1.00 loops=1)
+ Planning:
+   Buffers: shared hit=10
+ Planning Time: 0.036 ms
+ Trigger for constraint connection_requests_sender_id_fkey: time=0.230 calls=1
+ Trigger for constraint connection_requests_recipient_id_fkey: time=0.019 calls=1
+ Execution Time: 0.410 ms
+(9 rows)
+
+=== Q48 run 2 ===
+QUERY PLAN                                                   
+---------------------------------------------------------------------------------------------------------------
+ Insert on connection_requests  (cost=0.00..0.02 rows=1 width=96) (actual time=0.185..0.185 rows=1.00 loops=1)
+   Buffers: shared hit=114
+   ->  Result  (cost=0.00..0.02 rows=1 width=96) (actual time=0.014..0.014 rows=1.00 loops=1)
+ Planning:
+   Buffers: shared hit=10
+ Planning Time: 0.050 ms
+ Trigger for constraint connection_requests_sender_id_fkey: time=0.300 calls=1
+ Trigger for constraint connection_requests_recipient_id_fkey: time=0.032 calls=1
+ Execution Time: 0.542 ms
+(9 rows)
+
+=== Q48 run 3 ===
+QUERY PLAN                                                   
+---------------------------------------------------------------------------------------------------------------
+ Insert on connection_requests  (cost=0.00..0.02 rows=1 width=96) (actual time=0.136..0.137 rows=1.00 loops=1)
+   Buffers: shared hit=114
+   ->  Result  (cost=0.00..0.02 rows=1 width=96) (actual time=0.009..0.009 rows=1.00 loops=1)
+ Planning:
+   Buffers: shared hit=10
+ Planning Time: 0.038 ms
+ Trigger for constraint connection_requests_sender_id_fkey: time=0.253 calls=1
+ Trigger for constraint connection_requests_recipient_id_fkey: time=0.021 calls=1
+ Execution Time: 0.430 ms
+(9 rows)
+

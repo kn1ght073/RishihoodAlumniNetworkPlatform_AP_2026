@@ -1,0 +1,42 @@
+=== Q11 run 1 ===
+QUERY PLAN                                                     
+--------------------------------------------------------------------------------------------------------------------
+ Insert on email_verification_tokens  (cost=0.00..0.02 rows=0 width=0) (actual time=0.082..0.082 rows=0.00 loops=1)
+   Buffers: shared hit=64
+   ->  Result  (cost=0.00..0.02 rows=1 width=72) (actual time=0.013..0.013 rows=1.00 loops=1)
+         Buffers: shared hit=12
+ Planning:
+   Buffers: shared hit=3
+ Planning Time: 0.026 ms
+ Trigger for constraint email_verification_tokens_user_id_fkey: time=0.222 calls=1
+ Execution Time: 0.319 ms
+(9 rows)
+
+=== Q11 run 2 ===
+QUERY PLAN                                                     
+--------------------------------------------------------------------------------------------------------------------
+ Insert on email_verification_tokens  (cost=0.00..0.02 rows=0 width=0) (actual time=0.077..0.077 rows=0.00 loops=1)
+   Buffers: shared hit=64
+   ->  Result  (cost=0.00..0.02 rows=1 width=72) (actual time=0.013..0.013 rows=1.00 loops=1)
+         Buffers: shared hit=12
+ Planning:
+   Buffers: shared hit=3
+ Planning Time: 0.024 ms
+ Trigger for constraint email_verification_tokens_user_id_fkey: time=0.230 calls=1
+ Execution Time: 0.322 ms
+(9 rows)
+
+=== Q11 run 3 ===
+QUERY PLAN                                                     
+--------------------------------------------------------------------------------------------------------------------
+ Insert on email_verification_tokens  (cost=0.00..0.02 rows=0 width=0) (actual time=0.096..0.096 rows=0.00 loops=1)
+   Buffers: shared hit=64
+   ->  Result  (cost=0.00..0.02 rows=1 width=72) (actual time=0.018..0.018 rows=1.00 loops=1)
+         Buffers: shared hit=12
+ Planning:
+   Buffers: shared hit=3
+ Planning Time: 0.031 ms
+ Trigger for constraint email_verification_tokens_user_id_fkey: time=0.278 calls=1
+ Execution Time: 0.394 ms
+(9 rows)
+

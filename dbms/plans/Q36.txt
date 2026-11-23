@@ -1,0 +1,96 @@
+=== Q36 run 1 ===
+QUERY PLAN                                                                                        
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Nested Loop Left Join  (cost=0.44..32.69 rows=1 width=275) (actual time=0.018..0.019 rows=1.00 loops=1)
+   Buffers: shared hit=8
+   ->  Nested Loop  (cost=0.29..16.34 rows=1 width=208) (actual time=0.007..0.007 rows=1.00 loops=1)
+         Buffers: shared hit=4
+         ->  Index Scan using users_pkey on users u  (cost=0.15..8.17 rows=1 width=48) (actual time=0.004..0.004 rows=1.00 loops=1)
+               Index Cond: (id = '00000000-0000-0000-0000-000000000002'::uuid)
+               Filter: (account_status = 'ACTIVE'::text)
+               Index Searches: 1
+               Buffers: shared hit=2
+         ->  Index Scan using profiles_pkey on profiles p  (cost=0.14..8.16 rows=1 width=176) (actual time=0.002..0.002 rows=1.00 loops=1)
+               Index Cond: (user_id = '00000000-0000-0000-0000-000000000002'::uuid)
+               Index Searches: 1
+               Buffers: shared hit=2
+   ->  Index Scan using university_memberships_pkey on university_memberships m  (cost=0.15..8.17 rows=1 width=82) (actual time=0.003..0.003 rows=1.00 loops=1)
+         Index Cond: (user_id = '00000000-0000-0000-0000-000000000002'::uuid)
+         Index Searches: 1
+         Buffers: shared hit=2
+   SubPlan 1
+     ->  Index Only Scan using connections_pkey on connections c  (cost=0.16..8.18 rows=1 width=0) (actual time=0.007..0.007 rows=1.00 loops=1)
+           Index Cond: ((member_low_id = LEAST('00000000-0000-0000-0000-000000000011'::uuid, u.id)) AND (member_high_id = GREATEST('00000000-0000-0000-0000-000000000011'::uuid, u.id)))
+           Heap Fetches: 1
+           Index Searches: 1
+           Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=325
+ Planning Time: 0.536 ms
+ Execution Time: 0.049 ms
+(27 rows)
+
+=== Q36 run 2 ===
+QUERY PLAN                                                                                        
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Nested Loop Left Join  (cost=0.44..32.69 rows=1 width=275) (actual time=0.020..0.021 rows=1.00 loops=1)
+   Buffers: shared hit=8
+   ->  Nested Loop  (cost=0.29..16.34 rows=1 width=208) (actual time=0.008..0.008 rows=1.00 loops=1)
+         Buffers: shared hit=4
+         ->  Index Scan using users_pkey on users u  (cost=0.15..8.17 rows=1 width=48) (actual time=0.004..0.005 rows=1.00 loops=1)
+               Index Cond: (id = '00000000-0000-0000-0000-000000000002'::uuid)
+               Filter: (account_status = 'ACTIVE'::text)
+               Index Searches: 1
+               Buffers: shared hit=2
+         ->  Index Scan using profiles_pkey on profiles p  (cost=0.14..8.16 rows=1 width=176) (actual time=0.002..0.002 rows=1.00 loops=1)
+               Index Cond: (user_id = '00000000-0000-0000-0000-000000000002'::uuid)
+               Index Searches: 1
+               Buffers: shared hit=2
+   ->  Index Scan using university_memberships_pkey on university_memberships m  (cost=0.15..8.17 rows=1 width=82) (actual time=0.003..0.003 rows=1.00 loops=1)
+         Index Cond: (user_id = '00000000-0000-0000-0000-000000000002'::uuid)
+         Index Searches: 1
+         Buffers: shared hit=2
+   SubPlan 1
+     ->  Index Only Scan using connections_pkey on connections c  (cost=0.16..8.18 rows=1 width=0) (actual time=0.008..0.008 rows=1.00 loops=1)
+           Index Cond: ((member_low_id = LEAST('00000000-0000-0000-0000-000000000011'::uuid, u.id)) AND (member_high_id = GREATEST('00000000-0000-0000-0000-000000000011'::uuid, u.id)))
+           Heap Fetches: 1
+           Index Searches: 1
+           Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=325
+ Planning Time: 0.589 ms
+ Execution Time: 0.053 ms
+(27 rows)
+
+=== Q36 run 3 ===
+QUERY PLAN                                                                                        
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Nested Loop Left Join  (cost=0.44..32.69 rows=1 width=275) (actual time=0.017..0.018 rows=1.00 loops=1)
+   Buffers: shared hit=8
+   ->  Nested Loop  (cost=0.29..16.34 rows=1 width=208) (actual time=0.007..0.007 rows=1.00 loops=1)
+         Buffers: shared hit=4
+         ->  Index Scan using users_pkey on users u  (cost=0.15..8.17 rows=1 width=48) (actual time=0.004..0.004 rows=1.00 loops=1)
+               Index Cond: (id = '00000000-0000-0000-0000-000000000002'::uuid)
+               Filter: (account_status = 'ACTIVE'::text)
+               Index Searches: 1
+               Buffers: shared hit=2
+         ->  Index Scan using profiles_pkey on profiles p  (cost=0.14..8.16 rows=1 width=176) (actual time=0.002..0.002 rows=1.00 loops=1)
+               Index Cond: (user_id = '00000000-0000-0000-0000-000000000002'::uuid)
+               Index Searches: 1
+               Buffers: shared hit=2
+   ->  Index Scan using university_memberships_pkey on university_memberships m  (cost=0.15..8.17 rows=1 width=82) (actual time=0.003..0.003 rows=1.00 loops=1)
+         Index Cond: (user_id = '00000000-0000-0000-0000-000000000002'::uuid)
+         Index Searches: 1
+         Buffers: shared hit=2
+   SubPlan 1
+     ->  Index Only Scan using connections_pkey on connections c  (cost=0.16..8.18 rows=1 width=0) (actual time=0.006..0.006 rows=1.00 loops=1)
+           Index Cond: ((member_low_id = LEAST('00000000-0000-0000-0000-000000000011'::uuid, u.id)) AND (member_high_id = GREATEST('00000000-0000-0000-0000-000000000011'::uuid, u.id)))
+           Heap Fetches: 1
+           Index Searches: 1
+           Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=325
+ Planning Time: 0.433 ms
+ Execution Time: 0.045 ms
+(27 rows)
+

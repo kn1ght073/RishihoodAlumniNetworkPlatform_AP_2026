@@ -1,0 +1,33 @@
+=== Q08 run 1 ===
+QUERY PLAN                                             
+---------------------------------------------------------------------------------------------------
+ Insert on profiles  (cost=0.00..0.01 rows=0 width=0) (actual time=0.079..0.079 rows=0.00 loops=1)
+   Buffers: shared hit=18
+   ->  Result  (cost=0.00..0.01 rows=1 width=320) (actual time=0.001..0.001 rows=1.00 loops=1)
+ Planning Time: 0.003 ms
+ Trigger for constraint profiles_user_id_fkey: time=0.174 calls=1
+ Execution Time: 0.258 ms
+(6 rows)
+
+=== Q08 run 2 ===
+QUERY PLAN                                             
+---------------------------------------------------------------------------------------------------
+ Insert on profiles  (cost=0.00..0.01 rows=0 width=0) (actual time=0.077..0.077 rows=0.00 loops=1)
+   Buffers: shared hit=18
+   ->  Result  (cost=0.00..0.01 rows=1 width=320) (actual time=0.001..0.001 rows=1.00 loops=1)
+ Planning Time: 0.005 ms
+ Trigger for constraint profiles_user_id_fkey: time=0.211 calls=1
+ Execution Time: 0.293 ms
+(6 rows)
+
+=== Q08 run 3 ===
+QUERY PLAN                                             
+---------------------------------------------------------------------------------------------------
+ Insert on profiles  (cost=0.00..0.01 rows=0 width=0) (actual time=0.062..0.062 rows=0.00 loops=1)
+   Buffers: shared hit=18
+   ->  Result  (cost=0.00..0.01 rows=1 width=320) (actual time=0.001..0.001 rows=1.00 loops=1)
+ Planning Time: 0.003 ms
+ Trigger for constraint profiles_user_id_fkey: time=0.164 calls=1
+ Execution Time: 0.230 ms
+(6 rows)
+

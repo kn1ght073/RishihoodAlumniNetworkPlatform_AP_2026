@@ -1,0 +1,75 @@
+=== Q67 run 1 ===
+QUERY PLAN                                                                        
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+ Nested Loop  (cost=0.44..24.57 rows=1 width=304) (actual time=0.008..0.008 rows=1.00 loops=1)
+   Buffers: shared hit=6
+   ->  Nested Loop  (cost=0.29..16.37 rows=1 width=272) (actual time=0.005..0.006 rows=1.00 loops=1)
+         Buffers: shared hit=4
+         ->  Index Scan using career_requests_pkey on career_requests cr  (cost=0.15..8.17 rows=1 width=240) (actual time=0.002..0.003 rows=1.00 loops=1)
+               Index Cond: (id = '40000000-0000-0000-0000-000000000001'::uuid)
+               Index Searches: 1
+               Buffers: shared hit=2
+         ->  Index Scan using users_pkey on users requester  (cost=0.15..8.17 rows=1 width=48) (actual time=0.002..0.002 rows=1.00 loops=1)
+               Index Cond: (id = cr.requester_id)
+               Index Searches: 1
+               Buffers: shared hit=2
+   ->  Index Scan using users_pkey on users recipient  (cost=0.15..8.17 rows=1 width=48) (actual time=0.002..0.002 rows=1.00 loops=1)
+         Index Cond: (id = cr.recipient_id)
+         Index Searches: 1
+         Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=336
+ Planning Time: 0.428 ms
+ Execution Time: 0.029 ms
+(20 rows)
+
+=== Q67 run 2 ===
+QUERY PLAN                                                                        
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+ Nested Loop  (cost=0.44..24.57 rows=1 width=304) (actual time=0.007..0.008 rows=1.00 loops=1)
+   Buffers: shared hit=6
+   ->  Nested Loop  (cost=0.29..16.37 rows=1 width=272) (actual time=0.005..0.006 rows=1.00 loops=1)
+         Buffers: shared hit=4
+         ->  Index Scan using career_requests_pkey on career_requests cr  (cost=0.15..8.17 rows=1 width=240) (actual time=0.003..0.003 rows=1.00 loops=1)
+               Index Cond: (id = '40000000-0000-0000-0000-000000000001'::uuid)
+               Index Searches: 1
+               Buffers: shared hit=2
+         ->  Index Scan using users_pkey on users requester  (cost=0.15..8.17 rows=1 width=48) (actual time=0.002..0.002 rows=1.00 loops=1)
+               Index Cond: (id = cr.requester_id)
+               Index Searches: 1
+               Buffers: shared hit=2
+   ->  Index Scan using users_pkey on users recipient  (cost=0.15..8.17 rows=1 width=48) (actual time=0.001..0.001 rows=1.00 loops=1)
+         Index Cond: (id = cr.recipient_id)
+         Index Searches: 1
+         Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=336
+ Planning Time: 0.427 ms
+ Execution Time: 0.030 ms
+(20 rows)
+
+=== Q67 run 3 ===
+QUERY PLAN                                                                        
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+ Nested Loop  (cost=0.44..24.57 rows=1 width=304) (actual time=0.008..0.008 rows=1.00 loops=1)
+   Buffers: shared hit=6
+   ->  Nested Loop  (cost=0.29..16.37 rows=1 width=272) (actual time=0.006..0.006 rows=1.00 loops=1)
+         Buffers: shared hit=4
+         ->  Index Scan using career_requests_pkey on career_requests cr  (cost=0.15..8.17 rows=1 width=240) (actual time=0.003..0.003 rows=1.00 loops=1)
+               Index Cond: (id = '40000000-0000-0000-0000-000000000001'::uuid)
+               Index Searches: 1
+               Buffers: shared hit=2
+         ->  Index Scan using users_pkey on users requester  (cost=0.15..8.17 rows=1 width=48) (actual time=0.002..0.002 rows=1.00 loops=1)
+               Index Cond: (id = cr.requester_id)
+               Index Searches: 1
+               Buffers: shared hit=2
+   ->  Index Scan using users_pkey on users recipient  (cost=0.15..8.17 rows=1 width=48) (actual time=0.002..0.002 rows=1.00 loops=1)
+         Index Cond: (id = cr.recipient_id)
+         Index Searches: 1
+         Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=336
+ Planning Time: 0.436 ms
+ Execution Time: 0.030 ms
+(20 rows)
+

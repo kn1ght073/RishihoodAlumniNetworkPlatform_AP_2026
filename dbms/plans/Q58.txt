@@ -1,0 +1,45 @@
+=== Q58 run 1 ===
+QUERY PLAN                                                                        
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+ LockRows  (cost=0.15..8.18 rows=1 width=166) (actual time=0.011..0.014 rows=1.00 loops=1)
+   Buffers: shared hit=4
+   ->  Index Scan using mentorship_requests_pkey on mentorship_requests  (cost=0.15..8.17 rows=1 width=166) (actual time=0.003..0.006 rows=1.00 loops=1)
+         Index Cond: (id = '50000000-0000-0000-0000-000000000001'::uuid)
+         Index Searches: 1
+         Buffers: shared hit=3
+ Planning:
+   Buffers: shared hit=126
+ Planning Time: 0.191 ms
+ Execution Time: 0.029 ms
+(10 rows)
+
+=== Q58 run 2 ===
+QUERY PLAN                                                                        
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+ LockRows  (cost=0.15..8.18 rows=1 width=166) (actual time=0.012..0.012 rows=1.00 loops=1)
+   Buffers: shared hit=3
+   ->  Index Scan using mentorship_requests_pkey on mentorship_requests  (cost=0.15..8.17 rows=1 width=166) (actual time=0.003..0.003 rows=1.00 loops=1)
+         Index Cond: (id = '50000000-0000-0000-0000-000000000001'::uuid)
+         Index Searches: 1
+         Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=126
+ Planning Time: 0.199 ms
+ Execution Time: 0.028 ms
+(10 rows)
+
+=== Q58 run 3 ===
+QUERY PLAN                                                                        
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+ LockRows  (cost=0.15..8.18 rows=1 width=166) (actual time=0.012..0.013 rows=1.00 loops=1)
+   Buffers: shared hit=3
+   ->  Index Scan using mentorship_requests_pkey on mentorship_requests  (cost=0.15..8.17 rows=1 width=166) (actual time=0.003..0.003 rows=1.00 loops=1)
+         Index Cond: (id = '50000000-0000-0000-0000-000000000001'::uuid)
+         Index Searches: 1
+         Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=126
+ Planning Time: 0.203 ms
+ Execution Time: 0.029 ms
+(10 rows)
+

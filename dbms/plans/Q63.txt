@@ -1,0 +1,45 @@
+=== Q63 run 1 ===
+QUERY PLAN                                                 
+------------------------------------------------------------------------------------------------------------
+ Insert on career_requests  (cost=0.00..0.02 rows=1 width=240) (actual time=0.142..0.142 rows=1.00 loops=1)
+   Buffers: shared hit=120
+   ->  Result  (cost=0.00..0.02 rows=1 width=240) (actual time=0.010..0.010 rows=1.00 loops=1)
+ Planning:
+   Buffers: shared hit=10
+ Planning Time: 0.039 ms
+ Trigger for constraint career_requests_requester_id_fkey: time=0.258 calls=1
+ Trigger for constraint career_requests_recipient_id_fkey: time=0.021 calls=1
+ Trigger for constraint career_requests_company_id_fkey: time=0.111 calls=1
+ Execution Time: 0.554 ms
+(10 rows)
+
+=== Q63 run 2 ===
+QUERY PLAN                                                 
+------------------------------------------------------------------------------------------------------------
+ Insert on career_requests  (cost=0.00..0.02 rows=1 width=240) (actual time=0.134..0.134 rows=1.00 loops=1)
+   Buffers: shared hit=120
+   ->  Result  (cost=0.00..0.02 rows=1 width=240) (actual time=0.009..0.009 rows=1.00 loops=1)
+ Planning:
+   Buffers: shared hit=10
+ Planning Time: 0.037 ms
+ Trigger for constraint career_requests_requester_id_fkey: time=0.218 calls=1
+ Trigger for constraint career_requests_recipient_id_fkey: time=0.018 calls=1
+ Trigger for constraint career_requests_company_id_fkey: time=0.105 calls=1
+ Execution Time: 0.494 ms
+(10 rows)
+
+=== Q63 run 3 ===
+QUERY PLAN                                                 
+------------------------------------------------------------------------------------------------------------
+ Insert on career_requests  (cost=0.00..0.02 rows=1 width=240) (actual time=0.137..0.138 rows=1.00 loops=1)
+   Buffers: shared hit=120
+   ->  Result  (cost=0.00..0.02 rows=1 width=240) (actual time=0.009..0.009 rows=1.00 loops=1)
+ Planning:
+   Buffers: shared hit=10
+ Planning Time: 0.039 ms
+ Trigger for constraint career_requests_requester_id_fkey: time=0.243 calls=1
+ Trigger for constraint career_requests_recipient_id_fkey: time=0.019 calls=1
+ Trigger for constraint career_requests_company_id_fkey: time=0.105 calls=1
+ Execution Time: 0.526 ms
+(10 rows)
+

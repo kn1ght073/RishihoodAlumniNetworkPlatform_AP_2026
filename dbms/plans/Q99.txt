@@ -1,0 +1,48 @@
+=== Q99 run 1 ===
+QUERY PLAN                                                                          
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Update on university_memberships  (cost=0.15..8.17 rows=0 width=0) (actual time=0.086..0.086 rows=0.00 loops=1)
+   Buffers: shared hit=34
+   ->  Index Scan using university_memberships_pkey on university_memberships  (cost=0.15..8.17 rows=1 width=70) (actual time=0.006..0.006 rows=1.00 loops=1)
+         Index Cond: (user_id = '00000000-0000-0000-0000-000000000021'::uuid)
+         Index Searches: 1
+         Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=80
+ Planning Time: 0.142 ms
+ Trigger for constraint university_memberships_verified_by_fkey: time=0.162 calls=1
+ Execution Time: 0.296 ms
+(11 rows)
+
+=== Q99 run 2 ===
+QUERY PLAN                                                                          
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Update on university_memberships  (cost=0.15..8.17 rows=0 width=0) (actual time=0.108..0.108 rows=0.00 loops=1)
+   Buffers: shared hit=34
+   ->  Index Scan using university_memberships_pkey on university_memberships  (cost=0.15..8.17 rows=1 width=70) (actual time=0.009..0.009 rows=1.00 loops=1)
+         Index Cond: (user_id = '00000000-0000-0000-0000-000000000021'::uuid)
+         Index Searches: 1
+         Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=80
+ Planning Time: 0.159 ms
+ Trigger for constraint university_memberships_verified_by_fkey: time=0.184 calls=1
+ Execution Time: 0.347 ms
+(11 rows)
+
+=== Q99 run 3 ===
+QUERY PLAN                                                                          
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Update on university_memberships  (cost=0.15..8.17 rows=0 width=0) (actual time=0.102..0.103 rows=0.00 loops=1)
+   Buffers: shared hit=34
+   ->  Index Scan using university_memberships_pkey on university_memberships  (cost=0.15..8.17 rows=1 width=70) (actual time=0.011..0.011 rows=1.00 loops=1)
+         Index Cond: (user_id = '00000000-0000-0000-0000-000000000021'::uuid)
+         Index Searches: 1
+         Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=80
+ Planning Time: 0.182 ms
+ Trigger for constraint university_memberships_verified_by_fkey: time=0.176 calls=1
+ Execution Time: 0.335 ms
+(11 rows)
+

@@ -1,0 +1,42 @@
+=== Q47 run 1 ===
+QUERY PLAN                                                                     
+----------------------------------------------------------------------------------------------------------------------------------------------------
+ Index Only Scan using connections_pkey on connections  (cost=0.15..8.17 rows=1 width=4) (actual time=0.006..0.006 rows=1.00 loops=1)
+   Index Cond: ((member_low_id = '00000000-0000-0000-0000-000000000002'::uuid) AND (member_high_id = '00000000-0000-0000-0000-000000000011'::uuid))
+   Heap Fetches: 1
+   Index Searches: 1
+   Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=124
+ Planning Time: 0.197 ms
+ Execution Time: 0.015 ms
+(9 rows)
+
+=== Q47 run 2 ===
+QUERY PLAN                                                                     
+----------------------------------------------------------------------------------------------------------------------------------------------------
+ Index Only Scan using connections_pkey on connections  (cost=0.15..8.17 rows=1 width=4) (actual time=0.005..0.006 rows=1.00 loops=1)
+   Index Cond: ((member_low_id = '00000000-0000-0000-0000-000000000002'::uuid) AND (member_high_id = '00000000-0000-0000-0000-000000000011'::uuid))
+   Heap Fetches: 1
+   Index Searches: 1
+   Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=124
+ Planning Time: 0.176 ms
+ Execution Time: 0.013 ms
+(9 rows)
+
+=== Q47 run 3 ===
+QUERY PLAN                                                                     
+----------------------------------------------------------------------------------------------------------------------------------------------------
+ Index Only Scan using connections_pkey on connections  (cost=0.15..8.17 rows=1 width=4) (actual time=0.006..0.006 rows=1.00 loops=1)
+   Index Cond: ((member_low_id = '00000000-0000-0000-0000-000000000002'::uuid) AND (member_high_id = '00000000-0000-0000-0000-000000000011'::uuid))
+   Heap Fetches: 1
+   Index Searches: 1
+   Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=124
+ Planning Time: 0.234 ms
+ Execution Time: 0.017 ms
+(9 rows)
+

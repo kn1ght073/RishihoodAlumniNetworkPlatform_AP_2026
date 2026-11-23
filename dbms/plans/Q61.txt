@@ -1,0 +1,78 @@
+=== Q61 run 1 ===
+QUERY PLAN                                                                              
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Nested Loop  (cost=0.44..24.52 rows=1 width=65) (actual time=0.015..0.016 rows=1.00 loops=1)
+   Buffers: shared hit=6
+   ->  Nested Loop  (cost=0.30..16.34 rows=1 width=81) (actual time=0.010..0.010 rows=1.00 loops=1)
+         Buffers: shared hit=4
+         ->  Index Scan using university_memberships_pkey on university_memberships m  (cost=0.15..8.17 rows=1 width=80) (actual time=0.004..0.004 rows=1.00 loops=1)
+               Index Cond: (user_id = '00000000-0000-0000-0000-000000000002'::uuid)
+               Index Searches: 1
+               Buffers: shared hit=2
+         ->  Index Scan using career_preferences_pkey on career_preferences cp  (cost=0.15..8.17 rows=1 width=17) (actual time=0.005..0.005 rows=1.00 loops=1)
+               Index Cond: (user_id = '00000000-0000-0000-0000-000000000002'::uuid)
+               Index Searches: 1
+               Buffers: shared hit=2
+   ->  Index Scan using users_pkey on users u  (cost=0.15..8.17 rows=1 width=16) (actual time=0.005..0.005 rows=1.00 loops=1)
+         Index Cond: (id = '00000000-0000-0000-0000-000000000002'::uuid)
+         Filter: (account_status = 'ACTIVE'::text)
+         Index Searches: 1
+         Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=198
+ Planning Time: 0.350 ms
+ Execution Time: 0.041 ms
+(21 rows)
+
+=== Q61 run 2 ===
+QUERY PLAN                                                                              
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Nested Loop  (cost=0.44..24.52 rows=1 width=65) (actual time=0.012..0.013 rows=1.00 loops=1)
+   Buffers: shared hit=6
+   ->  Nested Loop  (cost=0.30..16.34 rows=1 width=81) (actual time=0.008..0.009 rows=1.00 loops=1)
+         Buffers: shared hit=4
+         ->  Index Scan using university_memberships_pkey on university_memberships m  (cost=0.15..8.17 rows=1 width=80) (actual time=0.003..0.004 rows=1.00 loops=1)
+               Index Cond: (user_id = '00000000-0000-0000-0000-000000000002'::uuid)
+               Index Searches: 1
+               Buffers: shared hit=2
+         ->  Index Scan using career_preferences_pkey on career_preferences cp  (cost=0.15..8.17 rows=1 width=17) (actual time=0.004..0.004 rows=1.00 loops=1)
+               Index Cond: (user_id = '00000000-0000-0000-0000-000000000002'::uuid)
+               Index Searches: 1
+               Buffers: shared hit=2
+   ->  Index Scan using users_pkey on users u  (cost=0.15..8.17 rows=1 width=16) (actual time=0.004..0.004 rows=1.00 loops=1)
+         Index Cond: (id = '00000000-0000-0000-0000-000000000002'::uuid)
+         Filter: (account_status = 'ACTIVE'::text)
+         Index Searches: 1
+         Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=198
+ Planning Time: 0.306 ms
+ Execution Time: 0.033 ms
+(21 rows)
+
+=== Q61 run 3 ===
+QUERY PLAN                                                                              
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Nested Loop  (cost=0.44..24.52 rows=1 width=65) (actual time=0.014..0.014 rows=1.00 loops=1)
+   Buffers: shared hit=6
+   ->  Nested Loop  (cost=0.30..16.34 rows=1 width=81) (actual time=0.009..0.010 rows=1.00 loops=1)
+         Buffers: shared hit=4
+         ->  Index Scan using university_memberships_pkey on university_memberships m  (cost=0.15..8.17 rows=1 width=80) (actual time=0.004..0.004 rows=1.00 loops=1)
+               Index Cond: (user_id = '00000000-0000-0000-0000-000000000002'::uuid)
+               Index Searches: 1
+               Buffers: shared hit=2
+         ->  Index Scan using career_preferences_pkey on career_preferences cp  (cost=0.15..8.17 rows=1 width=17) (actual time=0.005..0.005 rows=1.00 loops=1)
+               Index Cond: (user_id = '00000000-0000-0000-0000-000000000002'::uuid)
+               Index Searches: 1
+               Buffers: shared hit=2
+   ->  Index Scan using users_pkey on users u  (cost=0.15..8.17 rows=1 width=16) (actual time=0.004..0.004 rows=1.00 loops=1)
+         Index Cond: (id = '00000000-0000-0000-0000-000000000002'::uuid)
+         Filter: (account_status = 'ACTIVE'::text)
+         Index Searches: 1
+         Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=198
+ Planning Time: 0.403 ms
+ Execution Time: 0.042 ms
+(21 rows)
+

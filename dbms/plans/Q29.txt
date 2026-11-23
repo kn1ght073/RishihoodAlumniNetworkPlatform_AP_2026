@@ -1,0 +1,45 @@
+=== Q29 run 1 ===
+QUERY PLAN                                                            
+----------------------------------------------------------------------------------------------------------------------------------
+ Update on profiles  (cost=0.14..8.16 rows=0 width=0) (actual time=0.093..0.093 rows=0.00 loops=1)
+   Buffers: shared hit=21
+   ->  Index Scan using profiles_pkey on profiles  (cost=0.14..8.16 rows=1 width=46) (actual time=0.005..0.005 rows=1.00 loops=1)
+         Index Cond: (user_id = '00000000-0000-0000-0000-000000000011'::uuid)
+         Index Searches: 1
+         Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=81
+ Planning Time: 0.139 ms
+ Execution Time: 0.137 ms
+(10 rows)
+
+=== Q29 run 2 ===
+QUERY PLAN                                                            
+----------------------------------------------------------------------------------------------------------------------------------
+ Update on profiles  (cost=0.14..8.16 rows=0 width=0) (actual time=0.098..0.098 rows=0.00 loops=1)
+   Buffers: shared hit=24
+   ->  Index Scan using profiles_pkey on profiles  (cost=0.14..8.16 rows=1 width=46) (actual time=0.008..0.011 rows=1.00 loops=1)
+         Index Cond: (user_id = '00000000-0000-0000-0000-000000000011'::uuid)
+         Index Searches: 1
+         Buffers: shared hit=4
+ Planning:
+   Buffers: shared hit=81
+ Planning Time: 0.155 ms
+ Execution Time: 0.145 ms
+(10 rows)
+
+=== Q29 run 3 ===
+QUERY PLAN                                                            
+----------------------------------------------------------------------------------------------------------------------------------
+ Update on profiles  (cost=0.14..8.16 rows=0 width=0) (actual time=0.096..0.096 rows=0.00 loops=1)
+   Buffers: shared hit=24
+   ->  Index Scan using profiles_pkey on profiles  (cost=0.14..8.16 rows=1 width=46) (actual time=0.008..0.010 rows=1.00 loops=1)
+         Index Cond: (user_id = '00000000-0000-0000-0000-000000000011'::uuid)
+         Index Searches: 1
+         Buffers: shared hit=4
+ Planning:
+   Buffers: shared hit=81
+ Planning Time: 0.144 ms
+ Execution Time: 0.140 ms
+(10 rows)
+

@@ -1,0 +1,261 @@
+=== Q42 run 1 ===
+QUERY PLAN                                                                                                                                           
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Sort  (cost=82.77..82.77 rows=2 width=245) (actual time=0.119..0.120 rows=1.00 loops=1)
+   Sort Key: u.full_name
+   Sort Method: quicksort  Memory: 25kB
+   Buffers: shared hit=83
+   ->  Nested Loop  (cost=15.20..82.76 rows=2 width=245) (actual time=0.096..0.113 rows=1.00 loops=1)
+         Join Filter: (u.id = m.user_id)
+         Buffers: shared hit=80
+         ->  Nested Loop  (cost=15.06..46.57 rows=2 width=227) (actual time=0.031..0.048 rows=1.00 loops=1)
+               Buffers: shared hit=71
+               ->  Index Scan using companies_pkey on companies c  (cost=0.15..8.17 rows=1 width=16) (actual time=0.003..0.003 rows=1.00 loops=1)
+                     Index Cond: (id = '10000000-0000-0000-0000-000000000001'::uuid)
+                     Filter: approved
+                     Index Searches: 1
+                     Buffers: shared hit=2
+               ->  Nested Loop  (cost=14.91..38.38 rows=2 width=243) (actual time=0.028..0.044 rows=1.00 loops=1)
+                     Join Filter: (u.id = e.user_id)
+                     Buffers: shared hit=69
+                     ->  Nested Loop  (cost=14.76..37.92 rows=2 width=179) (actual time=0.022..0.033 rows=21.00 loops=1)
+                           Join Filter: (u.id = cp.user_id)
+                           Buffers: shared hit=45
+                           ->  Hash Join  (cost=14.61..29.74 rows=1 width=128) (actual time=0.017..0.021 rows=21.00 loops=1)
+                                 Hash Cond: (u.id = p.user_id)
+                                 Join Filter: (((p.profile_visibility = 'MEMBERS'::text) OR ((p.profile_visibility = 'CONNECTIONS'::text) AND EXISTS(SubPlan 2))) AND ((p.employment_visibility = 'MEMBERS'::text) OR ((p.employment_visibility = 'CONNECTIONS'::text) AND EXISTS(SubPlan 4))))
+                                 Buffers: shared hit=3
+                                 ->  Seq Scan on users u  (cost=0.00..15.12 rows=2 width=48) (actual time=0.004..0.005 rows=21.00 loops=1)
+                                       Filter: (account_status = 'ACTIVE'::text)
+                                       Buffers: shared hit=1
+                                 ->  Hash  (cost=14.60..14.60 rows=1 width=144) (actual time=0.009..0.009 rows=21.00 loops=1)
+                                       Buckets: 1024  Batches: 1  Memory Usage: 12kB
+                                       Buffers: shared hit=2
+                                       ->  Seq Scan on profiles p  (cost=0.00..14.60 rows=1 width=144) (actual time=0.003..0.006 rows=21.00 loops=1)
+                                             Filter: (((profile_visibility = 'MEMBERS'::text) OR (profile_visibility = 'CONNECTIONS'::text)) AND ((employment_visibility = 'MEMBERS'::text) OR (employment_visibility = 'CONNECTIONS'::text)))
+                                             Buffers: shared hit=2
+                                 SubPlan 2
+                                   ->  Index Only Scan using connections_pkey on connections cn  (cost=0.16..8.18 rows=1 width=0) (never executed)
+                                         Index Cond: ((member_low_id = LEAST('00000000-0000-0000-0000-000000000011'::uuid, u.id)) AND (member_high_id = GREATEST('00000000-0000-0000-0000-000000000011'::uuid, u.id)))
+                                         Heap Fetches: 0
+                                         Index Searches: 0
+                                 SubPlan 4
+                                   ->  Index Only Scan using connections_pkey on connections cn_1  (cost=0.16..8.18 rows=1 width=0) (never executed)
+                                         Index Cond: ((member_low_id = LEAST('00000000-0000-0000-0000-000000000011'::uuid, u.id)) AND (member_high_id = GREATEST('00000000-0000-0000-0000-000000000011'::uuid, u.id)))
+                                         Heap Fetches: 0
+                                         Index Searches: 0
+                           ->  Index Scan using career_preferences_pkey on career_preferences cp  (cost=0.15..8.17 rows=1 width=51) (actual time=0.000..0.000 rows=1.00 loops=21)
+                                 Index Cond: (user_id = p.user_id)
+                                 Index Searches: 21
+                                 Buffers: shared hit=42
+                     ->  Index Scan using employment_company_idx on employment_history e  (cost=0.14..0.22 rows=1 width=64) (actual time=0.000..0.000 rows=0.05 loops=21)
+                           Index Cond: ((company_id = '10000000-0000-0000-0000-000000000001'::uuid) AND (user_id = cp.user_id))
+                           Index Searches: 21
+                           Buffers: shared hit=24
+         ->  Index Scan using university_memberships_pkey on university_memberships m  (cost=0.15..0.22 rows=1 width=50) (actual time=0.037..0.037 rows=1.00 loops=1)
+               Index Cond: (user_id = cp.user_id)
+               Filter: ((membership_status = 'ALUMNI'::text) AND (verification_status = 'VERIFIED'::text))
+               Index Searches: 1
+               Buffers: shared hit=2
+         SubPlan 1
+           ->  Aggregate  (cost=17.85..17.86 rows=1 width=32) (actual time=0.026..0.026 rows=1.00 loops=1)
+                 Buffers: shared hit=7
+                 ->  Sort  (cost=17.83..17.84 rows=3 width=32) (actual time=0.022..0.022 rows=3.00 loops=1)
+                       Sort Key: s.name
+                       Sort Method: quicksort  Memory: 25kB
+                       Buffers: shared hit=7
+                       ->  Nested Loop  (cost=0.16..17.81 rows=3 width=32) (actual time=0.008..0.011 rows=3.00 loops=1)
+                             Buffers: shared hit=7
+                             ->  Seq Scan on user_skills us  (cost=0.00..1.79 rows=3 width=8) (actual time=0.002..0.004 rows=3.00 loops=1)
+                                   Filter: (user_id = u.id)
+                                   Rows Removed by Filter: 60
+                                   Buffers: shared hit=1
+                             ->  Memoize  (cost=0.16..6.85 rows=1 width=40) (actual time=0.002..0.002 rows=1.00 loops=3)
+                                   Cache Key: us.skill_id
+                                   Cache Mode: logical
+                                   Hits: 0  Misses: 3  Evictions: 0  Overflows: 0  Memory Usage: 1kB
+                                   Buffers: shared hit=6
+                                   ->  Index Scan using skills_pkey on skills s  (cost=0.15..6.84 rows=1 width=40) (actual time=0.002..0.002 rows=1.00 loops=3)
+                                         Index Cond: (id = us.skill_id)
+                                         Index Searches: 3
+                                         Buffers: shared hit=6
+ Planning:
+   Buffers: shared hit=663
+ Planning Time: 1.218 ms
+ Execution Time: 0.179 ms
+(82 rows)
+
+=== Q42 run 2 ===
+QUERY PLAN                                                                                                                                           
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Sort  (cost=82.77..82.77 rows=2 width=245) (actual time=0.086..0.087 rows=1.00 loops=1)
+   Sort Key: u.full_name
+   Sort Method: quicksort  Memory: 25kB
+   Buffers: shared hit=81
+   ->  Nested Loop  (cost=15.20..82.76 rows=2 width=245) (actual time=0.065..0.080 rows=1.00 loops=1)
+         Join Filter: (u.id = m.user_id)
+         Buffers: shared hit=78
+         ->  Nested Loop  (cost=15.06..46.57 rows=2 width=227) (actual time=0.033..0.048 rows=1.00 loops=1)
+               Buffers: shared hit=69
+               ->  Index Scan using companies_pkey on companies c  (cost=0.15..8.17 rows=1 width=16) (actual time=0.003..0.003 rows=1.00 loops=1)
+                     Index Cond: (id = '10000000-0000-0000-0000-000000000001'::uuid)
+                     Filter: approved
+                     Index Searches: 1
+                     Buffers: shared hit=2
+               ->  Nested Loop  (cost=14.91..38.38 rows=2 width=243) (actual time=0.029..0.044 rows=1.00 loops=1)
+                     Join Filter: (u.id = e.user_id)
+                     Buffers: shared hit=67
+                     ->  Nested Loop  (cost=14.76..37.92 rows=2 width=179) (actual time=0.024..0.035 rows=21.00 loops=1)
+                           Join Filter: (u.id = cp.user_id)
+                           Buffers: shared hit=45
+                           ->  Hash Join  (cost=14.61..29.74 rows=1 width=128) (actual time=0.019..0.023 rows=21.00 loops=1)
+                                 Hash Cond: (u.id = p.user_id)
+                                 Join Filter: (((p.profile_visibility = 'MEMBERS'::text) OR ((p.profile_visibility = 'CONNECTIONS'::text) AND EXISTS(SubPlan 2))) AND ((p.employment_visibility = 'MEMBERS'::text) OR ((p.employment_visibility = 'CONNECTIONS'::text) AND EXISTS(SubPlan 4))))
+                                 Buffers: shared hit=3
+                                 ->  Seq Scan on users u  (cost=0.00..15.12 rows=2 width=48) (actual time=0.005..0.007 rows=21.00 loops=1)
+                                       Filter: (account_status = 'ACTIVE'::text)
+                                       Buffers: shared hit=1
+                                 ->  Hash  (cost=14.60..14.60 rows=1 width=144) (actual time=0.010..0.010 rows=21.00 loops=1)
+                                       Buckets: 1024  Batches: 1  Memory Usage: 12kB
+                                       Buffers: shared hit=2
+                                       ->  Seq Scan on profiles p  (cost=0.00..14.60 rows=1 width=144) (actual time=0.003..0.006 rows=21.00 loops=1)
+                                             Filter: (((profile_visibility = 'MEMBERS'::text) OR (profile_visibility = 'CONNECTIONS'::text)) AND ((employment_visibility = 'MEMBERS'::text) OR (employment_visibility = 'CONNECTIONS'::text)))
+                                             Buffers: shared hit=2
+                                 SubPlan 2
+                                   ->  Index Only Scan using connections_pkey on connections cn  (cost=0.16..8.18 rows=1 width=0) (never executed)
+                                         Index Cond: ((member_low_id = LEAST('00000000-0000-0000-0000-000000000011'::uuid, u.id)) AND (member_high_id = GREATEST('00000000-0000-0000-0000-000000000011'::uuid, u.id)))
+                                         Heap Fetches: 0
+                                         Index Searches: 0
+                                 SubPlan 4
+                                   ->  Index Only Scan using connections_pkey on connections cn_1  (cost=0.16..8.18 rows=1 width=0) (never executed)
+                                         Index Cond: ((member_low_id = LEAST('00000000-0000-0000-0000-000000000011'::uuid, u.id)) AND (member_high_id = GREATEST('00000000-0000-0000-0000-000000000011'::uuid, u.id)))
+                                         Heap Fetches: 0
+                                         Index Searches: 0
+                           ->  Index Scan using career_preferences_pkey on career_preferences cp  (cost=0.15..8.17 rows=1 width=51) (actual time=0.000..0.000 rows=1.00 loops=21)
+                                 Index Cond: (user_id = p.user_id)
+                                 Index Searches: 21
+                                 Buffers: shared hit=42
+                     ->  Index Scan using employment_company_idx on employment_history e  (cost=0.14..0.22 rows=1 width=64) (actual time=0.000..0.000 rows=0.05 loops=21)
+                           Index Cond: ((company_id = '10000000-0000-0000-0000-000000000001'::uuid) AND (user_id = cp.user_id))
+                           Index Searches: 21
+                           Buffers: shared hit=22
+         ->  Index Scan using university_memberships_pkey on university_memberships m  (cost=0.15..0.22 rows=1 width=50) (actual time=0.002..0.002 rows=1.00 loops=1)
+               Index Cond: (user_id = cp.user_id)
+               Filter: ((membership_status = 'ALUMNI'::text) AND (verification_status = 'VERIFIED'::text))
+               Index Searches: 1
+               Buffers: shared hit=2
+         SubPlan 1
+           ->  Aggregate  (cost=17.85..17.86 rows=1 width=32) (actual time=0.028..0.028 rows=1.00 loops=1)
+                 Buffers: shared hit=7
+                 ->  Sort  (cost=17.83..17.84 rows=3 width=32) (actual time=0.023..0.024 rows=3.00 loops=1)
+                       Sort Key: s.name
+                       Sort Method: quicksort  Memory: 25kB
+                       Buffers: shared hit=7
+                       ->  Nested Loop  (cost=0.16..17.81 rows=3 width=32) (actual time=0.008..0.011 rows=3.00 loops=1)
+                             Buffers: shared hit=7
+                             ->  Seq Scan on user_skills us  (cost=0.00..1.79 rows=3 width=8) (actual time=0.002..0.003 rows=3.00 loops=1)
+                                   Filter: (user_id = u.id)
+                                   Rows Removed by Filter: 60
+                                   Buffers: shared hit=1
+                             ->  Memoize  (cost=0.16..6.85 rows=1 width=40) (actual time=0.002..0.002 rows=1.00 loops=3)
+                                   Cache Key: us.skill_id
+                                   Cache Mode: logical
+                                   Hits: 0  Misses: 3  Evictions: 0  Overflows: 0  Memory Usage: 1kB
+                                   Buffers: shared hit=6
+                                   ->  Index Scan using skills_pkey on skills s  (cost=0.15..6.84 rows=1 width=40) (actual time=0.002..0.002 rows=1.00 loops=3)
+                                         Index Cond: (id = us.skill_id)
+                                         Index Searches: 3
+                                         Buffers: shared hit=6
+ Planning:
+   Buffers: shared hit=663
+ Planning Time: 1.322 ms
+ Execution Time: 0.156 ms
+(82 rows)
+
+=== Q42 run 3 ===
+QUERY PLAN                                                                                                                                           
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Sort  (cost=82.77..82.77 rows=2 width=245) (actual time=0.076..0.077 rows=1.00 loops=1)
+   Sort Key: u.full_name
+   Sort Method: quicksort  Memory: 25kB
+   Buffers: shared hit=81
+   ->  Nested Loop  (cost=15.20..82.76 rows=2 width=245) (actual time=0.054..0.070 rows=1.00 loops=1)
+         Join Filter: (u.id = m.user_id)
+         Buffers: shared hit=78
+         ->  Nested Loop  (cost=15.06..46.57 rows=2 width=227) (actual time=0.030..0.045 rows=1.00 loops=1)
+               Buffers: shared hit=69
+               ->  Index Scan using companies_pkey on companies c  (cost=0.15..8.17 rows=1 width=16) (actual time=0.003..0.003 rows=1.00 loops=1)
+                     Index Cond: (id = '10000000-0000-0000-0000-000000000001'::uuid)
+                     Filter: approved
+                     Index Searches: 1
+                     Buffers: shared hit=2
+               ->  Nested Loop  (cost=14.91..38.38 rows=2 width=243) (actual time=0.026..0.041 rows=1.00 loops=1)
+                     Join Filter: (u.id = e.user_id)
+                     Buffers: shared hit=67
+                     ->  Nested Loop  (cost=14.76..37.92 rows=2 width=179) (actual time=0.021..0.033 rows=21.00 loops=1)
+                           Join Filter: (u.id = cp.user_id)
+                           Buffers: shared hit=45
+                           ->  Hash Join  (cost=14.61..29.74 rows=1 width=128) (actual time=0.017..0.021 rows=21.00 loops=1)
+                                 Hash Cond: (u.id = p.user_id)
+                                 Join Filter: (((p.profile_visibility = 'MEMBERS'::text) OR ((p.profile_visibility = 'CONNECTIONS'::text) AND EXISTS(SubPlan 2))) AND ((p.employment_visibility = 'MEMBERS'::text) OR ((p.employment_visibility = 'CONNECTIONS'::text) AND EXISTS(SubPlan 4))))
+                                 Buffers: shared hit=3
+                                 ->  Seq Scan on users u  (cost=0.00..15.12 rows=2 width=48) (actual time=0.004..0.005 rows=21.00 loops=1)
+                                       Filter: (account_status = 'ACTIVE'::text)
+                                       Buffers: shared hit=1
+                                 ->  Hash  (cost=14.60..14.60 rows=1 width=144) (actual time=0.009..0.009 rows=21.00 loops=1)
+                                       Buckets: 1024  Batches: 1  Memory Usage: 12kB
+                                       Buffers: shared hit=2
+                                       ->  Seq Scan on profiles p  (cost=0.00..14.60 rows=1 width=144) (actual time=0.003..0.006 rows=21.00 loops=1)
+                                             Filter: (((profile_visibility = 'MEMBERS'::text) OR (profile_visibility = 'CONNECTIONS'::text)) AND ((employment_visibility = 'MEMBERS'::text) OR (employment_visibility = 'CONNECTIONS'::text)))
+                                             Buffers: shared hit=2
+                                 SubPlan 2
+                                   ->  Index Only Scan using connections_pkey on connections cn  (cost=0.16..8.18 rows=1 width=0) (never executed)
+                                         Index Cond: ((member_low_id = LEAST('00000000-0000-0000-0000-000000000011'::uuid, u.id)) AND (member_high_id = GREATEST('00000000-0000-0000-0000-000000000011'::uuid, u.id)))
+                                         Heap Fetches: 0
+                                         Index Searches: 0
+                                 SubPlan 4
+                                   ->  Index Only Scan using connections_pkey on connections cn_1  (cost=0.16..8.18 rows=1 width=0) (never executed)
+                                         Index Cond: ((member_low_id = LEAST('00000000-0000-0000-0000-000000000011'::uuid, u.id)) AND (member_high_id = GREATEST('00000000-0000-0000-0000-000000000011'::uuid, u.id)))
+                                         Heap Fetches: 0
+                                         Index Searches: 0
+                           ->  Index Scan using career_preferences_pkey on career_preferences cp  (cost=0.15..8.17 rows=1 width=51) (actual time=0.000..0.000 rows=1.00 loops=21)
+                                 Index Cond: (user_id = p.user_id)
+                                 Index Searches: 21
+                                 Buffers: shared hit=42
+                     ->  Index Scan using employment_company_idx on employment_history e  (cost=0.14..0.22 rows=1 width=64) (actual time=0.000..0.000 rows=0.05 loops=21)
+                           Index Cond: ((company_id = '10000000-0000-0000-0000-000000000001'::uuid) AND (user_id = cp.user_id))
+                           Index Searches: 21
+                           Buffers: shared hit=22
+         ->  Index Scan using university_memberships_pkey on university_memberships m  (cost=0.15..0.22 rows=1 width=50) (actual time=0.002..0.002 rows=1.00 loops=1)
+               Index Cond: (user_id = cp.user_id)
+               Filter: ((membership_status = 'ALUMNI'::text) AND (verification_status = 'VERIFIED'::text))
+               Index Searches: 1
+               Buffers: shared hit=2
+         SubPlan 1
+           ->  Aggregate  (cost=17.85..17.86 rows=1 width=32) (actual time=0.021..0.021 rows=1.00 loops=1)
+                 Buffers: shared hit=7
+                 ->  Sort  (cost=17.83..17.84 rows=3 width=32) (actual time=0.018..0.018 rows=3.00 loops=1)
+                       Sort Key: s.name
+                       Sort Method: quicksort  Memory: 25kB
+                       Buffers: shared hit=7
+                       ->  Nested Loop  (cost=0.16..17.81 rows=3 width=32) (actual time=0.007..0.010 rows=3.00 loops=1)
+                             Buffers: shared hit=7
+                             ->  Seq Scan on user_skills us  (cost=0.00..1.79 rows=3 width=8) (actual time=0.002..0.003 rows=3.00 loops=1)
+                                   Filter: (user_id = u.id)
+                                   Rows Removed by Filter: 60
+                                   Buffers: shared hit=1
+                             ->  Memoize  (cost=0.16..6.85 rows=1 width=40) (actual time=0.002..0.002 rows=1.00 loops=3)
+                                   Cache Key: us.skill_id
+                                   Cache Mode: logical
+                                   Hits: 0  Misses: 3  Evictions: 0  Overflows: 0  Memory Usage: 1kB
+                                   Buffers: shared hit=6
+                                   ->  Index Scan using skills_pkey on skills s  (cost=0.15..6.84 rows=1 width=40) (actual time=0.001..0.001 rows=1.00 loops=3)
+                                         Index Cond: (id = us.skill_id)
+                                         Index Searches: 3
+                                         Buffers: shared hit=6
+ Planning:
+   Buffers: shared hit=663
+ Planning Time: 1.208 ms
+ Execution Time: 0.134 ms
+(82 rows)
+

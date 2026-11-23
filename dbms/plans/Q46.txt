@@ -1,0 +1,63 @@
+=== Q46 run 1 ===
+QUERY PLAN                                                                           
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Nested Loop  (cost=0.29..16.35 rows=1 width=16) (actual time=0.010..0.010 rows=1.00 loops=1)
+   Buffers: shared hit=4
+   ->  Index Scan using users_pkey on users u  (cost=0.15..8.17 rows=1 width=16) (actual time=0.005..0.005 rows=1.00 loops=1)
+         Index Cond: (id = '00000000-0000-0000-0000-000000000002'::uuid)
+         Filter: (account_status = 'ACTIVE'::text)
+         Index Searches: 1
+         Buffers: shared hit=2
+   ->  Index Scan using university_memberships_pkey on university_memberships m  (cost=0.15..8.17 rows=1 width=16) (actual time=0.004..0.004 rows=1.00 loops=1)
+         Index Cond: (user_id = '00000000-0000-0000-0000-000000000002'::uuid)
+         Filter: (verification_status = 'VERIFIED'::text)
+         Index Searches: 1
+         Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=167
+ Planning Time: 0.260 ms
+ Execution Time: 0.028 ms
+(16 rows)
+
+=== Q46 run 2 ===
+QUERY PLAN                                                                           
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Nested Loop  (cost=0.29..16.35 rows=1 width=16) (actual time=0.009..0.010 rows=1.00 loops=1)
+   Buffers: shared hit=4
+   ->  Index Scan using users_pkey on users u  (cost=0.15..8.17 rows=1 width=16) (actual time=0.005..0.005 rows=1.00 loops=1)
+         Index Cond: (id = '00000000-0000-0000-0000-000000000002'::uuid)
+         Filter: (account_status = 'ACTIVE'::text)
+         Index Searches: 1
+         Buffers: shared hit=2
+   ->  Index Scan using university_memberships_pkey on university_memberships m  (cost=0.15..8.17 rows=1 width=16) (actual time=0.004..0.004 rows=1.00 loops=1)
+         Index Cond: (user_id = '00000000-0000-0000-0000-000000000002'::uuid)
+         Filter: (verification_status = 'VERIFIED'::text)
+         Index Searches: 1
+         Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=167
+ Planning Time: 0.260 ms
+ Execution Time: 0.028 ms
+(16 rows)
+
+=== Q46 run 3 ===
+QUERY PLAN                                                                           
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Nested Loop  (cost=0.29..16.35 rows=1 width=16) (actual time=0.011..0.012 rows=1.00 loops=1)
+   Buffers: shared hit=4
+   ->  Index Scan using users_pkey on users u  (cost=0.15..8.17 rows=1 width=16) (actual time=0.006..0.006 rows=1.00 loops=1)
+         Index Cond: (id = '00000000-0000-0000-0000-000000000002'::uuid)
+         Filter: (account_status = 'ACTIVE'::text)
+         Index Searches: 1
+         Buffers: shared hit=2
+   ->  Index Scan using university_memberships_pkey on university_memberships m  (cost=0.15..8.17 rows=1 width=16) (actual time=0.004..0.004 rows=1.00 loops=1)
+         Index Cond: (user_id = '00000000-0000-0000-0000-000000000002'::uuid)
+         Filter: (verification_status = 'VERIFIED'::text)
+         Index Searches: 1
+         Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=167
+ Planning Time: 0.260 ms
+ Execution Time: 0.034 ms
+(16 rows)
+

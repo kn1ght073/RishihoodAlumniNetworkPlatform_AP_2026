@@ -1,0 +1,39 @@
+=== Q84 run 1 ===
+QUERY PLAN                                               
+--------------------------------------------------------------------------------------------------------
+ Insert on notifications  (cost=0.00..0.01 rows=0 width=0) (actual time=0.106..0.106 rows=0.00 loops=1)
+   Buffers: shared hit=54
+   ->  Result  (cost=0.00..0.01 rows=1 width=160) (actual time=0.009..0.009 rows=1.00 loops=1)
+ Planning:
+   Buffers: shared hit=7
+ Planning Time: 0.044 ms
+ Trigger for constraint notifications_user_id_fkey: time=0.332 calls=1
+ Execution Time: 0.463 ms
+(8 rows)
+
+=== Q84 run 2 ===
+QUERY PLAN                                               
+--------------------------------------------------------------------------------------------------------
+ Insert on notifications  (cost=0.00..0.01 rows=0 width=0) (actual time=0.091..0.091 rows=0.00 loops=1)
+   Buffers: shared hit=54
+   ->  Result  (cost=0.00..0.01 rows=1 width=160) (actual time=0.010..0.011 rows=1.00 loops=1)
+ Planning:
+   Buffers: shared hit=7
+ Planning Time: 0.037 ms
+ Trigger for constraint notifications_user_id_fkey: time=0.267 calls=1
+ Execution Time: 0.375 ms
+(8 rows)
+
+=== Q84 run 3 ===
+QUERY PLAN                                               
+--------------------------------------------------------------------------------------------------------
+ Insert on notifications  (cost=0.00..0.01 rows=0 width=0) (actual time=0.093..0.094 rows=0.00 loops=1)
+   Buffers: shared hit=54
+   ->  Result  (cost=0.00..0.01 rows=1 width=160) (actual time=0.009..0.009 rows=1.00 loops=1)
+ Planning:
+   Buffers: shared hit=7
+ Planning Time: 0.038 ms
+ Trigger for constraint notifications_user_id_fkey: time=0.299 calls=1
+ Execution Time: 0.412 ms
+(8 rows)
+

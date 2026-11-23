@@ -1,0 +1,39 @@
+=== Q44 run 1 ===
+QUERY PLAN                                                                         
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Index Scan using company_suggestion_pending_name_uq on company_suggestions  (cost=0.14..8.16 rows=1 width=16) (actual time=0.007..0.007 rows=1.00 loops=1)
+   Index Cond: (normalized_name = 'stripe india'::text)
+   Index Searches: 1
+   Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=124
+ Planning Time: 0.245 ms
+ Execution Time: 0.014 ms
+(8 rows)
+
+=== Q44 run 2 ===
+QUERY PLAN                                                                         
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Index Scan using company_suggestion_pending_name_uq on company_suggestions  (cost=0.14..8.16 rows=1 width=16) (actual time=0.005..0.006 rows=1.00 loops=1)
+   Index Cond: (normalized_name = 'stripe india'::text)
+   Index Searches: 1
+   Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=124
+ Planning Time: 0.222 ms
+ Execution Time: 0.013 ms
+(8 rows)
+
+=== Q44 run 3 ===
+QUERY PLAN                                                                         
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Index Scan using company_suggestion_pending_name_uq on company_suggestions  (cost=0.14..8.16 rows=1 width=16) (actual time=0.006..0.007 rows=1.00 loops=1)
+   Index Cond: (normalized_name = 'stripe india'::text)
+   Index Searches: 1
+   Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=124
+ Planning Time: 0.250 ms
+ Execution Time: 0.015 ms
+(8 rows)
+

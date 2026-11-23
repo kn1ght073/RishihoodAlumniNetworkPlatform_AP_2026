@@ -1,0 +1,60 @@
+=== Q03 run 1 ===
+QUERY PLAN                                                                  
+---------------------------------------------------------------------------------------------------------------------------------------------
+ Nested Loop  (cost=0.30..18.12 rows=1 width=4) (actual time=0.011..0.012 rows=1.00 loops=1)
+   Buffers: shared hit=4
+   ->  Index Scan using roles_name_key on roles r  (cost=0.15..8.17 rows=1 width=2) (actual time=0.004..0.005 rows=1.00 loops=1)
+         Index Cond: (name = 'ADMIN'::text)
+         Index Searches: 1
+         Buffers: shared hit=2
+   ->  Index Only Scan using user_roles_pkey on user_roles ur  (cost=0.15..8.17 rows=1 width=2) (actual time=0.006..0.006 rows=1.00 loops=1)
+         Index Cond: ((user_id = '00000000-0000-0000-0000-000000000001'::uuid) AND (role_id = r.id))
+         Heap Fetches: 1
+         Index Searches: 1
+         Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=214
+ Planning Time: 0.354 ms
+ Execution Time: 0.031 ms
+(15 rows)
+
+=== Q03 run 2 ===
+QUERY PLAN                                                                  
+---------------------------------------------------------------------------------------------------------------------------------------------
+ Nested Loop  (cost=0.30..18.12 rows=1 width=4) (actual time=0.011..0.012 rows=1.00 loops=1)
+   Buffers: shared hit=4
+   ->  Index Scan using roles_name_key on roles r  (cost=0.15..8.17 rows=1 width=2) (actual time=0.004..0.005 rows=1.00 loops=1)
+         Index Cond: (name = 'ADMIN'::text)
+         Index Searches: 1
+         Buffers: shared hit=2
+   ->  Index Only Scan using user_roles_pkey on user_roles ur  (cost=0.15..8.17 rows=1 width=2) (actual time=0.006..0.006 rows=1.00 loops=1)
+         Index Cond: ((user_id = '00000000-0000-0000-0000-000000000001'::uuid) AND (role_id = r.id))
+         Heap Fetches: 1
+         Index Searches: 1
+         Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=214
+ Planning Time: 0.316 ms
+ Execution Time: 0.030 ms
+(15 rows)
+
+=== Q03 run 3 ===
+QUERY PLAN                                                                  
+---------------------------------------------------------------------------------------------------------------------------------------------
+ Nested Loop  (cost=0.30..18.12 rows=1 width=4) (actual time=0.016..0.016 rows=1.00 loops=1)
+   Buffers: shared hit=4
+   ->  Index Scan using roles_name_key on roles r  (cost=0.15..8.17 rows=1 width=2) (actual time=0.007..0.007 rows=1.00 loops=1)
+         Index Cond: (name = 'ADMIN'::text)
+         Index Searches: 1
+         Buffers: shared hit=2
+   ->  Index Only Scan using user_roles_pkey on user_roles ur  (cost=0.15..8.17 rows=1 width=2) (actual time=0.007..0.007 rows=1.00 loops=1)
+         Index Cond: ((user_id = '00000000-0000-0000-0000-000000000001'::uuid) AND (role_id = r.id))
+         Heap Fetches: 1
+         Index Searches: 1
+         Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=214
+ Planning Time: 0.424 ms
+ Execution Time: 0.043 ms
+(15 rows)
+

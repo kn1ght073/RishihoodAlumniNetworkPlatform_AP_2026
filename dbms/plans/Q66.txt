@@ -1,0 +1,96 @@
+=== Q66 run 1 ===
+QUERY PLAN                                                                                
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Sort  (cost=45.93..45.94 rows=3 width=256) (actual time=0.026..0.027 rows=1.00 loops=1)
+   Sort Key: cr.updated_at DESC
+   Sort Method: quicksort  Memory: 25kB
+   Buffers: shared hit=6
+   ->  Hash Join  (cost=30.24..45.91 rows=3 width=256) (actual time=0.020..0.021 rows=1.00 loops=1)
+         Hash Cond: (recipient.id = cr.recipient_id)
+         Buffers: shared hit=3
+         ->  Seq Scan on users recipient  (cost=0.00..14.10 rows=410 width=48) (actual time=0.003..0.003 rows=21.00 loops=1)
+               Buffers: shared hit=1
+         ->  Hash  (cost=30.20..30.20 rows=3 width=224) (actual time=0.014..0.014 rows=1.00 loops=1)
+               Buckets: 1024  Batches: 1  Memory Usage: 9kB
+               Buffers: shared hit=2
+               ->  Hash Join  (cost=14.54..30.20 rows=3 width=224) (actual time=0.012..0.013 rows=1.00 loops=1)
+                     Hash Cond: (requester.id = cr.requester_id)
+                     Buffers: shared hit=2
+                     ->  Seq Scan on users requester  (cost=0.00..14.10 rows=410 width=48) (actual time=0.002..0.002 rows=21.00 loops=1)
+                           Buffers: shared hit=1
+                     ->  Hash  (cost=14.50..14.50 rows=3 width=192) (actual time=0.007..0.007 rows=1.00 loops=1)
+                           Buckets: 1024  Batches: 1  Memory Usage: 9kB
+                           Buffers: shared hit=1
+                           ->  Seq Scan on career_requests cr  (cost=0.00..14.50 rows=3 width=192) (actual time=0.004..0.004 rows=1.00 loops=1)
+                                 Filter: ((requester_id = '00000000-0000-0000-0000-000000000011'::uuid) OR (recipient_id = '00000000-0000-0000-0000-000000000011'::uuid))
+                                 Buffers: shared hit=1
+ Planning:
+   Buffers: shared hit=332
+ Planning Time: 0.405 ms
+ Execution Time: 0.051 ms
+(27 rows)
+
+=== Q66 run 2 ===
+QUERY PLAN                                                                                
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Sort  (cost=45.93..45.94 rows=3 width=256) (actual time=0.032..0.034 rows=1.00 loops=1)
+   Sort Key: cr.updated_at DESC
+   Sort Method: quicksort  Memory: 25kB
+   Buffers: shared hit=6
+   ->  Hash Join  (cost=30.24..45.91 rows=3 width=256) (actual time=0.025..0.028 rows=1.00 loops=1)
+         Hash Cond: (recipient.id = cr.recipient_id)
+         Buffers: shared hit=3
+         ->  Seq Scan on users recipient  (cost=0.00..14.10 rows=410 width=48) (actual time=0.003..0.004 rows=21.00 loops=1)
+               Buffers: shared hit=1
+         ->  Hash  (cost=30.20..30.20 rows=3 width=224) (actual time=0.018..0.019 rows=1.00 loops=1)
+               Buckets: 1024  Batches: 1  Memory Usage: 9kB
+               Buffers: shared hit=2
+               ->  Hash Join  (cost=14.54..30.20 rows=3 width=224) (actual time=0.016..0.018 rows=1.00 loops=1)
+                     Hash Cond: (requester.id = cr.requester_id)
+                     Buffers: shared hit=2
+                     ->  Seq Scan on users requester  (cost=0.00..14.10 rows=410 width=48) (actual time=0.002..0.003 rows=21.00 loops=1)
+                           Buffers: shared hit=1
+                     ->  Hash  (cost=14.50..14.50 rows=3 width=192) (actual time=0.009..0.009 rows=1.00 loops=1)
+                           Buckets: 1024  Batches: 1  Memory Usage: 9kB
+                           Buffers: shared hit=1
+                           ->  Seq Scan on career_requests cr  (cost=0.00..14.50 rows=3 width=192) (actual time=0.004..0.004 rows=1.00 loops=1)
+                                 Filter: ((requester_id = '00000000-0000-0000-0000-000000000011'::uuid) OR (recipient_id = '00000000-0000-0000-0000-000000000011'::uuid))
+                                 Buffers: shared hit=1
+ Planning:
+   Buffers: shared hit=332
+ Planning Time: 0.472 ms
+ Execution Time: 0.068 ms
+(27 rows)
+
+=== Q66 run 3 ===
+QUERY PLAN                                                                                
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Sort  (cost=45.93..45.94 rows=3 width=256) (actual time=0.026..0.026 rows=1.00 loops=1)
+   Sort Key: cr.updated_at DESC
+   Sort Method: quicksort  Memory: 25kB
+   Buffers: shared hit=6
+   ->  Hash Join  (cost=30.24..45.91 rows=3 width=256) (actual time=0.019..0.021 rows=1.00 loops=1)
+         Hash Cond: (recipient.id = cr.recipient_id)
+         Buffers: shared hit=3
+         ->  Seq Scan on users recipient  (cost=0.00..14.10 rows=410 width=48) (actual time=0.003..0.003 rows=21.00 loops=1)
+               Buffers: shared hit=1
+         ->  Hash  (cost=30.20..30.20 rows=3 width=224) (actual time=0.013..0.013 rows=1.00 loops=1)
+               Buckets: 1024  Batches: 1  Memory Usage: 9kB
+               Buffers: shared hit=2
+               ->  Hash Join  (cost=14.54..30.20 rows=3 width=224) (actual time=0.011..0.012 rows=1.00 loops=1)
+                     Hash Cond: (requester.id = cr.requester_id)
+                     Buffers: shared hit=2
+                     ->  Seq Scan on users requester  (cost=0.00..14.10 rows=410 width=48) (actual time=0.002..0.002 rows=21.00 loops=1)
+                           Buffers: shared hit=1
+                     ->  Hash  (cost=14.50..14.50 rows=3 width=192) (actual time=0.006..0.006 rows=1.00 loops=1)
+                           Buckets: 1024  Batches: 1  Memory Usage: 9kB
+                           Buffers: shared hit=1
+                           ->  Seq Scan on career_requests cr  (cost=0.00..14.50 rows=3 width=192) (actual time=0.003..0.003 rows=1.00 loops=1)
+                                 Filter: ((requester_id = '00000000-0000-0000-0000-000000000011'::uuid) OR (recipient_id = '00000000-0000-0000-0000-000000000011'::uuid))
+                                 Buffers: shared hit=1
+ Planning:
+   Buffers: shared hit=332
+ Planning Time: 0.409 ms
+ Execution Time: 0.052 ms
+(27 rows)
+

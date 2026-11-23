@@ -1,0 +1,45 @@
+=== Q25 run 1 ===
+QUERY PLAN                                                  
+--------------------------------------------------------------------------------------------------------------
+ Delete on user_skills  (cost=0.00..1.79 rows=0 width=0) (actual time=0.013..0.013 rows=0.00 loops=1)
+   Buffers: shared hit=4
+   ->  Seq Scan on user_skills  (cost=0.00..1.79 rows=3 width=6) (actual time=0.003..0.004 rows=3.00 loops=1)
+         Filter: (user_id = '00000000-0000-0000-0000-000000000011'::uuid)
+         Rows Removed by Filter: 60
+         Buffers: shared hit=1
+ Planning:
+   Buffers: shared hit=72
+ Planning Time: 0.134 ms
+ Execution Time: 0.053 ms
+(10 rows)
+
+=== Q25 run 2 ===
+QUERY PLAN                                                  
+--------------------------------------------------------------------------------------------------------------
+ Delete on user_skills  (cost=0.00..1.79 rows=0 width=0) (actual time=0.016..0.016 rows=0.00 loops=1)
+   Buffers: shared hit=4
+   ->  Seq Scan on user_skills  (cost=0.00..1.79 rows=3 width=6) (actual time=0.005..0.006 rows=3.00 loops=1)
+         Filter: (user_id = '00000000-0000-0000-0000-000000000011'::uuid)
+         Rows Removed by Filter: 60
+         Buffers: shared hit=1
+ Planning:
+   Buffers: shared hit=72
+ Planning Time: 0.140 ms
+ Execution Time: 0.059 ms
+(10 rows)
+
+=== Q25 run 3 ===
+QUERY PLAN                                                  
+--------------------------------------------------------------------------------------------------------------
+ Delete on user_skills  (cost=0.00..1.79 rows=0 width=0) (actual time=0.015..0.015 rows=0.00 loops=1)
+   Buffers: shared hit=4
+   ->  Seq Scan on user_skills  (cost=0.00..1.79 rows=3 width=6) (actual time=0.005..0.005 rows=3.00 loops=1)
+         Filter: (user_id = '00000000-0000-0000-0000-000000000011'::uuid)
+         Rows Removed by Filter: 60
+         Buffers: shared hit=1
+ Planning:
+   Buffers: shared hit=72
+ Planning Time: 0.141 ms
+ Execution Time: 0.059 ms
+(10 rows)
+

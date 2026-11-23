@@ -1,0 +1,39 @@
+=== Q65 run 1 ===
+QUERY PLAN                                                                
+------------------------------------------------------------------------------------------------------------------------------------------
+ Index Scan using career_requests_pkey on career_requests  (cost=0.15..8.17 rows=1 width=32) (actual time=0.003..0.004 rows=1.00 loops=1)
+   Index Cond: (id = '40000000-0000-0000-0000-000000000001'::uuid)
+   Index Searches: 1
+   Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=150
+ Planning Time: 0.229 ms
+ Execution Time: 0.017 ms
+(8 rows)
+
+=== Q65 run 2 ===
+QUERY PLAN                                                                
+------------------------------------------------------------------------------------------------------------------------------------------
+ Index Scan using career_requests_pkey on career_requests  (cost=0.15..8.17 rows=1 width=32) (actual time=0.004..0.004 rows=1.00 loops=1)
+   Index Cond: (id = '40000000-0000-0000-0000-000000000001'::uuid)
+   Index Searches: 1
+   Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=150
+ Planning Time: 0.234 ms
+ Execution Time: 0.018 ms
+(8 rows)
+
+=== Q65 run 3 ===
+QUERY PLAN                                                                
+------------------------------------------------------------------------------------------------------------------------------------------
+ Index Scan using career_requests_pkey on career_requests  (cost=0.15..8.17 rows=1 width=32) (actual time=0.003..0.004 rows=1.00 loops=1)
+   Index Cond: (id = '40000000-0000-0000-0000-000000000001'::uuid)
+   Index Searches: 1
+   Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=150
+ Planning Time: 0.227 ms
+ Execution Time: 0.018 ms
+(8 rows)
+

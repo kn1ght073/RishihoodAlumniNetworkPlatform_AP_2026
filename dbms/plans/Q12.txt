@@ -1,0 +1,42 @@
+=== Q12 run 1 ===
+QUERY PLAN                                                           
+--------------------------------------------------------------------------------------------------------------------------------
+ Index Scan using users_email_lower_uq on users  (cost=0.15..8.17 rows=1 width=48) (actual time=0.006..0.007 rows=1.00 loops=1)
+   Index Cond: (lower(TRIM(BOTH FROM email)) = 'unverified@rishihood.edu.in'::text)
+   Filter: (email_verified_at IS NULL)
+   Index Searches: 1
+   Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=95
+ Planning Time: 0.169 ms
+ Execution Time: 0.021 ms
+(9 rows)
+
+=== Q12 run 2 ===
+QUERY PLAN                                                           
+--------------------------------------------------------------------------------------------------------------------------------
+ Index Scan using users_email_lower_uq on users  (cost=0.15..8.17 rows=1 width=48) (actual time=0.006..0.007 rows=1.00 loops=1)
+   Index Cond: (lower(TRIM(BOTH FROM email)) = 'unverified@rishihood.edu.in'::text)
+   Filter: (email_verified_at IS NULL)
+   Index Searches: 1
+   Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=95
+ Planning Time: 0.169 ms
+ Execution Time: 0.021 ms
+(9 rows)
+
+=== Q12 run 3 ===
+QUERY PLAN                                                           
+--------------------------------------------------------------------------------------------------------------------------------
+ Index Scan using users_email_lower_uq on users  (cost=0.15..8.17 rows=1 width=48) (actual time=0.007..0.007 rows=1.00 loops=1)
+   Index Cond: (lower(TRIM(BOTH FROM email)) = 'unverified@rishihood.edu.in'::text)
+   Filter: (email_verified_at IS NULL)
+   Index Searches: 1
+   Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=95
+ Planning Time: 0.164 ms
+ Execution Time: 0.022 ms
+(9 rows)
+

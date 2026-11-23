@@ -1,0 +1,42 @@
+=== Q78 run 1 ===
+QUERY PLAN                                                
+----------------------------------------------------------------------------------------------------------
+ Insert on opportunities  (cost=0.00..0.02 rows=1 width=324) (actual time=0.098..0.098 rows=1.00 loops=1)
+   Buffers: shared hit=65
+   ->  Result  (cost=0.00..0.02 rows=1 width=324) (actual time=0.010..0.010 rows=1.00 loops=1)
+ Planning:
+   Buffers: shared hit=10
+ Planning Time: 0.037 ms
+ Trigger for constraint opportunities_publisher_id_fkey: time=0.228 calls=1
+ Trigger for constraint opportunities_company_id_fkey: time=0.105 calls=1
+ Execution Time: 0.450 ms
+(9 rows)
+
+=== Q78 run 2 ===
+QUERY PLAN                                                
+----------------------------------------------------------------------------------------------------------
+ Insert on opportunities  (cost=0.00..0.02 rows=1 width=324) (actual time=0.101..0.101 rows=1.00 loops=1)
+   Buffers: shared hit=65
+   ->  Result  (cost=0.00..0.02 rows=1 width=324) (actual time=0.010..0.010 rows=1.00 loops=1)
+ Planning:
+   Buffers: shared hit=10
+ Planning Time: 0.036 ms
+ Trigger for constraint opportunities_publisher_id_fkey: time=0.222 calls=1
+ Trigger for constraint opportunities_company_id_fkey: time=0.101 calls=1
+ Execution Time: 0.443 ms
+(9 rows)
+
+=== Q78 run 3 ===
+QUERY PLAN                                                
+----------------------------------------------------------------------------------------------------------
+ Insert on opportunities  (cost=0.00..0.02 rows=1 width=324) (actual time=0.113..0.113 rows=1.00 loops=1)
+   Buffers: shared hit=65
+   ->  Result  (cost=0.00..0.02 rows=1 width=324) (actual time=0.015..0.015 rows=1.00 loops=1)
+ Planning:
+   Buffers: shared hit=10
+ Planning Time: 0.052 ms
+ Trigger for constraint opportunities_publisher_id_fkey: time=0.263 calls=1
+ Trigger for constraint opportunities_company_id_fkey: time=0.123 calls=1
+ Execution Time: 0.521 ms
+(9 rows)
+

@@ -1,0 +1,42 @@
+=== Q41 run 1 ===
+QUERY PLAN                                                           
+-------------------------------------------------------------------------------------------------------------------------------
+ Index Scan using companies_pkey on companies  (cost=0.15..8.17 rows=1 width=240) (actual time=0.004..0.004 rows=1.00 loops=1)
+   Index Cond: (id = '10000000-0000-0000-0000-000000000001'::uuid)
+   Filter: approved
+   Index Searches: 1
+   Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=96
+ Planning Time: 0.187 ms
+ Execution Time: 0.019 ms
+(9 rows)
+
+=== Q41 run 2 ===
+QUERY PLAN                                                           
+-------------------------------------------------------------------------------------------------------------------------------
+ Index Scan using companies_pkey on companies  (cost=0.15..8.17 rows=1 width=240) (actual time=0.004..0.004 rows=1.00 loops=1)
+   Index Cond: (id = '10000000-0000-0000-0000-000000000001'::uuid)
+   Filter: approved
+   Index Searches: 1
+   Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=96
+ Planning Time: 0.168 ms
+ Execution Time: 0.019 ms
+(9 rows)
+
+=== Q41 run 3 ===
+QUERY PLAN                                                           
+-------------------------------------------------------------------------------------------------------------------------------
+ Index Scan using companies_pkey on companies  (cost=0.15..8.17 rows=1 width=240) (actual time=0.004..0.004 rows=1.00 loops=1)
+   Index Cond: (id = '10000000-0000-0000-0000-000000000001'::uuid)
+   Filter: approved
+   Index Searches: 1
+   Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=96
+ Planning Time: 0.173 ms
+ Execution Time: 0.018 ms
+(9 rows)
+

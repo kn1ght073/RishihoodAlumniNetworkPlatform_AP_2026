@@ -1,0 +1,102 @@
+=== Q96 run 1 ===
+QUERY PLAN                                                                              
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Sort  (cost=25.75..25.76 rows=2 width=268) (actual time=0.031..0.032 rows=1.00 loops=1)
+   Sort Key: vr.created_at
+   Sort Method: quicksort  Memory: 25kB
+   Buffers: shared hit=8
+   ->  Nested Loop Left Join  (cost=9.67..25.74 rows=2 width=268) (actual time=0.022..0.024 rows=1.00 loops=1)
+         Buffers: shared hit=5
+         ->  Hash Join  (cost=9.52..25.18 rows=2 width=216) (actual time=0.019..0.020 rows=1.00 loops=1)
+               Hash Cond: (u.id = vr.user_id)
+               Buffers: shared hit=3
+               ->  Seq Scan on users u  (cost=0.00..14.10 rows=410 width=80) (actual time=0.006..0.006 rows=21.00 loops=1)
+                     Buffers: shared hit=1
+               ->  Hash  (cost=9.50..9.50 rows=2 width=136) (actual time=0.008..0.009 rows=1.00 loops=1)
+                     Buckets: 1024  Batches: 1  Memory Usage: 9kB
+                     Buffers: shared hit=2
+                     ->  Bitmap Heap Scan on verification_requests vr  (cost=4.16..9.50 rows=2 width=136) (actual time=0.004..0.005 rows=1.00 loops=1)
+                           Recheck Cond: (status = 'PENDING'::text)
+                           Heap Blocks: exact=1
+                           Buffers: shared hit=2
+                           ->  Bitmap Index Scan on verification_pending_user_uq  (cost=0.00..4.15 rows=2 width=0) (actual time=0.002..0.002 rows=2.00 loops=1)
+                                 Index Searches: 1
+                                 Buffers: shared hit=1
+         ->  Index Scan using university_memberships_pkey on university_memberships m  (cost=0.15..0.28 rows=1 width=84) (actual time=0.002..0.002 rows=1.00 loops=1)
+               Index Cond: (user_id = u.id)
+               Index Searches: 1
+               Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=337
+ Planning Time: 0.491 ms
+ Execution Time: 0.061 ms
+(29 rows)
+
+=== Q96 run 2 ===
+QUERY PLAN                                                                              
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Sort  (cost=25.75..25.76 rows=2 width=268) (actual time=0.030..0.032 rows=1.00 loops=1)
+   Sort Key: vr.created_at
+   Sort Method: quicksort  Memory: 25kB
+   Buffers: shared hit=8
+   ->  Nested Loop Left Join  (cost=9.67..25.74 rows=2 width=268) (actual time=0.022..0.023 rows=1.00 loops=1)
+         Buffers: shared hit=5
+         ->  Hash Join  (cost=9.52..25.18 rows=2 width=216) (actual time=0.018..0.019 rows=1.00 loops=1)
+               Hash Cond: (u.id = vr.user_id)
+               Buffers: shared hit=3
+               ->  Seq Scan on users u  (cost=0.00..14.10 rows=410 width=80) (actual time=0.003..0.004 rows=21.00 loops=1)
+                     Buffers: shared hit=1
+               ->  Hash  (cost=9.50..9.50 rows=2 width=136) (actual time=0.010..0.011 rows=1.00 loops=1)
+                     Buckets: 1024  Batches: 1  Memory Usage: 9kB
+                     Buffers: shared hit=2
+                     ->  Bitmap Heap Scan on verification_requests vr  (cost=4.16..9.50 rows=2 width=136) (actual time=0.005..0.005 rows=1.00 loops=1)
+                           Recheck Cond: (status = 'PENDING'::text)
+                           Heap Blocks: exact=1
+                           Buffers: shared hit=2
+                           ->  Bitmap Index Scan on verification_pending_user_uq  (cost=0.00..4.15 rows=2 width=0) (actual time=0.002..0.002 rows=2.00 loops=1)
+                                 Index Searches: 1
+                                 Buffers: shared hit=1
+         ->  Index Scan using university_memberships_pkey on university_memberships m  (cost=0.15..0.28 rows=1 width=84) (actual time=0.002..0.002 rows=1.00 loops=1)
+               Index Cond: (user_id = u.id)
+               Index Searches: 1
+               Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=337
+ Planning Time: 0.452 ms
+ Execution Time: 0.060 ms
+(29 rows)
+
+=== Q96 run 3 ===
+QUERY PLAN                                                                              
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Sort  (cost=25.75..25.76 rows=2 width=268) (actual time=0.031..0.032 rows=1.00 loops=1)
+   Sort Key: vr.created_at
+   Sort Method: quicksort  Memory: 25kB
+   Buffers: shared hit=8
+   ->  Nested Loop Left Join  (cost=9.67..25.74 rows=2 width=268) (actual time=0.024..0.025 rows=1.00 loops=1)
+         Buffers: shared hit=5
+         ->  Hash Join  (cost=9.52..25.18 rows=2 width=216) (actual time=0.021..0.022 rows=1.00 loops=1)
+               Hash Cond: (u.id = vr.user_id)
+               Buffers: shared hit=3
+               ->  Seq Scan on users u  (cost=0.00..14.10 rows=410 width=80) (actual time=0.003..0.003 rows=21.00 loops=1)
+                     Buffers: shared hit=1
+               ->  Hash  (cost=9.50..9.50 rows=2 width=136) (actual time=0.008..0.008 rows=1.00 loops=1)
+                     Buckets: 1024  Batches: 1  Memory Usage: 9kB
+                     Buffers: shared hit=2
+                     ->  Bitmap Heap Scan on verification_requests vr  (cost=4.16..9.50 rows=2 width=136) (actual time=0.004..0.004 rows=1.00 loops=1)
+                           Recheck Cond: (status = 'PENDING'::text)
+                           Heap Blocks: exact=1
+                           Buffers: shared hit=2
+                           ->  Bitmap Index Scan on verification_pending_user_uq  (cost=0.00..4.15 rows=2 width=0) (actual time=0.001..0.001 rows=2.00 loops=1)
+                                 Index Searches: 1
+                                 Buffers: shared hit=1
+         ->  Index Scan using university_memberships_pkey on university_memberships m  (cost=0.15..0.28 rows=1 width=84) (actual time=0.002..0.002 rows=1.00 loops=1)
+               Index Cond: (user_id = u.id)
+               Index Searches: 1
+               Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=337
+ Planning Time: 0.403 ms
+ Execution Time: 0.058 ms
+(29 rows)
+

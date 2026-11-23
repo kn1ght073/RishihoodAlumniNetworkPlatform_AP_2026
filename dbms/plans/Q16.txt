@@ -1,0 +1,45 @@
+=== Q16 run 1 ===
+QUERY PLAN                                                         
+----------------------------------------------------------------------------------------------------------------------------
+ Update on users  (cost=0.15..8.17 rows=0 width=0) (actual time=0.085..0.085 rows=0.00 loops=1)
+   Buffers: shared hit=68
+   ->  Index Scan using users_pkey on users  (cost=0.15..8.17 rows=1 width=22) (actual time=0.004..0.004 rows=1.00 loops=1)
+         Index Cond: (id = '00000000-0000-0000-0000-000000000011'::uuid)
+         Index Searches: 1
+         Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=96
+ Planning Time: 0.164 ms
+ Execution Time: 0.133 ms
+(10 rows)
+
+=== Q16 run 2 ===
+QUERY PLAN                                                         
+----------------------------------------------------------------------------------------------------------------------------
+ Update on users  (cost=0.15..8.17 rows=0 width=0) (actual time=0.098..0.098 rows=0.00 loops=1)
+   Buffers: shared hit=68
+   ->  Index Scan using users_pkey on users  (cost=0.15..8.17 rows=1 width=22) (actual time=0.005..0.005 rows=1.00 loops=1)
+         Index Cond: (id = '00000000-0000-0000-0000-000000000011'::uuid)
+         Index Searches: 1
+         Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=96
+ Planning Time: 0.165 ms
+ Execution Time: 0.144 ms
+(10 rows)
+
+=== Q16 run 3 ===
+QUERY PLAN                                                         
+----------------------------------------------------------------------------------------------------------------------------
+ Update on users  (cost=0.15..8.17 rows=0 width=0) (actual time=0.092..0.092 rows=0.00 loops=1)
+   Buffers: shared hit=68
+   ->  Index Scan using users_pkey on users  (cost=0.15..8.17 rows=1 width=22) (actual time=0.013..0.013 rows=1.00 loops=1)
+         Index Cond: (id = '00000000-0000-0000-0000-000000000011'::uuid)
+         Index Searches: 1
+         Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=96
+ Planning Time: 0.171 ms
+ Execution Time: 0.141 ms
+(10 rows)
+

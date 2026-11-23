@@ -1,0 +1,195 @@
+=== Q88 run 1 ===
+QUERY PLAN                                                                          
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Result  (cost=104.71..104.72 rows=1 width=32) (actual time=0.034..0.034 rows=1.00 loops=1)
+   Buffers: shared hit=10
+   InitPlan 1
+     ->  Aggregate  (cost=15.13..15.14 rows=1 width=4) (actual time=0.007..0.007 rows=1.00 loops=1)
+           Buffers: shared hit=1
+           ->  Seq Scan on users  (cost=0.00..15.12 rows=2 width=0) (actual time=0.004..0.005 rows=21.00 loops=1)
+                 Filter: (account_status = 'ACTIVE'::text)
+                 Buffers: shared hit=1
+   InitPlan 2
+     ->  Aggregate  (cost=14.88..14.89 rows=1 width=4) (actual time=0.003..0.003 rows=1.00 loops=1)
+           Buffers: shared hit=1
+           ->  Seq Scan on university_memberships  (cost=0.00..14.88 rows=2 width=0) (actual time=0.002..0.002 rows=11.00 loops=1)
+                 Filter: (membership_status = 'STUDENT'::text)
+                 Rows Removed by Filter: 10
+                 Buffers: shared hit=1
+   InitPlan 3
+     ->  Aggregate  (cost=14.88..14.89 rows=1 width=4) (actual time=0.002..0.002 rows=1.00 loops=1)
+           Buffers: shared hit=1
+           ->  Seq Scan on university_memberships university_memberships_1  (cost=0.00..14.88 rows=2 width=0) (actual time=0.001..0.001 rows=10.00 loops=1)
+                 Filter: (membership_status = 'ALUMNI'::text)
+                 Rows Removed by Filter: 11
+                 Buffers: shared hit=1
+   InitPlan 4
+     ->  Aggregate  (cost=9.50..9.51 rows=1 width=4) (actual time=0.006..0.006 rows=1.00 loops=1)
+           Buffers: shared hit=2
+           ->  Bitmap Heap Scan on verification_requests  (cost=4.16..9.50 rows=2 width=0) (actual time=0.005..0.005 rows=1.00 loops=1)
+                 Recheck Cond: (status = 'PENDING'::text)
+                 Heap Blocks: exact=1
+                 Buffers: shared hit=2
+                 ->  Bitmap Index Scan on verification_pending_user_uq  (cost=0.00..4.15 rows=2 width=0) (actual time=0.002..0.002 rows=2.00 loops=1)
+                       Index Searches: 1
+                       Buffers: shared hit=1
+   InitPlan 5
+     ->  Aggregate  (cost=12.92..12.94 rows=1 width=4) (actual time=0.002..0.002 rows=1.00 loops=1)
+           Buffers: shared hit=1
+           ->  Seq Scan on companies  (cost=0.00..12.60 rows=130 width=0) (actual time=0.002..0.002 rows=4.00 loops=1)
+                 Filter: approved
+                 Buffers: shared hit=1
+   InitPlan 6
+     ->  Aggregate  (cost=13.75..13.76 rows=1 width=4) (actual time=0.003..0.003 rows=1.00 loops=1)
+           Buffers: shared hit=1
+           ->  Seq Scan on career_requests  (cost=0.00..13.00 rows=300 width=0) (actual time=0.003..0.003 rows=1.00 loops=1)
+                 Buffers: shared hit=1
+   InitPlan 7
+     ->  Aggregate  (cost=15.38..15.39 rows=1 width=4) (actual time=0.001..0.001 rows=1.00 loops=1)
+           Buffers: shared hit=1
+           ->  Seq Scan on mentorship_requests  (cost=0.00..14.30 rows=430 width=0) (actual time=0.001..0.001 rows=1.00 loops=1)
+                 Buffers: shared hit=1
+   InitPlan 8
+     ->  Aggregate  (cost=8.16..8.18 rows=1 width=4) (actual time=0.008..0.008 rows=1.00 loops=1)
+           Buffers: shared hit=2
+           ->  Index Only Scan using opportunities_search_idx on opportunities  (cost=0.14..8.16 rows=1 width=0) (actual time=0.007..0.008 rows=2.00 loops=1)
+                 Index Cond: (status = 'PUBLISHED'::text)
+                 Heap Fetches: 2
+                 Index Searches: 1
+                 Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=492
+ Planning Time: 0.841 ms
+ Execution Time: 0.086 ms
+(60 rows)
+
+=== Q88 run 2 ===
+QUERY PLAN                                                                          
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Result  (cost=104.71..104.72 rows=1 width=32) (actual time=0.035..0.036 rows=1.00 loops=1)
+   Buffers: shared hit=10
+   InitPlan 1
+     ->  Aggregate  (cost=15.13..15.14 rows=1 width=4) (actual time=0.008..0.009 rows=1.00 loops=1)
+           Buffers: shared hit=1
+           ->  Seq Scan on users  (cost=0.00..15.12 rows=2 width=0) (actual time=0.004..0.005 rows=21.00 loops=1)
+                 Filter: (account_status = 'ACTIVE'::text)
+                 Buffers: shared hit=1
+   InitPlan 2
+     ->  Aggregate  (cost=14.88..14.89 rows=1 width=4) (actual time=0.003..0.003 rows=1.00 loops=1)
+           Buffers: shared hit=1
+           ->  Seq Scan on university_memberships  (cost=0.00..14.88 rows=2 width=0) (actual time=0.002..0.002 rows=11.00 loops=1)
+                 Filter: (membership_status = 'STUDENT'::text)
+                 Rows Removed by Filter: 10
+                 Buffers: shared hit=1
+   InitPlan 3
+     ->  Aggregate  (cost=14.88..14.89 rows=1 width=4) (actual time=0.002..0.002 rows=1.00 loops=1)
+           Buffers: shared hit=1
+           ->  Seq Scan on university_memberships university_memberships_1  (cost=0.00..14.88 rows=2 width=0) (actual time=0.001..0.001 rows=10.00 loops=1)
+                 Filter: (membership_status = 'ALUMNI'::text)
+                 Rows Removed by Filter: 11
+                 Buffers: shared hit=1
+   InitPlan 4
+     ->  Aggregate  (cost=9.50..9.51 rows=1 width=4) (actual time=0.005..0.005 rows=1.00 loops=1)
+           Buffers: shared hit=2
+           ->  Bitmap Heap Scan on verification_requests  (cost=4.16..9.50 rows=2 width=0) (actual time=0.004..0.004 rows=1.00 loops=1)
+                 Recheck Cond: (status = 'PENDING'::text)
+                 Heap Blocks: exact=1
+                 Buffers: shared hit=2
+                 ->  Bitmap Index Scan on verification_pending_user_uq  (cost=0.00..4.15 rows=2 width=0) (actual time=0.002..0.002 rows=2.00 loops=1)
+                       Index Searches: 1
+                       Buffers: shared hit=1
+   InitPlan 5
+     ->  Aggregate  (cost=12.92..12.94 rows=1 width=4) (actual time=0.002..0.002 rows=1.00 loops=1)
+           Buffers: shared hit=1
+           ->  Seq Scan on companies  (cost=0.00..12.60 rows=130 width=0) (actual time=0.002..0.002 rows=4.00 loops=1)
+                 Filter: approved
+                 Buffers: shared hit=1
+   InitPlan 6
+     ->  Aggregate  (cost=13.75..13.76 rows=1 width=4) (actual time=0.003..0.003 rows=1.00 loops=1)
+           Buffers: shared hit=1
+           ->  Seq Scan on career_requests  (cost=0.00..13.00 rows=300 width=0) (actual time=0.003..0.003 rows=1.00 loops=1)
+                 Buffers: shared hit=1
+   InitPlan 7
+     ->  Aggregate  (cost=15.38..15.39 rows=1 width=4) (actual time=0.001..0.001 rows=1.00 loops=1)
+           Buffers: shared hit=1
+           ->  Seq Scan on mentorship_requests  (cost=0.00..14.30 rows=430 width=0) (actual time=0.001..0.001 rows=1.00 loops=1)
+                 Buffers: shared hit=1
+   InitPlan 8
+     ->  Aggregate  (cost=8.16..8.18 rows=1 width=4) (actual time=0.009..0.009 rows=1.00 loops=1)
+           Buffers: shared hit=2
+           ->  Index Only Scan using opportunities_search_idx on opportunities  (cost=0.14..8.16 rows=1 width=0) (actual time=0.008..0.008 rows=2.00 loops=1)
+                 Index Cond: (status = 'PUBLISHED'::text)
+                 Heap Fetches: 2
+                 Index Searches: 1
+                 Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=492
+ Planning Time: 0.744 ms
+ Execution Time: 0.095 ms
+(60 rows)
+
+=== Q88 run 3 ===
+QUERY PLAN                                                                          
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Result  (cost=104.71..104.72 rows=1 width=32) (actual time=0.035..0.036 rows=1.00 loops=1)
+   Buffers: shared hit=10
+   InitPlan 1
+     ->  Aggregate  (cost=15.13..15.14 rows=1 width=4) (actual time=0.008..0.008 rows=1.00 loops=1)
+           Buffers: shared hit=1
+           ->  Seq Scan on users  (cost=0.00..15.12 rows=2 width=0) (actual time=0.004..0.005 rows=21.00 loops=1)
+                 Filter: (account_status = 'ACTIVE'::text)
+                 Buffers: shared hit=1
+   InitPlan 2
+     ->  Aggregate  (cost=14.88..14.89 rows=1 width=4) (actual time=0.003..0.003 rows=1.00 loops=1)
+           Buffers: shared hit=1
+           ->  Seq Scan on university_memberships  (cost=0.00..14.88 rows=2 width=0) (actual time=0.002..0.002 rows=11.00 loops=1)
+                 Filter: (membership_status = 'STUDENT'::text)
+                 Rows Removed by Filter: 10
+                 Buffers: shared hit=1
+   InitPlan 3
+     ->  Aggregate  (cost=14.88..14.89 rows=1 width=4) (actual time=0.003..0.003 rows=1.00 loops=1)
+           Buffers: shared hit=1
+           ->  Seq Scan on university_memberships university_memberships_1  (cost=0.00..14.88 rows=2 width=0) (actual time=0.001..0.001 rows=10.00 loops=1)
+                 Filter: (membership_status = 'ALUMNI'::text)
+                 Rows Removed by Filter: 11
+                 Buffers: shared hit=1
+   InitPlan 4
+     ->  Aggregate  (cost=9.50..9.51 rows=1 width=4) (actual time=0.004..0.005 rows=1.00 loops=1)
+           Buffers: shared hit=2
+           ->  Bitmap Heap Scan on verification_requests  (cost=4.16..9.50 rows=2 width=0) (actual time=0.004..0.004 rows=1.00 loops=1)
+                 Recheck Cond: (status = 'PENDING'::text)
+                 Heap Blocks: exact=1
+                 Buffers: shared hit=2
+                 ->  Bitmap Index Scan on verification_pending_user_uq  (cost=0.00..4.15 rows=2 width=0) (actual time=0.002..0.002 rows=2.00 loops=1)
+                       Index Searches: 1
+                       Buffers: shared hit=1
+   InitPlan 5
+     ->  Aggregate  (cost=12.92..12.94 rows=1 width=4) (actual time=0.002..0.002 rows=1.00 loops=1)
+           Buffers: shared hit=1
+           ->  Seq Scan on companies  (cost=0.00..12.60 rows=130 width=0) (actual time=0.002..0.002 rows=4.00 loops=1)
+                 Filter: approved
+                 Buffers: shared hit=1
+   InitPlan 6
+     ->  Aggregate  (cost=13.75..13.76 rows=1 width=4) (actual time=0.003..0.003 rows=1.00 loops=1)
+           Buffers: shared hit=1
+           ->  Seq Scan on career_requests  (cost=0.00..13.00 rows=300 width=0) (actual time=0.003..0.003 rows=1.00 loops=1)
+                 Buffers: shared hit=1
+   InitPlan 7
+     ->  Aggregate  (cost=15.38..15.39 rows=1 width=4) (actual time=0.001..0.001 rows=1.00 loops=1)
+           Buffers: shared hit=1
+           ->  Seq Scan on mentorship_requests  (cost=0.00..14.30 rows=430 width=0) (actual time=0.001..0.001 rows=1.00 loops=1)
+                 Buffers: shared hit=1
+   InitPlan 8
+     ->  Aggregate  (cost=8.16..8.18 rows=1 width=4) (actual time=0.010..0.010 rows=1.00 loops=1)
+           Buffers: shared hit=2
+           ->  Index Only Scan using opportunities_search_idx on opportunities  (cost=0.14..8.16 rows=1 width=0) (actual time=0.009..0.009 rows=2.00 loops=1)
+                 Index Cond: (status = 'PUBLISHED'::text)
+                 Heap Fetches: 2
+                 Index Searches: 1
+                 Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=492
+ Planning Time: 0.796 ms
+ Execution Time: 0.091 ms
+(60 rows)
+

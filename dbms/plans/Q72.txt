@@ -1,0 +1,42 @@
+=== Q72 run 1 ===
+QUERY PLAN                                                     
+--------------------------------------------------------------------------------------------------------------------
+ Insert on career_request_messages  (cost=0.00..0.01 rows=1 width=120) (actual time=0.094..0.094 rows=1.00 loops=1)
+   Buffers: shared hit=66
+   ->  Result  (cost=0.00..0.01 rows=1 width=120) (actual time=0.009..0.009 rows=1.00 loops=1)
+ Planning:
+   Buffers: shared hit=10
+ Planning Time: 0.040 ms
+ Trigger for constraint career_request_messages_request_id_fkey: time=0.291 calls=1
+ Trigger for constraint career_request_messages_sender_id_fkey: time=0.118 calls=1
+ Execution Time: 0.522 ms
+(9 rows)
+
+=== Q72 run 2 ===
+QUERY PLAN                                                     
+--------------------------------------------------------------------------------------------------------------------
+ Insert on career_request_messages  (cost=0.00..0.01 rows=1 width=120) (actual time=0.091..0.092 rows=1.00 loops=1)
+   Buffers: shared hit=66
+   ->  Result  (cost=0.00..0.01 rows=1 width=120) (actual time=0.008..0.009 rows=1.00 loops=1)
+ Planning:
+   Buffers: shared hit=10
+ Planning Time: 0.037 ms
+ Trigger for constraint career_request_messages_request_id_fkey: time=0.276 calls=1
+ Trigger for constraint career_request_messages_sender_id_fkey: time=0.118 calls=1
+ Execution Time: 0.504 ms
+(9 rows)
+
+=== Q72 run 3 ===
+QUERY PLAN                                                     
+--------------------------------------------------------------------------------------------------------------------
+ Insert on career_request_messages  (cost=0.00..0.01 rows=1 width=120) (actual time=0.089..0.089 rows=1.00 loops=1)
+   Buffers: shared hit=66
+   ->  Result  (cost=0.00..0.01 rows=1 width=120) (actual time=0.008..0.008 rows=1.00 loops=1)
+ Planning:
+   Buffers: shared hit=10
+ Planning Time: 0.036 ms
+ Trigger for constraint career_request_messages_request_id_fkey: time=0.269 calls=1
+ Trigger for constraint career_request_messages_sender_id_fkey: time=0.117 calls=1
+ Execution Time: 0.493 ms
+(9 rows)
+

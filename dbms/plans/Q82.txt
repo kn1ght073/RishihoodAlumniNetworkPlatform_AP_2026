@@ -1,0 +1,42 @@
+=== Q82 run 1 ===
+QUERY PLAN                                                                      
+------------------------------------------------------------------------------------------------------------------------------------------------------
+ Index Only Scan using saved_opportunities_pkey on saved_opportunities  (cost=0.15..8.17 rows=1 width=4) (actual time=0.007..0.007 rows=1.00 loops=1)
+   Index Cond: ((user_id = '00000000-0000-0000-0000-000000000011'::uuid) AND (opportunity_id = '60000000-0000-0000-0000-000000000001'::uuid))
+   Heap Fetches: 1
+   Index Searches: 1
+   Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=69
+ Planning Time: 0.163 ms
+ Execution Time: 0.021 ms
+(9 rows)
+
+=== Q82 run 2 ===
+QUERY PLAN                                                                      
+------------------------------------------------------------------------------------------------------------------------------------------------------
+ Index Only Scan using saved_opportunities_pkey on saved_opportunities  (cost=0.15..8.17 rows=1 width=4) (actual time=0.006..0.006 rows=1.00 loops=1)
+   Index Cond: ((user_id = '00000000-0000-0000-0000-000000000011'::uuid) AND (opportunity_id = '60000000-0000-0000-0000-000000000001'::uuid))
+   Heap Fetches: 1
+   Index Searches: 1
+   Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=69
+ Planning Time: 0.135 ms
+ Execution Time: 0.021 ms
+(9 rows)
+
+=== Q82 run 3 ===
+QUERY PLAN                                                                      
+------------------------------------------------------------------------------------------------------------------------------------------------------
+ Index Only Scan using saved_opportunities_pkey on saved_opportunities  (cost=0.15..8.17 rows=1 width=4) (actual time=0.006..0.006 rows=1.00 loops=1)
+   Index Cond: ((user_id = '00000000-0000-0000-0000-000000000011'::uuid) AND (opportunity_id = '60000000-0000-0000-0000-000000000001'::uuid))
+   Heap Fetches: 1
+   Index Searches: 1
+   Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=69
+ Planning Time: 0.126 ms
+ Execution Time: 0.020 ms
+(9 rows)
+

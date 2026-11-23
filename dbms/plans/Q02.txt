@@ -1,0 +1,42 @@
+=== Q02 run 1 ===
+QUERY PLAN                                                      
+---------------------------------------------------------------------------------------------------------------------
+ Index Scan using users_pkey on users  (cost=0.15..8.17 rows=1 width=4) (actual time=0.007..0.007 rows=1.00 loops=1)
+   Index Cond: (id = '00000000-0000-0000-0000-000000000002'::uuid)
+   Filter: (account_status = 'ACTIVE'::text)
+   Index Searches: 1
+   Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=107
+ Planning Time: 0.295 ms
+ Execution Time: 0.033 ms
+(9 rows)
+
+=== Q02 run 2 ===
+QUERY PLAN                                                      
+---------------------------------------------------------------------------------------------------------------------
+ Index Scan using users_pkey on users  (cost=0.15..8.17 rows=1 width=4) (actual time=0.005..0.005 rows=1.00 loops=1)
+   Index Cond: (id = '00000000-0000-0000-0000-000000000002'::uuid)
+   Filter: (account_status = 'ACTIVE'::text)
+   Index Searches: 1
+   Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=107
+ Planning Time: 0.219 ms
+ Execution Time: 0.021 ms
+(9 rows)
+
+=== Q02 run 3 ===
+QUERY PLAN                                                      
+---------------------------------------------------------------------------------------------------------------------
+ Index Scan using users_pkey on users  (cost=0.15..8.17 rows=1 width=4) (actual time=0.004..0.004 rows=1.00 loops=1)
+   Index Cond: (id = '00000000-0000-0000-0000-000000000002'::uuid)
+   Filter: (account_status = 'ACTIVE'::text)
+   Index Searches: 1
+   Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=107
+ Planning Time: 0.195 ms
+ Execution Time: 0.019 ms
+(9 rows)
+

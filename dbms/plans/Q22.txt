@@ -1,0 +1,45 @@
+=== Q22 run 1 ===
+QUERY PLAN                                                             
+-----------------------------------------------------------------------------------------------------------------------------------
+ Update on profiles  (cost=0.14..8.16 rows=0 width=0) (actual time=0.061..0.061 rows=0.00 loops=1)
+   Buffers: shared hit=19
+   ->  Index Scan using profiles_pkey on profiles  (cost=0.14..8.16 rows=1 width=270) (actual time=0.005..0.007 rows=1.00 loops=1)
+         Index Cond: (user_id = '00000000-0000-0000-0000-000000000011'::uuid)
+         Index Searches: 1
+         Buffers: shared hit=4
+ Planning:
+   Buffers: shared hit=81
+ Planning Time: 0.132 ms
+ Execution Time: 0.107 ms
+(10 rows)
+
+=== Q22 run 2 ===
+QUERY PLAN                                                             
+-----------------------------------------------------------------------------------------------------------------------------------
+ Update on profiles  (cost=0.14..8.16 rows=0 width=0) (actual time=0.069..0.069 rows=0.00 loops=1)
+   Buffers: shared hit=17
+   ->  Index Scan using profiles_pkey on profiles  (cost=0.14..8.16 rows=1 width=270) (actual time=0.013..0.013 rows=1.00 loops=1)
+         Index Cond: (user_id = '00000000-0000-0000-0000-000000000011'::uuid)
+         Index Searches: 1
+         Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=81
+ Planning Time: 0.133 ms
+ Execution Time: 0.113 ms
+(10 rows)
+
+=== Q22 run 3 ===
+QUERY PLAN                                                             
+-----------------------------------------------------------------------------------------------------------------------------------
+ Update on profiles  (cost=0.14..8.16 rows=0 width=0) (actual time=0.073..0.073 rows=0.00 loops=1)
+   Buffers: shared hit=17
+   ->  Index Scan using profiles_pkey on profiles  (cost=0.14..8.16 rows=1 width=270) (actual time=0.015..0.015 rows=1.00 loops=1)
+         Index Cond: (user_id = '00000000-0000-0000-0000-000000000011'::uuid)
+         Index Searches: 1
+         Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=81
+ Planning Time: 0.156 ms
+ Execution Time: 0.129 ms
+(10 rows)
+

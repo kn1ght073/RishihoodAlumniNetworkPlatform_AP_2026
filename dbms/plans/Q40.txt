@@ -1,0 +1,186 @@
+=== Q40 run 1 ===
+QUERY PLAN                                                                                                                                                                                                                                                                                                                                                                
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Limit  (cost=2716.55..2716.80 rows=100 width=244) (actual time=0.058..0.059 rows=4.00 loops=1)
+   Buffers: shared hit=11
+   ->  Sort  (cost=2716.55..2716.87 rows=130 width=244) (actual time=0.057..0.058 rows=4.00 loops=1)
+         Sort Key: ((count(DISTINCT e.user_id) FILTER (WHERE ((m.user_id IS NOT NULL) AND ((p.profile_visibility = 'MEMBERS'::text) OR ((p.profile_visibility = 'CONNECTIONS'::text) AND (ANY ((LEAST('00000000-0000-0000-0000-000000000011'::uuid, e.user_id) = (hashed SubPlan 2).col1) AND (GREATEST('00000000-0000-0000-0000-000000000011'::uuid, e.user_id) = (hashed SubPlan 2).col2))))) AND ((p.employment_visibility = 'MEMBERS'::text) OR ((p.employment_visibility = 'CONNECTIONS'::text) AND (ANY ((LEAST('00000000-0000-0000-0000-000000000011'::uuid, e.user_id) = (hashed SubPlan 4).col1) AND (GREATEST('00000000-0000-0000-0000-000000000011'::uuid, e.user_id) = (hashed SubPlan 4).col2))))))))::integer) DESC, c.name
+         Sort Method: quicksort  Memory: 26kB
+         Buffers: shared hit=11
+         ->  GroupAggregate  (cost=63.09..2711.98 rows=130 width=244) (actual time=0.046..0.048 rows=4.00 loops=1)
+               Group Key: c.id
+               Buffers: shared hit=5
+               ->  Incremental Sort  (cost=63.09..91.16 rows=160 width=336) (actual time=0.042..0.043 rows=4.00 loops=1)
+                     Sort Key: c.id, e.user_id
+                     Presorted Key: c.id
+                     Full-sort Groups: 1  Sort Method: quicksort  Average Memory: 25kB  Peak Memory: 25kB
+                     Buffers: shared hit=5
+                     ->  Nested Loop Left Join  (cost=62.91..85.01 rows=160 width=336) (actual time=0.036..0.039 rows=4.00 loops=1)
+                           Join Filter: (m.user_id = e.user_id)
+                           Rows Removed by Join Filter: 10
+                           Buffers: shared hit=5
+                           ->  Merge Left Join  (cost=62.91..66.76 rows=160 width=320) (actual time=0.030..0.031 rows=4.00 loops=1)
+                                 Merge Cond: (c.id = e.company_id)
+                                 Buffers: shared hit=4
+                                 ->  Sort  (cost=17.16..17.49 rows=130 width=240) (actual time=0.008..0.008 rows=4.00 loops=1)
+                                       Sort Key: c.id
+                                       Sort Method: quicksort  Memory: 25kB
+                                       Buffers: shared hit=1
+                                       ->  Seq Scan on companies c  (cost=0.00..12.60 rows=130 width=240) (actual time=0.004..0.004 rows=4.00 loops=1)
+                                             Filter: approved
+                                             Buffers: shared hit=1
+                                 ->  Sort  (cost=45.74..46.54 rows=320 width=96) (actual time=0.019..0.019 rows=4.00 loops=1)
+                                       Sort Key: e.company_id
+                                       Sort Method: quicksort  Memory: 25kB
+                                       Buffers: shared hit=3
+                                       ->  Hash Left Join  (cost=15.18..32.43 rows=320 width=96) (actual time=0.015..0.016 rows=4.00 loops=1)
+                                             Hash Cond: (e.user_id = p.user_id)
+                                             Buffers: shared hit=3
+                                             ->  Seq Scan on employment_history e  (cost=0.00..16.40 rows=320 width=32) (actual time=0.001..0.002 rows=4.00 loops=1)
+                                                   Filter: is_current
+                                                   Buffers: shared hit=1
+                                             ->  Hash  (cost=12.30..12.30 rows=230 width=80) (actual time=0.009..0.009 rows=21.00 loops=1)
+                                                   Buckets: 1024  Batches: 1  Memory Usage: 10kB
+                                                   Buffers: shared hit=2
+                                                   ->  Seq Scan on profiles p  (cost=0.00..12.30 rows=230 width=80) (actual time=0.004..0.007 rows=21.00 loops=1)
+                                                         Buffers: shared hit=2
+                           ->  Materialize  (cost=0.00..15.86 rows=1 width=16) (actual time=0.001..0.002 rows=3.50 loops=4)
+                                 Storage: Memory  Maximum Storage: 17kB
+                                 Buffers: shared hit=1
+                                 ->  Seq Scan on university_memberships m  (cost=0.00..15.85 rows=1 width=16) (actual time=0.004..0.004 rows=5.00 loops=1)
+                                       Filter: ((membership_status = 'ALUMNI'::text) AND (verification_status = 'VERIFIED'::text))
+                                       Buffers: shared hit=1
+               SubPlan 2
+                 ->  Seq Scan on connections cn  (cost=0.00..22.00 rows=1200 width=32) (never executed)
+               SubPlan 4
+                 ->  Seq Scan on connections cn_1  (cost=0.00..22.00 rows=1200 width=32) (never executed)
+ Planning:
+   Buffers: shared hit=335
+ Planning Time: 0.694 ms
+ Execution Time: 0.115 ms
+(57 rows)
+
+=== Q40 run 2 ===
+QUERY PLAN                                                                                                                                                                                                                                                                                                                                                                
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Limit  (cost=2716.55..2716.80 rows=100 width=244) (actual time=0.054..0.055 rows=4.00 loops=1)
+   Buffers: shared hit=11
+   ->  Sort  (cost=2716.55..2716.87 rows=130 width=244) (actual time=0.054..0.055 rows=4.00 loops=1)
+         Sort Key: ((count(DISTINCT e.user_id) FILTER (WHERE ((m.user_id IS NOT NULL) AND ((p.profile_visibility = 'MEMBERS'::text) OR ((p.profile_visibility = 'CONNECTIONS'::text) AND (ANY ((LEAST('00000000-0000-0000-0000-000000000011'::uuid, e.user_id) = (hashed SubPlan 2).col1) AND (GREATEST('00000000-0000-0000-0000-000000000011'::uuid, e.user_id) = (hashed SubPlan 2).col2))))) AND ((p.employment_visibility = 'MEMBERS'::text) OR ((p.employment_visibility = 'CONNECTIONS'::text) AND (ANY ((LEAST('00000000-0000-0000-0000-000000000011'::uuid, e.user_id) = (hashed SubPlan 4).col1) AND (GREATEST('00000000-0000-0000-0000-000000000011'::uuid, e.user_id) = (hashed SubPlan 4).col2))))))))::integer) DESC, c.name
+         Sort Method: quicksort  Memory: 26kB
+         Buffers: shared hit=11
+         ->  GroupAggregate  (cost=63.09..2711.98 rows=130 width=244) (actual time=0.044..0.045 rows=4.00 loops=1)
+               Group Key: c.id
+               Buffers: shared hit=5
+               ->  Incremental Sort  (cost=63.09..91.16 rows=160 width=336) (actual time=0.041..0.041 rows=4.00 loops=1)
+                     Sort Key: c.id, e.user_id
+                     Presorted Key: c.id
+                     Full-sort Groups: 1  Sort Method: quicksort  Average Memory: 25kB  Peak Memory: 25kB
+                     Buffers: shared hit=5
+                     ->  Nested Loop Left Join  (cost=62.91..85.01 rows=160 width=336) (actual time=0.035..0.038 rows=4.00 loops=1)
+                           Join Filter: (m.user_id = e.user_id)
+                           Rows Removed by Join Filter: 10
+                           Buffers: shared hit=5
+                           ->  Merge Left Join  (cost=62.91..66.76 rows=160 width=320) (actual time=0.032..0.033 rows=4.00 loops=1)
+                                 Merge Cond: (c.id = e.company_id)
+                                 Buffers: shared hit=4
+                                 ->  Sort  (cost=17.16..17.49 rows=130 width=240) (actual time=0.014..0.014 rows=4.00 loops=1)
+                                       Sort Key: c.id
+                                       Sort Method: quicksort  Memory: 25kB
+                                       Buffers: shared hit=1
+                                       ->  Seq Scan on companies c  (cost=0.00..12.60 rows=130 width=240) (actual time=0.003..0.003 rows=4.00 loops=1)
+                                             Filter: approved
+                                             Buffers: shared hit=1
+                                 ->  Sort  (cost=45.74..46.54 rows=320 width=96) (actual time=0.015..0.015 rows=4.00 loops=1)
+                                       Sort Key: e.company_id
+                                       Sort Method: quicksort  Memory: 25kB
+                                       Buffers: shared hit=3
+                                       ->  Hash Left Join  (cost=15.18..32.43 rows=320 width=96) (actual time=0.012..0.013 rows=4.00 loops=1)
+                                             Hash Cond: (e.user_id = p.user_id)
+                                             Buffers: shared hit=3
+                                             ->  Seq Scan on employment_history e  (cost=0.00..16.40 rows=320 width=32) (actual time=0.001..0.002 rows=4.00 loops=1)
+                                                   Filter: is_current
+                                                   Buffers: shared hit=1
+                                             ->  Hash  (cost=12.30..12.30 rows=230 width=80) (actual time=0.008..0.008 rows=21.00 loops=1)
+                                                   Buckets: 1024  Batches: 1  Memory Usage: 10kB
+                                                   Buffers: shared hit=2
+                                                   ->  Seq Scan on profiles p  (cost=0.00..12.30 rows=230 width=80) (actual time=0.003..0.005 rows=21.00 loops=1)
+                                                         Buffers: shared hit=2
+                           ->  Materialize  (cost=0.00..15.86 rows=1 width=16) (actual time=0.001..0.001 rows=3.50 loops=4)
+                                 Storage: Memory  Maximum Storage: 17kB
+                                 Buffers: shared hit=1
+                                 ->  Seq Scan on university_memberships m  (cost=0.00..15.85 rows=1 width=16) (actual time=0.002..0.002 rows=5.00 loops=1)
+                                       Filter: ((membership_status = 'ALUMNI'::text) AND (verification_status = 'VERIFIED'::text))
+                                       Buffers: shared hit=1
+               SubPlan 2
+                 ->  Seq Scan on connections cn  (cost=0.00..22.00 rows=1200 width=32) (never executed)
+               SubPlan 4
+                 ->  Seq Scan on connections cn_1  (cost=0.00..22.00 rows=1200 width=32) (never executed)
+ Planning:
+   Buffers: shared hit=335
+ Planning Time: 0.589 ms
+ Execution Time: 0.101 ms
+(57 rows)
+
+=== Q40 run 3 ===
+QUERY PLAN                                                                                                                                                                                                                                                                                                                                                                
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Limit  (cost=2716.55..2716.80 rows=100 width=244) (actual time=0.058..0.059 rows=4.00 loops=1)
+   Buffers: shared hit=11
+   ->  Sort  (cost=2716.55..2716.87 rows=130 width=244) (actual time=0.058..0.059 rows=4.00 loops=1)
+         Sort Key: ((count(DISTINCT e.user_id) FILTER (WHERE ((m.user_id IS NOT NULL) AND ((p.profile_visibility = 'MEMBERS'::text) OR ((p.profile_visibility = 'CONNECTIONS'::text) AND (ANY ((LEAST('00000000-0000-0000-0000-000000000011'::uuid, e.user_id) = (hashed SubPlan 2).col1) AND (GREATEST('00000000-0000-0000-0000-000000000011'::uuid, e.user_id) = (hashed SubPlan 2).col2))))) AND ((p.employment_visibility = 'MEMBERS'::text) OR ((p.employment_visibility = 'CONNECTIONS'::text) AND (ANY ((LEAST('00000000-0000-0000-0000-000000000011'::uuid, e.user_id) = (hashed SubPlan 4).col1) AND (GREATEST('00000000-0000-0000-0000-000000000011'::uuid, e.user_id) = (hashed SubPlan 4).col2))))))))::integer) DESC, c.name
+         Sort Method: quicksort  Memory: 26kB
+         Buffers: shared hit=11
+         ->  GroupAggregate  (cost=63.09..2711.98 rows=130 width=244) (actual time=0.047..0.049 rows=4.00 loops=1)
+               Group Key: c.id
+               Buffers: shared hit=5
+               ->  Incremental Sort  (cost=63.09..91.16 rows=160 width=336) (actual time=0.043..0.044 rows=4.00 loops=1)
+                     Sort Key: c.id, e.user_id
+                     Presorted Key: c.id
+                     Full-sort Groups: 1  Sort Method: quicksort  Average Memory: 25kB  Peak Memory: 25kB
+                     Buffers: shared hit=5
+                     ->  Nested Loop Left Join  (cost=62.91..85.01 rows=160 width=336) (actual time=0.038..0.040 rows=4.00 loops=1)
+                           Join Filter: (m.user_id = e.user_id)
+                           Rows Removed by Join Filter: 10
+                           Buffers: shared hit=5
+                           ->  Merge Left Join  (cost=62.91..66.76 rows=160 width=320) (actual time=0.034..0.035 rows=4.00 loops=1)
+                                 Merge Cond: (c.id = e.company_id)
+                                 Buffers: shared hit=4
+                                 ->  Sort  (cost=17.16..17.49 rows=130 width=240) (actual time=0.007..0.008 rows=4.00 loops=1)
+                                       Sort Key: c.id
+                                       Sort Method: quicksort  Memory: 25kB
+                                       Buffers: shared hit=1
+                                       ->  Seq Scan on companies c  (cost=0.00..12.60 rows=130 width=240) (actual time=0.003..0.004 rows=4.00 loops=1)
+                                             Filter: approved
+                                             Buffers: shared hit=1
+                                 ->  Sort  (cost=45.74..46.54 rows=320 width=96) (actual time=0.024..0.024 rows=4.00 loops=1)
+                                       Sort Key: e.company_id
+                                       Sort Method: quicksort  Memory: 25kB
+                                       Buffers: shared hit=3
+                                       ->  Hash Left Join  (cost=15.18..32.43 rows=320 width=96) (actual time=0.021..0.021 rows=4.00 loops=1)
+                                             Hash Cond: (e.user_id = p.user_id)
+                                             Buffers: shared hit=3
+                                             ->  Seq Scan on employment_history e  (cost=0.00..16.40 rows=320 width=32) (actual time=0.001..0.002 rows=4.00 loops=1)
+                                                   Filter: is_current
+                                                   Buffers: shared hit=1
+                                             ->  Hash  (cost=12.30..12.30 rows=230 width=80) (actual time=0.008..0.008 rows=21.00 loops=1)
+                                                   Buckets: 1024  Batches: 1  Memory Usage: 10kB
+                                                   Buffers: shared hit=2
+                                                   ->  Seq Scan on profiles p  (cost=0.00..12.30 rows=230 width=80) (actual time=0.003..0.006 rows=21.00 loops=1)
+                                                         Buffers: shared hit=2
+                           ->  Materialize  (cost=0.00..15.86 rows=1 width=16) (actual time=0.001..0.001 rows=3.50 loops=4)
+                                 Storage: Memory  Maximum Storage: 17kB
+                                 Buffers: shared hit=1
+                                 ->  Seq Scan on university_memberships m  (cost=0.00..15.85 rows=1 width=16) (actual time=0.002..0.002 rows=5.00 loops=1)
+                                       Filter: ((membership_status = 'ALUMNI'::text) AND (verification_status = 'VERIFIED'::text))
+                                       Buffers: shared hit=1
+               SubPlan 2
+                 ->  Seq Scan on connections cn  (cost=0.00..22.00 rows=1200 width=32) (never executed)
+               SubPlan 4
+                 ->  Seq Scan on connections cn_1  (cost=0.00..22.00 rows=1200 width=32) (never executed)
+ Planning:
+   Buffers: shared hit=335
+ Planning Time: 0.627 ms
+ Execution Time: 0.107 ms
+(57 rows)
+
